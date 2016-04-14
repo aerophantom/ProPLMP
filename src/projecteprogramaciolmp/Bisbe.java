@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/////////////////////////////////////
+//
+//  Rol Bisbe --
+//  El bisbe, quan realitza la seva acció de rol, pot robar dos monedes del jugador més ric de la partida.
+//  En cas que es produeixi el cas que hi hagi dos o més jugador amb la mateixa quanitat de monedes,
+//  el bisbe escullirà de quin jugador obtindrà les dos monedes.
+//
+/////////////////////////////////////
 package projecteprogramaciolmp;
 
-/**
- *
- * @author aerop
- */
+
 public class Bisbe {
     
 }
