@@ -8,8 +8,8 @@ package projecteprogramaciolmp;
 public class Partida {
     // Atributs
     // --------------------
-    
-    
+    private int _monJusticia; // Monedes del palau de justícia
+    private int _monBanc; // Monedes del banc nacional
     
     // --------------------
     
@@ -42,11 +42,14 @@ public class Partida {
 
         private void descartarCartes () {
         // Pre: --
-        // Post: 
+        // Post: Descarta cartes de la pila --->>>> (Quantes????)
+        
         }
 
         public void pagarMulta () {
-
+        //Pre: --
+        //Post: Afegeix una moneda al palau de justícia i resta'n una al/s jugador/s mentider/s.
+        
         }
     
     
