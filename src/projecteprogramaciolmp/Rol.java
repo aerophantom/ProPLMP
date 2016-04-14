@@ -9,6 +9,6 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public interface Rol {
+public abstract class Rol {
     
 }
