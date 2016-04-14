@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/////////////////////////////////////
+//
+//  Rol Reina --
+//  La Reina, quan realitza la seva acció de rol, obté dos monedes del Banc Nacional i la suma a la seva
+//  quantitat de monedes
+//
+/////////////////////////////////////
+
 package projecteprogramaciolmp;
 
 /**

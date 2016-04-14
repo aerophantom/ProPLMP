@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/////////////////////////////////////
+//
+//  Rol Lladre --
+//  El Lladre, quan realitza la seva acció de rol, obté una moneda del jugador que té 
+//  a l'esquerra i una altre del jugador que té a la dreta
+//
+/////////////////////////////////////
+
 package projecteprogramaciolmp;
 
 /**

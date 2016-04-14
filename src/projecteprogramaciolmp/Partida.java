@@ -1,11 +1,15 @@
 
 package projecteprogramaciolmp;
 
+
+
 public class Partida {
     // Atributs
     // --------------------
     private int _monJusticia; // Monedes del palau de justícia
     private int _monBanc; // Monedes del banc nacional
+    // private vector<Jugadors> _JugadorsQueJuguen
+    // private vector<Cartes>  _CartesQueDisposaElJoc
     
     // --------------------
     

@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/////////////////////////////////////
+//
+//  Rol Espia --
+//  El Espia, quan realitza la seva acció de rol, pot escollir si intercanviar una carta
+//  amb algun jugador o simular la acció com si la realitzés per tal de despistar el contrari.
+//
+/////////////////////////////////////
+
 package projecteprogramaciolmp;
 
 /**
