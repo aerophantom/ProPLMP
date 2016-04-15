@@ -24,7 +24,7 @@ public class Partida {
        
        public Partida(int monJusticia,int monBanc) {
       
-           _monJusticia=monJusticia;
+           _monJusticia=0;
            _monBanc=monBanc;
        }
     
