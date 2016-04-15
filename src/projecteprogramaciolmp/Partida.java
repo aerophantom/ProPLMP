@@ -10,19 +10,11 @@ public class Partida {
     private int _monBanc; // Monedes del banc nacional
     private int _jugadorActual; // Index de l'array de jugadors que indica el jugador actual.
     private int _monedesPerGuanyar;
+    private int _monedesTotals;
     private ArrayList<Jugador> _JugadorsQueJuguen;
     private ArrayList<Carta>  _mazo;
     
     // --------------------
-    // ============================================================
-    // CONSTRUCTORS
-    // ============================================================
-        public Partida(){
-            
-        }
-        /*
-        public Partida(int nJugadors, int nMonedes)
-        */
     // ============================================================
     // Mètodes CONSTRUCTORS
     // ============================================================
@@ -32,10 +24,14 @@ public class Partida {
            _monBanc=0;
        }
        
-       public Partida(int monJusticia,int monBanc) {
-      
+       public Partida(int nJugadors, int monJusticia,int monBanc) {
+           _JugadorsQueJuguen= new ArrayList<Jugador> (nJugadors); //array de nJugadors
+           /* for (i=0; i< nJugadors; i++){
+                _JugadorsQueJuguen[i].setJugador(nomJugador,monedes); //com coi implementem aixo?
+              }
+           */
            _monJusticia=0;
-           _monBanc=monBanc;
+           _monBanc=_monedesTotals - 6*nJugadors; //el 6 son les monedes per jugador
        }
     
     
