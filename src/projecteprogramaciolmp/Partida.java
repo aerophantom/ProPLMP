@@ -24,6 +24,22 @@ public class Partida {
         public Partida(int nJugadors, int nMonedes)
         */
     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+       public Partida() {
+      
+           _monJusticia=0;
+           _monBanc=0;
+       }
+       
+       public Partida(int monJusticia,int monBanc) {
+      
+           _monJusticia=0;
+           _monBanc=monBanc;
+       }
+    
+    
+    // ============================================================
     // Mètodes CONSULTORS
     // ============================================================
         public ArrayList<Jugador> buscarJugadorMesRic () {
