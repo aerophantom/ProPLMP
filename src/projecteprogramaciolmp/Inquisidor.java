@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/////////////////////////////////////
+//
+//  Rol Inquisidor --
+//  El Inquisidor, quan realitza la seva acció de rol, obliga a un jugador a escollir a dir un rol dels que té.
+//  Si el jugador escollit falla, aquest dóna 4 monedes al jugador Inquisidor. En cas contrari no passa res.
+//
+/////////////////////////////////////
+
 package projecteprogramaciolmp;
 
 /**

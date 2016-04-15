@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/////////////////////////////////////
+//
+//  Rol Bruixa --
+//  La Bruixa, quan realitza la seva acció de rol, canvia la quantitat de monedes que té amb les d'un
+//  altre jugador a escollir.
+//
+/////////////////////////////////////
+
 package projecteprogramaciolmp;
 
 /**

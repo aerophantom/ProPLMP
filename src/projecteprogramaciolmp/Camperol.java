@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/////////////////////////////////////
+//
+//  Rol Camperol --
+//  El Camperol, quan realitza la seva acció de rol (manifestació), obté una moneda del Banc Nacional.
+//  Si es produeix el cas que l'altre camperol també es manifesta, els dos camperols obtenen dos monedes
+//  cada un del Banc Nacional
+//
+/////////////////////////////////////
+
 package projecteprogramaciolmp;
 
-/**
- *
- * @author aerop
- */
 public class Camperol {
     
 }
