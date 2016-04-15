@@ -9,6 +9,14 @@
 package projecteprogramaciolmp;
 
 
-public class Bisbe {
+public class Bisbe extends Rol {
     
+    // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Bisbe() {
+    
+    
+    } 
 }

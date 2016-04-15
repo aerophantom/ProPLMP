@@ -14,6 +14,22 @@ public class Partida {
     // --------------------
     
     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+       public Partida() {
+      
+           _monJusticia=0;
+           _monBanc=0;
+       }
+       
+       public Partida(int monJusticia,int monBanc) {
+      
+           _monJusticia=monJusticia;
+           _monBanc=monBanc;
+       }
+    
+    
+    // ============================================================
     // Mètodes CONSULTORS
     // ============================================================
         public void vector<Jugador> buscarJugadorMesRic () {
