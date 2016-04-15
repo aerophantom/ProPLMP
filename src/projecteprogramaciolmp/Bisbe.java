@@ -16,7 +16,8 @@ public class Bisbe extends Rol {
     // ============================================================
     
     public Bisbe() {
-    
+        
+        _nomRol="Bisbe";
     
     } 
 }

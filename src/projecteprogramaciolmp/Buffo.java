@@ -12,6 +12,14 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Buffo {
+public class Buffo extends Rol {
     
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Buffo() {
+        
+        _nomRol="Buffo";
+    }
 }

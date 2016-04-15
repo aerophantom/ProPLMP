@@ -12,6 +12,15 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Lladre {
+public class Lladre extends Rol {
+    
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Lladre() {
+        
+        _nomRol="Lladre";
+    }
     
 }

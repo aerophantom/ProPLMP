@@ -12,6 +12,16 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Bruixa {
+public class Bruixa extends Rol {
     
+    
+   // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Bruixa() {
+        
+        _nomRol="Bruixa";
+        
+    }
 }

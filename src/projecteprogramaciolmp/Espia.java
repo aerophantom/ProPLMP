@@ -12,6 +12,14 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Espia {
+public class Espia extends Rol{
     
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Espia() {
+        
+        _nomRol="Espia";
+    }
 }

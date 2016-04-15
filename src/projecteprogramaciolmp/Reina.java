@@ -12,6 +12,14 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Reina {
+public class Reina extends Rol {
     
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Reina() {
+        
+        _nomRol="Reina";
+    }
 }

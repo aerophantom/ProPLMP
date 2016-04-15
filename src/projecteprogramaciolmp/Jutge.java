@@ -12,6 +12,15 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Jutge {
+public class Jutge extends Rol{
+    
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Jutge() {
+        
+        _nomRol="Jutge";
+    }
     
 }

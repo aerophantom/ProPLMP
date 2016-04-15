@@ -8,6 +8,14 @@
 
 package projecteprogramaciolmp;
 
-public class Rei {
+public class Rei extends Rol {
     
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Rei() {
+        
+        _nomRol="Rei";
+    }
 }

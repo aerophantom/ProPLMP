@@ -11,6 +11,14 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Trampos {
+public class Trampos extends Rol {
     
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Trampos() {
+        
+        _nomRol="Trampos";
+    }
 }

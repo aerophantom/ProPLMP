@@ -12,6 +12,15 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Viuda {
+public class Viuda extends Rol {
+    
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    public Viuda() {
+        
+       _nomRol="Viuda"; 
+    }
+    
     
 }

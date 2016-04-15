@@ -9,6 +9,14 @@
 
 package projecteprogramaciolmp;
 
-public class Camperol {
+public class Camperol extends Rol {
     
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Camperol() {
+        
+        _nomRol="Camperol";
+    }
 }

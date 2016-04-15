@@ -12,6 +12,14 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class Inquisidor {
+public class Inquisidor extends Rol {
     
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Inquisidor() {
+        
+        _nomRol="Inquisidor";
+    }
 }
