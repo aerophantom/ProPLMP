@@ -2,6 +2,7 @@
 package projecteprogramaciolmp;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Partida {
     // Atributs
@@ -32,6 +33,8 @@ public class Partida {
            */
            _monJusticia=0;
            _monBanc=_monedesTotals - 6*nJugadors; //el 6 son les monedes per jugador
+           
+           _mazo= new ArrayList<Carta>(Arrays.asList(new Carta("Rei"),new Carta("Reina"),new Carta("Camperol"),new Carta("Bisbe"),new Carta("Espia"),new Carta("Inquisidor"),new Carta("Jutge"),new Carta("Lladre"),new Carta("Trampos"),new Carta("Viuda"),new Carta("Buffo"),new Carta("Bruixa") ));
        }
     
     
@@ -41,7 +44,16 @@ public class Partida {
         public ArrayList<Jugador> buscarJugadorMesRic () {
         // Pre: --
         // Post: Retorna un vector amb el/s jugador/s més rics
-            
+            /*
+            PER COMPLETAR
+            int topMonedas= 0;
+            ArrayList<Jugador
+            for(int i= 0; i<_jugadorsQueJuguen.size(); i++){
+                if(_JugadorsQueJuguen[i].monedes()>= topMonedes){
+                    
+                }
+            }
+        */
         }
         
         public boolean partidaAcabada () {
