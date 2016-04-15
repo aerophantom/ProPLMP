@@ -9,6 +9,6 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public class JugadorPersona {
+public class JugadorPersona extends Jugador {
     
 }
