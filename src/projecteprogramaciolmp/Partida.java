@@ -39,7 +39,6 @@ public class Partida {
                 _JugadorsQueJuguen[i].setJugador(nomJugador,monedes); //com coi implementem aixo?
               }
            */
-           _monedesJusticia=0;
            
            //inicialització del mazo.
            _mazo= new ArrayList<>(Arrays.asList(new Carta(new Rei()),new Carta(new Reina()),new Carta(new Camperol()),new Carta(new Camperol()),new Carta(new Bisbe()),new Carta(new Espia()),new Carta(new Inquisidor()),new Carta(new Jutge()),new Carta(new Lladre()),new Carta(new Trampos()),new Carta(new Viuda()),new Carta(new Buffo()),new Carta(new Bruixa()) ));
@@ -102,7 +101,7 @@ public class Partida {
         }
 
         private void descartarCartes () {
-        // Pre: --
+        // Pre: El bisbe no pot ser descartat.
         // Post: Descarta cartes de la pila --->>>> (Quantes????)
         
         }

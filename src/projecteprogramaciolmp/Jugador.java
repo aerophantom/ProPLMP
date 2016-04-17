@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public abstract class Jugador {
     // Atributs
     // --------------------
-    private int _monedes; // Monedes de les que disposa el jugador
+    private Moneda _monedes; // Monedes de les que disposa el jugador
     private int _cartaJugada; // Carta que el Jugador utilitza en el torn
     private ArrayList<Carta> _cartesJugador;
     // --------------------
