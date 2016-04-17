@@ -13,4 +13,8 @@ package projecteprogramaciolmp;
  */
 public abstract class Rol {
     String _nomRol;
+    
+    public Rol(){
+        _nomRol="none";
+    }
 }
