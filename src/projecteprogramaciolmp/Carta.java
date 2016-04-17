@@ -20,10 +20,11 @@ public class Carta {
     
     @Override
     public boolean equals(Object o){
-        
+        Carta c= (Carta)o;
+        return compareTo(c)==0;
     }
     
     public int compareTo(Carta in){
-        
+        return _rolCarta.compareTo(in._rolCarta);
     }
 }

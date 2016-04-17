@@ -3,7 +3,6 @@ package projecteprogramaciolmp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 
 public class Partida {
     // Atributs
@@ -40,8 +39,16 @@ public class Partida {
               }
            */
            
-           //inicialització del mazo.
-           _mazo= new ArrayList<>(Arrays.asList(new Carta(new Rei()),new Carta(new Reina()),new Carta(new Camperol()),new Carta(new Camperol()),new Carta(new Bisbe()),new Carta(new Espia()),new Carta(new Inquisidor()),new Carta(new Jutge()),new Carta(new Lladre()),new Carta(new Trampos()),new Carta(new Viuda()),new Carta(new Buffo()),new Carta(new Bruixa()) ));
+           
+           //inicialització del mazo. potser no va aqui, millor al constructor?
+           _mazo= new ArrayList<>(Arrays.asList(new Carta(new Rei()),
+                   new Carta(new Reina()),new Carta(new Camperol()),
+                   new Carta(new Camperol()),new Carta(new Bisbe()),
+                   new Carta(new Espia()),new Carta(new Inquisidor()),
+                   new Carta(new Jutge()),new Carta(new Lladre()),
+                   new Carta(new Trampos()),new Carta(new Viuda()),
+                   new Carta(new Buffo()),new Carta(new Bruixa()) ));
+           
        }
     
     
@@ -93,7 +100,8 @@ public class Partida {
                         vectorJugador[i].afegirCarta(vectorCartes[carta]);
                         vectorCartes[carta].erase();
                         
-        PROBLEMES: No s'hi fixa en les limitacions de la pag. 7 del PDF, cal pensar-lo
+        PROBLEMES: No s'hi fixa en les limitacions de la pag. 7 del PDF, cal pensar-lo.
+        edit: al moodle hi ha encara mes restriccions
         ANOTACIO: cal definir el metode per descartar cartes per consens dels
         jugadors (pag. 7 - 3er parragref - PDF)
             */
@@ -103,6 +111,8 @@ public class Partida {
         private void descartarCartes () {
         // Pre: El bisbe no pot ser descartat.
         // Post: Descarta cartes de la pila --->>>> (Quantes????)
+        //resposta: es pot descartar quantes volguem sempre que quedi almenys una
+        //al mazo.
         
         }
 

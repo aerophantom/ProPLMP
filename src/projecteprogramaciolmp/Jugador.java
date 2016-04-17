@@ -30,12 +30,16 @@ public abstract class Jugador {
        public void pagarMulta(){
        // Pre: --
        // Post: Resta una moneda al jugador per afegir-la al Palau de Justicia
-       
+            _monedes.afegirMonedes(-1);
        }
        
        public void afegirMonedes (int mon) {
        // Pre: mon >=0 mon <=0
        // Post: Realitza la operació _monedes + mon
+            _monedes.afegirMonedes(mon);
+       }
        
+       public Moneda retornaMonedes(){
+           return _monedes;
        }
 }
