@@ -8,22 +8,25 @@ import java.util.LinkedList;
 public class Partida {
     // Atributs
     // --------------------
-    private int _monedesJusticia; // Monedes del palau de justícia
-    private int _monedesBanc; // Monedes del banc nacional
+    private Moneda _monedesJusticia; // Monedes del palau de justícia
+    private Moneda _monedesBanc; // Monedes del banc nacional
     private int _jugadorActual; // Index de l'array de jugadors que indica el jugador actual.
     private int _monedesPerGuanyar;
     private int _monedesTotals;
     private ArrayList<Jugador> _JugadorsQueJuguen;
     private ArrayList<Carta>  _mazo;
-    
+    /
+    /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
+    establexi aquest ordre (pag. 9 - 1er parragref - PDF)
+    */
     // --------------------
     // ============================================================
     // Mètodes CONSTRUCTORS
     // ============================================================
        public Partida() {
       
-           _monedesJusticia=0;
-           _monedesBanc= Integer.MAX_VALUE; //al banc mai se li acaben les monedes.
+           _monedesJusticia= new Moneda();
+           _monedesBanc= new Moneda(Integer.MAX_VALUE); //al banc mai se li acaben les monedes.
        }
        public void PartidaSettings(int nJugadors, int monedesJusticia){
            //en el cas que no s'indiquin les monedes per jugador, s'invocara el 
@@ -92,6 +95,8 @@ public class Partida {
                         vectorCartes[carta].erase();
                         
         PROBLEMES: No s'hi fixa en les limitacions de la pag. 7 del PDF, cal pensar-lo
+        ANOTACIO: cal definir el metode per descartar cartes per consens dels
+        jugadors (pag. 7 - 3er parragref - PDF)
             */
         
         }
