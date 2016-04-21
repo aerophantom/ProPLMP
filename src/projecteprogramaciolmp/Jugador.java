@@ -6,6 +6,8 @@
 ////////////////////////////////
 package projecteprogramaciolmp;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author aerop
@@ -15,8 +17,23 @@ public abstract class Jugador {
     // --------------------
     private int _monedes; // Monedes de les que disposa el jugador
     private int _cartaJugada; // Carta que el Jugador utilitza en el torn
-    // private vector<Cartes> _cartesJugador 
+    private ArrayList<Carta> _cartesJugador;
     // --------------------
+    
+     // ============================================================
+    // Mètodes CONSTRUCTORS
+    // ============================================================
+    
+    public Jugador(){
+        _monedes=0;
+        _cartaJugada=0;
+    }
+    
+    public Jugador(int monedes){
+        
+        _monedes=monedes;
+        
+    }
     
     // ============================================================
     // Mètodes CONSULTORS
