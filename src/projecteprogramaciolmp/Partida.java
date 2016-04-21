@@ -27,12 +27,12 @@ public class Partida {
            _monedesJusticia= new Moneda();
            _monedesBanc= new Moneda(Integer.MAX_VALUE); //al banc mai se li acaben les monedes.
        }
-       public void PartidaSettings(int nJugadors, int monedesJusticia){
+       public void PartidaSettings(int nJugadors){
            //en el cas que no s'indiquin les monedes per jugador, s'invocara el 
            //seguent metode que te per defecte 6 monedes per jugador.
-           PartidaSettings(nJugadors,monedesJusticia,6);
+           PartidaSettings(nJugadors,6);
        }
-       public void PartidaSettings(int nJugadors, int monedesJusticia,int monedesPerJugador) {
+       public void PartidaSettings(int nJugadors,int monedesPerJugador) {
            _JugadorsQueJuguen= new ArrayList<Jugador> (nJugadors); //array de nJugadors
            /* for (i=0; i< nJugadors; i++){
                 _JugadorsQueJuguen[i].setJugador(nomJugador,monedes); //com coi implementem aixo?
