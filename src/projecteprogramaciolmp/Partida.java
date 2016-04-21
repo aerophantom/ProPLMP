@@ -14,6 +14,7 @@ public class Partida {
     private int _monedesTotals;
     private ArrayList<Jugador> _JugadorsQueJuguen;
     private ArrayList<Carta>  _mazo;
+    private ArrayList<int> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
     /
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
     establexi aquest ordre (pag. 9 - 1er parragref - PDF)
@@ -70,13 +71,28 @@ public class Partida {
         */
         }
         
+        private void EstablirOrdre() {
+            /*
+            int aux;
+            for (i=0;i<nJugadors;i++){
+                aux=random(0..nJugadors-1); No es pot repetir el numero d'ordre
+                while (_ordre.existeix(aux)){
+                    aux++;
+                    if (aux>=nJugadors) aux=0;
+                }
+                _ordre[i]=aux;
+            }
+            */
+           
+        }
+        
         public boolean partidaAcabada () {
         // Pre: --
         // Post: Retorna TRUE si la partida s'ha acabat (algun jugador ja arribat al màxim de monedes per guanyar o pel
         // contrari, algun altre se'n ha quedar sense
             
             //int monedesJugadorActual= _JugadorsQueJuguen[_jugadorActual].monedes();
-            //boolean acabada = monedesJugadorActual == 0  || monedesJugadorActual >= _monedesPerGuanyar;
+            //boolean acabada = monedesJugadorActual == 0  || monedesJugadorActual >= _monedesPerGuanyar; Cal tenir en compte que un jugador que no sigui l'actual es pot quedar amb 0 monedes
             //return acabada;
         }
     
@@ -114,6 +130,26 @@ public class Partida {
         //resposta: es pot descartar quantes volguem sempre que quedi almenys una
         //al mazo.
         
+        /* Per descartar cartes recorrem el mazo carta per carta. En cas que els 3 jugadors diguin sí a la carta actual, es descarta;
+        en cas que hi hagi un o més "no" ja no es descarta. Restriccions a l'hora de descartar certes cartes, com el bisbe.
+        */
+        
+        /*
+        for (i=0;i<_mazo.size()-1;i++){
+            mazo[i].mostrarPerPantalla
+            int aux=0;
+            boolean decisio=juadorsQueJuguen[_ordre[aux]].accio.decidir();
+            aux++;
+            while (aux<_ordre.size()-1 && decisio) {
+                 decisio=juadorsQueJuguen[_ordre[aux]].accio.decidir();
+                 aux++;
+            }
+            if (decisio) {
+                _mazo.erase[i];
+                i--;
+            } // Si els tres hem dit que sí, esborrem la carta i decrementem en 1 l'índex.
+            
+        */
         }
 
         public void pagarMulta () {

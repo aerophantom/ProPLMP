@@ -13,9 +13,11 @@ package projecteprogramaciolmp;
  */
 public class Carta {
     Rol _rolCarta;
+    boolean _descoberta; //true quan esta descoberta, false quan és boca baix.
     
     public Carta(Rol rolCarta){
         _rolCarta= rolCarta;
+        _descoberta=true;
     }
     
     @Override

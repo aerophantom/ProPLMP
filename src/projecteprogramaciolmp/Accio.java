@@ -16,4 +16,10 @@ public class Accio {
     public void consultaCarta(){
         
     }
+    
+    public boolean decidir() {
+        
+        
+        
+    }
 }
