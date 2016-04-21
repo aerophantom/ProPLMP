@@ -14,8 +14,8 @@ public class Partida {
     private int _monedesTotals;
     private ArrayList<Jugador> _JugadorsQueJuguen;
     private ArrayList<Carta>  _mazo;
-    private ArrayList<int> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
-    /
+    private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
+    
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
     establexi aquest ordre (pag. 9 - 1er parragref - PDF)
     */
