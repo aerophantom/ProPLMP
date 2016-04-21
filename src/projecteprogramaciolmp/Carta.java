@@ -1,9 +1,8 @@
 /////////////////////////////////////
 //
-//  Enmagatzema la informació de una carta.
+//  Enmagatzema el rol de una carta.
 //  Serveix per verificar si un jugador pot fer realment un rol
-//  ATRIBUTS: nomCarta (String) que ha de coincidir amb un dels rols que hi ha al 
-//  joc.
+//  ATRIBUTS: un rol especific.
 //
 /////////////////////////////////////
 package projecteprogramaciolmp;
@@ -13,12 +12,19 @@ package projecteprogramaciolmp;
  * @author aerop
  */
 public class Carta {
-    String nomCarta;
+    Rol _rolCarta;
     
-    public Carta(){
-        nomCarta="defecte";
+    public Carta(Rol rolCarta){
+        _rolCarta= rolCarta;
     }
-    public Carta(String nomRol){
-        nomCarta= nomRol;
+    
+    @Override
+    public boolean equals(Object o){
+        Carta c= (Carta)o;
+        return compareTo(c)==0;
+    }
+    
+    public int compareTo(Carta in){
+        return _rolCarta.compareTo(in._rolCarta);
     }
 }
