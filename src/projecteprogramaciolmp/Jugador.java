@@ -65,4 +65,7 @@ public abstract class Jugador {
        public void afegirCarta(Carta nova){
            _cartesJugador.add(nova);
        }
+       public int nCartes(){
+           return _cartesJugador.size();
+       }
 }
