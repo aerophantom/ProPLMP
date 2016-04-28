@@ -15,7 +15,10 @@ public class Moneda {
         _numeroMonedes= 0;
     }
     public Moneda(int n){
-        
+        _numeroMonedes= n;
+    }
+    public int retornaQuantitat(){
+        return _numeroMonedes;
     }
     public void afegirMonedes(int n){
         _numeroMonedes+= n;

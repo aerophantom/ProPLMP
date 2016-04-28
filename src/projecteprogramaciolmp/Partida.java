@@ -3,6 +3,7 @@ package projecteprogramaciolmp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
     // Atributs
@@ -12,7 +13,7 @@ public class Partida {
     private int _jugadorActual; // Index de l'array de jugadors que indica el jugador actual.
     private int _monedesPerGuanyar;
     private int _monedesTotals;
-    private ArrayList<Jugador> _JugadorsQueJuguen;
+    private ArrayList<Jugador> _Jugadors;
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
     
@@ -34,7 +35,7 @@ public class Partida {
            PartidaSettings(nJugadors,6);
        }
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
-           _JugadorsQueJuguen= new ArrayList<Jugador> (nJugadors); //array de nJugadors
+           _Jugadors= new ArrayList<Jugador> (nJugadors); //array de nJugadors
            /* for (i=0; i< nJugadors; i++){
                 _JugadorsQueJuguen[i].setJugador(nomJugador,monedes); //com coi implementem aixo?
               }
@@ -50,6 +51,8 @@ public class Partida {
                    new Carta(new Trampos()),new Carta(new Viuda()),
                    new Carta(new Buffo()),new Carta(new Bruixa()) ));
            
+           
+           EstablirOrdre();
        }
     
     
@@ -72,18 +75,18 @@ public class Partida {
         }
         
         private void EstablirOrdre() {
-            /*
-            int aux;
-            for (i=0;i<nJugadors;i++){
-                aux=random(0..nJugadors-1); No es pot repetir el numero d'ordre
-                while (_ordre.existeix(aux)){
+         
+            int aux, nJugadors= _Jugadors.size();
+            
+            for (int i=0;i<nJugadors;i++){
+                aux= ThreadLocalRandom.current().nextInt(0,nJugadors);               //random(0..nJugadors-1); //No es pot repetir el numero d'ordre
+                while (_ordre.contains(aux)){
                     aux++;
-                    if (aux>=nJugadors) aux=0;
+                    if (aux>=nJugadors) 
+                        aux=0;
                 }
-                _ordre[i]=aux;
+                _ordre.set(i, aux);
             }
-            */
-           
         }
         
         public boolean partidaAcabada () {
@@ -91,9 +94,17 @@ public class Partida {
         // Post: Retorna TRUE si la partida s'ha acabat (algun jugador ja arribat al màxim de monedes per guanyar o pel
         // contrari, algun altre se'n ha quedar sense
             
-            //int monedesJugadorActual= _JugadorsQueJuguen[_jugadorActual].monedes();
-            //boolean acabada = monedesJugadorActual == 0  || monedesJugadorActual >= _monedesPerGuanyar; Cal tenir en compte que un jugador que no sigui l'actual es pot quedar amb 0 monedes
-            //return acabada;
+            //Implementar quan s'acabi el torn d'un jugador.
+            
+            boolean fiPartida= false;
+            int i= 0;
+            while(i<_Jugadors.size() && !fiPartida){
+                 Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();
+                 int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();
+                 fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
+                 i++;
+            }
+            return fiPartida;
         }
     
     // ============================================================
@@ -157,6 +168,17 @@ public class Partida {
         //Post: Afegeix una moneda al palau de justícia i resta'n una al/s jugador/s mentider/s.
         
         }
-    
+        
+        public void dinamicaDelJoc(){
+            
+            /*
+            _JugadorActual= 0;
+            while(!partidaAcabada){
+                _Jugadors.get(_ordre.get(_JugadorActual)).accio();
+            
+            
+            
+            */
+        }
     
 }
