@@ -26,13 +26,13 @@ public abstract class Jugador {
     // ============================================================
     
     public Jugador(){
-        _monedes=0;
+        _monedes= new Moneda();
         _cartaJugada=0;
     }
     
     public Jugador(int monedes){
         
-        _monedes=monedes;
+        _monedes= new Moneda(monedes);
         
     }
     
@@ -58,5 +58,11 @@ public abstract class Jugador {
        
        public Moneda retornaMonedes(){
            return _monedes;
+       }
+       public void esborrarCarta(int nCarta){
+           _cartesJugador.remove(nCarta);
+       }
+       public void afegirCarta(Carta nova){
+           _cartesJugador.add(nova);
        }
 }

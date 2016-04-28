@@ -174,9 +174,30 @@ public class Partida {
             /*
             _JugadorActual= 0;
             while(!partidaAcabada){
-                _Jugadors.get(_ordre.get(_JugadorActual)).accio();
+                //OPCIO 1 - ES PREGUNTA LA ACCIO QUE ES VOL FER DESDE EL PROPI JUGADOR (ACCIO ATRIBUT DE JUGADOR)
+                _Jugadors.get(_ordre.get(_JugadorActual)).accio();//el jugador fa la seva accio (veureCarta, accioRol o Intercanvi)
             
-            
+                //OPCIO 2 - ES PREGUNTA LA ACCIO QUE ES VOL FER DESDE LA PARTIDA (ACCCIO ATRIBUT DE PARTIDA)
+                int opcio;
+                if(opcio == 0) {
+                    //SELECCIONA CARTA PROPIA DEL JUGADOR ACTUAL
+                    mostrarCartesJugadorInterficie(JugadorActual);
+                    int intercanvi_u = rebreSignalGUI();
+                    
+                    //SELECCIONA JUGADOR
+                    mostrarJugadorsVectorInterficie();
+                    int aux = rebreSignalGUI();
+                    
+                    //SELECCIONA CARTA DEL JUGADOR  
+                    mostrarCartesJugadorInterficie(aux);
+                    int aux2 = rebreSignalGUI();
+                    
+                    
+                    
+                    atributAccio.ferIntercanvi()
+                    
+                else if(opcio == 1) ferConsulta
+                else ferAccioRol
             
             */
         }
