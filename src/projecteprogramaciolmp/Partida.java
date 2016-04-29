@@ -43,15 +43,21 @@ public class Partida {
            
            
            //inicialització del mazo. potser no va aqui, millor al constructor?
-           //EL BISBE NO EL FIQUEM JA AL MAZO JA QUE SEMPRE ANIRA A UN JUGADOR
+           //EL JUTGE NO EL FIQUEM JA AL MAZO JA QUE SEMPRE ANIRA A UN JUGADOR
            //Y ES REPARTIRA AMB TOTAL SEGURETAT AL METODE CORRESPONENT.
            _mazo= new ArrayList<>(Arrays.asList(
-                   new Carta(new Reina()),new Carta(new Camperol()),
-                   new Carta(new Camperol()),new Carta(new Rei()),
-                   new Carta(new Espia()),new Carta(new Inquisidor()),
-                   new Carta(new Jutge()),new Carta(new Lladre()),
-                   new Carta(new Trampos()),new Carta(new Viuda()),
-                   new Carta(new Buffo()),new Carta(new Bruixa()) ));
+                   new Carta(new Reina()),
+                   new Carta(new Camperol()),
+                   new Carta(new Camperol()),
+                   new Carta(new Rei()),
+                   new Carta(new Inquisidor()),
+                   new Carta(new Jutge()),
+                   new Carta(new Viuda()),
+                   new Carta(new Buffo()),
+                   new Carta(new Bruixa()),
+                   new Carta(new Trampos()),
+                   new Carta(new Espia()),
+                   new Carta(new Lladre()) ));
            
            
            EstablirOrdre();
@@ -123,7 +129,7 @@ public class Partida {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
             //ESQUEMA:
-                int nCartesPerJugador= 4;
+                int nCartesPerJugador= 1;
                 if(_Jugadors.size()==2)
                     nCartesPerJugador= 3;
                 else if(_Jugadors.size()==3)
