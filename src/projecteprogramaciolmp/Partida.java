@@ -141,6 +141,8 @@ public class Partida {
                 }
                 
                 
+                //CAL fer que el jutge no sigui mai descartat.
+                
                 for(int i= 0; i<_Jugadors.size(); i++){
                     int nCartes= _Jugadors.get(i).nCartes();
                     while(nCartes<nCartesPerJugador){
