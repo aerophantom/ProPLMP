@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public abstract class Jugador {
     // Atributs
     // --------------------
-    private Moneda _monedes; // Monedes de les que disposa el jugador
+    Moneda _monedes; // Monedes de les que disposa el jugador
     private int _cartaJugada; // Carta que el Jugador utilitza en el torn
     private ArrayList<Carta> _cartesJugador;
     // --------------------
@@ -26,14 +26,14 @@ public abstract class Jugador {
     // ============================================================
     
     public Jugador(){
-        _monedes=0;
-        _cartaJugada=0;
+       /* _monedes=new Moneda();
+        _cartaJugada=0;*/
     }
     
-    public Jugador(int monedes){
-        
+    public Jugador(Moneda monedes){
+        /*
         _monedes=monedes;
-        
+        */
     }
     
     // ============================================================
@@ -47,16 +47,16 @@ public abstract class Jugador {
        public void pagarMulta(){
        // Pre: --
        // Post: Resta una moneda al jugador per afegir-la al Palau de Justicia
-            _monedes.afegirMonedes(-1);
+            //_monedes.afegirMonedes(-1);
        }
        
        public void afegirMonedes (int mon) {
        // Pre: mon >=0 mon <=0
        // Post: Realitza la operació _monedes + mon
-            _monedes.afegirMonedes(mon);
+            //_monedes.afegirMonedes(mon);
        }
        
        public Moneda retornaMonedes(){
-           return _monedes;
+           //return _monedes;
        }
 }

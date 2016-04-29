@@ -11,4 +11,9 @@ package projecteprogramaciolmp;
  */
 public class JugadorPersona extends Jugador {
     
+     public JugadorPersona(Moneda monedes){
+        
+        _monedes=monedes;
+        
+    }
 }

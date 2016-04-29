@@ -12,7 +12,7 @@ public class Partida {
     private int _jugadorActual; // Index de l'array de jugadors que indica el jugador actual.
     private int _monedesPerGuanyar;
     private int _monedesTotals;
-    private ArrayList<Jugador> _JugadorsQueJuguen;
+    private ArrayList<Jugador> _Jugadors;
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
     
@@ -35,10 +35,11 @@ public class Partida {
        }
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
            _JugadorsQueJuguen= new ArrayList<Jugador> (nJugadors); //array de nJugadors
-           /* for (i=0; i< nJugadors; i++){
-                _JugadorsQueJuguen[i].setJugador(nomJugador,monedes); //com coi implementem aixo?
+            for (i=0; i< nJugadors; i++){
+                JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));
+                _JugadorsQueJuguen.add(new (new Moneda(monedesPerJugador))); //com coi implementem aixo?
               }
-           */
+          
            
            
            //inicialització del mazo. potser no va aqui, millor al constructor?
