@@ -47,12 +47,18 @@ public class Partida {
            //EL JUTGE NO EL FIQUEM JA AL MAZO JA QUE SEMPRE ANIRA A UN JUGADOR
            //Y ES REPARTIRA AMB TOTAL SEGURETAT AL METODE CORRESPONENT.
            _mazo= new ArrayList<>(Arrays.asList(
-                   new Carta(new Reina()),new Carta(new Camperol()),
-                   new Carta(new Camperol()),new Carta(new Rei()),
-                   new Carta(new Espia()),new Carta(new Inquisidor()),
-                   new Carta(new Bisbe()),new Carta(new Lladre()),
-                   new Carta(new Trampos()),new Carta(new Viuda()),
-                   new Carta(new Buffo()),new Carta(new Bruixa()) ));
+                   new Carta(new Reina()),
+                   new Carta(new Rei()),
+                   new Carta(new Bisbe()),
+                   new Carta(new Viuda()),
+                   new Carta(new Buffo()),
+                   new Carta(new Bruixa()),
+                   new Carta(new Inquisidor()),
+                   new Carta(new Camperol()),
+                   new Carta(new Camperol()),
+                   new Carta(new Trampos()),
+                   new Carta(new Espia()),
+                   new Carta(new Lladre()) ));
            
            
            EstablirOrdre();
