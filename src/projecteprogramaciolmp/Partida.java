@@ -47,14 +47,14 @@ public class Partida {
            //Y ES REPARTIRA AMB TOTAL SEGURETAT AL METODE CORRESPONENT.
            _mazo= new ArrayList<>(Arrays.asList(
                    new Carta(new Reina()),
-                   new Carta(new Camperol()),
-                   new Carta(new Camperol()),
                    new Carta(new Rei()),
-                   new Carta(new Inquisidor()),
-                   new Carta(new Jutge()),
+                   new Carta(new Bisbe()),
                    new Carta(new Viuda()),
                    new Carta(new Buffo()),
                    new Carta(new Bruixa()),
+                   new Carta(new Inquisidor()),
+                   new Carta(new Camperol()),
+                   new Carta(new Camperol()),
                    new Carta(new Trampos()),
                    new Carta(new Espia()),
                    new Carta(new Lladre()) ));
