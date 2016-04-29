@@ -61,19 +61,26 @@ public class Partida {
     // ============================================================
     // Mètodes CONSULTORS
     // ============================================================
-        public ArrayList<Jugador> buscarJugadorMesRic () {
+        public ArrayList<Integer> buscarJugadorMesRic () {
         // Pre: --
         // Post: Retorna un vector amb el/s jugador/s més rics
-            /*
-            PER COMPLETAR
-            int topMonedas= 0;
-            ArrayList<Jugador
-            for(int i= 0; i<_jugadorsQueJuguen.size(); i++){
-                if(_JugadorsQueJuguen[i].monedes()>= topMonedes){
-                    
+            
+            //PER COMPLETAR
+            Moneda topMonedas= new Moneda();
+            ArrayList<Integer> retorn= new ArrayList<>();
+            for(int i= 0; i<_Jugadors.size(); i++){
+                if(_Jugadors.get(i).retornaMonedes().compareTo(topMonedas) >= 0){
+                    topMonedas.actualitzarMonedes(_Jugadors.get(i).retornaMonedes());
+              
                 }
             }
-        */
+            
+            for(int j= 0; j<_Jugadors.size();j++){
+                if(_Jugadors.get(j).retornaMonedes().compareTo(topMonedas) == 0){
+                    retorn.add(j); 
+                }
+            }
+            return retorn;
         }
         
         private void EstablirOrdre() {
