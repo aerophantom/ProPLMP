@@ -44,13 +44,13 @@ public class Partida {
            
            
            //inicialització del mazo. potser no va aqui, millor al constructor?
-           //EL BISBE NO EL FIQUEM JA AL MAZO JA QUE SEMPRE ANIRA A UN JUGADOR
+           //EL JUTGE NO EL FIQUEM JA AL MAZO JA QUE SEMPRE ANIRA A UN JUGADOR
            //Y ES REPARTIRA AMB TOTAL SEGURETAT AL METODE CORRESPONENT.
            _mazo= new ArrayList<>(Arrays.asList(
                    new Carta(new Reina()),new Carta(new Camperol()),
                    new Carta(new Camperol()),new Carta(new Rei()),
                    new Carta(new Espia()),new Carta(new Inquisidor()),
-                   new Carta(new Jutge()),new Carta(new Lladre()),
+                   new Carta(new Bisbe()),new Carta(new Lladre()),
                    new Carta(new Trampos()),new Carta(new Viuda()),
                    new Carta(new Buffo()),new Carta(new Bruixa()) ));
            
@@ -62,19 +62,26 @@ public class Partida {
     // ============================================================
     // Mètodes CONSULTORS
     // ============================================================
-        public ArrayList<Jugador> buscarJugadorMesRic () {
+        public ArrayList<Integer> buscarJugadorMesRic () {
         // Pre: --
         // Post: Retorna un vector amb el/s jugador/s més rics
-            /*
-            PER COMPLETAR
-            int topMonedas= 0;
-            ArrayList<Jugador
-            for(int i= 0; i<_jugadorsQueJuguen.size(); i++){
-                if(_JugadorsQueJuguen[i].monedes()>= topMonedes){
-                    
+            
+            //PER COMPLETAR
+            Moneda topMonedas= new Moneda();
+            ArrayList<Integer> retorn= new ArrayList<>();
+            for(int i= 0; i<_Jugadors.size(); i++){
+                if(_Jugadors.get(i).retornaMonedes().compareTo(topMonedas) >= 0){
+                    topMonedas.actualitzarMonedes(_Jugadors.get(i).retornaMonedes());
+              
                 }
             }
-        */
+            
+            for(int j= 0; j<_Jugadors.size();j++){
+                if(_Jugadors.get(j).retornaMonedes().compareTo(topMonedas) == 0){
+                    retorn.add(j); 
+                }
+            }
+            return retorn;
         }
         
         private void EstablirOrdre() {
@@ -117,15 +124,26 @@ public class Partida {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
             //ESQUEMA:
-                int nCartesPerJugador= 4;
-                if(_Jugadors.size()==2)
+                int nCartesPerJugador= 1;
+                if (_Jugadors.size()<3) {
                     nCartesPerJugador= 3;
-                else if(_Jugadors.size()==3)
+                    _mazo.remove(_mazo.size()-1); //Esborrem el Lladre
+                }
+                if (_Jugadors.size()<4) {
                     nCartesPerJugador= 2;
+                    _mazo.remove(_mazo.size()-2); //Esborrem el Espia
+                    _mazo.remove(_mazo.size()-3); //Esborrem el Trampos
+                }
+                 if (_Jugadors.size()<6) {
+                    _mazo.remove(_mazo.size()-4); 
+                    _mazo.remove(_mazo.size()-5); //Esborrem els dos camperols.
+                    _mazo.remove(_mazo.size()-6); //Esborrem l'Inquisidor
+                }
                 
-                //REPARTIR BISBE
+       
+                //REPARTIR JUTGE
                 int jugadorRandom= ThreadLocalRandom.current().nextInt(0,_Jugadors.size());
-                _Jugadors.get(jugadorRandom).afegirCarta(new Carta(new Bisbe()));
+                _Jugadors.get(jugadorRandom).afegirCarta(new Carta(new Jutge()));
                 
                 for(int i= 0; i<_Jugadors.size(); i++){
                     int nCartes= _Jugadors.get(i).nCartes();
@@ -188,7 +206,7 @@ public class Partida {
                 //OPCIO 1 - ES PREGUNTA LA ACCIO QUE ES VOL FER DESDE EL PROPI JUGADOR (ACCIO ATRIBUT DE JUGADOR)
                 _Jugadors.get(_ordre.get(_JugadorActual)).accio();//el jugador fa la seva accio (veureCarta, accioRol o Intercanvi)
             
-                //OPCIO 2 - ES PREGUNTA LA ACCIO QUE ES VOL FER DESDE LA PARTIDA (ACCCIO ATRIBUT DE PARTIDA)
+                //OPCIO 2 - ES PREGUNTA LA ACCIO QUE ES VOL FER DESDE LA PARTIDA (ACCIO ATRIBUT DE PARTIDA)
                 int opcio;
                 if(opcio == 0) {
                     //SELECCIONA CARTA PROPIA DEL JUGADOR ACTUAL
@@ -205,7 +223,7 @@ public class Partida {
                     
                     
                     
-                    atributAccio.ferIntercanvi()
+                    atributAccio.ferIntercanvi();
                     
                 else if(opcio == 1) ferConsulta
                 else ferAccioRol

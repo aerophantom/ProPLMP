@@ -68,4 +68,13 @@ public abstract class Jugador {
        public int nCartes(){
            return _cartesJugador.size();
        }
+       public void esborrarCarta(int nCarta){
+           _cartesJugador.remove(nCarta);
+       }
+       public void afegirCarta(Carta nova){
+           _cartesJugador.add(nova);
+       }
+       public int nCartes(){
+           return _cartesJugador.size();
+       }
 }
