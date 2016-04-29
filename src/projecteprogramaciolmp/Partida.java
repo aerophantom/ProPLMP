@@ -3,6 +3,7 @@ package projecteprogramaciolmp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
     // Atributs
@@ -43,14 +44,18 @@ public class Partida {
            
            
            //inicialització del mazo. potser no va aqui, millor al constructor?
-           _mazo= new ArrayList<>(Arrays.asList(new Carta(new Rei()),
+           //EL BISBE NO EL FIQUEM JA AL MAZO JA QUE SEMPRE ANIRA A UN JUGADOR
+           //Y ES REPARTIRA AMB TOTAL SEGURETAT AL METODE CORRESPONENT.
+           _mazo= new ArrayList<>(Arrays.asList(
                    new Carta(new Reina()),new Carta(new Camperol()),
-                   new Carta(new Camperol()),new Carta(new Bisbe()),
+                   new Carta(new Camperol()),new Carta(new Rei()),
                    new Carta(new Espia()),new Carta(new Inquisidor()),
                    new Carta(new Jutge()),new Carta(new Lladre()),
                    new Carta(new Trampos()),new Carta(new Viuda()),
                    new Carta(new Buffo()),new Carta(new Bruixa()) ));
            
+           
+           EstablirOrdre();
        }
     
     
@@ -73,18 +78,18 @@ public class Partida {
         }
         
         private void EstablirOrdre() {
-            /*
-            int aux;
-            for (i=0;i<nJugadors;i++){
-                aux=random(0..nJugadors-1); No es pot repetir el numero d'ordre
-                while (_ordre.existeix(aux)){
+         
+            int aux, nJugadors= _Jugadors.size();
+            
+            for (int i=0;i<nJugadors;i++){
+                aux= ThreadLocalRandom.current().nextInt(0,nJugadors);               //random(0..nJugadors-1); //No es pot repetir el numero d'ordre
+                while (_ordre.contains(aux)){
                     aux++;
-                    if (aux>=nJugadors) aux=0;
+                    if (aux>=nJugadors) 
+                        aux=0;
                 }
-                _ordre[i]=aux;
+                _ordre.set(i, aux);
             }
-            */
-           
         }
         
         public boolean partidaAcabada () {
@@ -92,9 +97,17 @@ public class Partida {
         // Post: Retorna TRUE si la partida s'ha acabat (algun jugador ja arribat al màxim de monedes per guanyar o pel
         // contrari, algun altre se'n ha quedar sense
             
-            //int monedesJugadorActual= _JugadorsQueJuguen[_jugadorActual].monedes();
-            //boolean acabada = monedesJugadorActual == 0  || monedesJugadorActual >= _monedesPerGuanyar; Cal tenir en compte que un jugador que no sigui l'actual es pot quedar amb 0 monedes
-            //return acabada;
+            //Implementar quan s'acabi el torn d'un jugador.
+            
+            boolean fiPartida= false;
+            int i= 0;
+            while(i<_Jugadors.size() && !fiPartida){
+                 Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();
+                 int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();
+                 fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
+                 i++;
+            }
+            return fiPartida;
         }
     
     // ============================================================
@@ -103,21 +116,29 @@ public class Partida {
         public void repartirCartes () {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
-            /*ESQUEMA:
+            //ESQUEMA:
                 int nCartesPerJugador= 4;
-                if(vectorJugadors.size()==2)
+                if(_Jugadors.size()==2)
                     nCartesPerJugador= 3;
-                else if(vectorJugadors.size()==3)
+                else if(_Jugadors.size()==3)
                     nCartesPerJugador= 2;
-        
-                for(int i= 0; i<nJugadors; i++){
-                    for(int j= 0; j<nCartesPerJugador; j++){
-                        int carta= RANDOM(entre 0 i vectorCartes.size()-1);
+                
+                //REPARTIR BISBE
+                int jugadorRandom= ThreadLocalRandom.current().nextInt(0,_Jugadors.size());
+                _Jugadors.get(jugadorRandom).afegirCarta(new Carta(new Bisbe()));
+                
+                for(int i= 0; i<_Jugadors.size(); i++){
+                    int nCartes= _Jugadors.get(i).nCartes();
+                    while(nCartes<nCartesPerJugador){
+                        int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());
                         
-                        vectorJugador[i].afegirCarta(vectorCartes[carta]);
-                        vectorCartes[carta].erase();
-                        
-        PROBLEMES: No s'hi fixa en les limitacions de la pag. 7 del PDF, cal pensar-lo.
+                        _Jugadors.get(i).afegirCarta(_mazo.get(carta));
+                        _mazo.remove(carta);
+                        nCartes++;
+                    }
+               
+                }
+        /*PROBLEMES: No s'hi fixa en les limitacions de la pag. 7 del PDF, cal pensar-lo.
         edit: al moodle hi ha encara mes restriccions
         ANOTACIO: cal definir el metode per descartar cartes per consens dels
         jugadors (pag. 7 - 3er parragref - PDF)
@@ -158,6 +179,38 @@ public class Partida {
         //Post: Afegeix una moneda al palau de justícia i resta'n una al/s jugador/s mentider/s.
         
         }
-    
+        
+        public void dinamicaDelJoc(){
+            
+            /*
+            _JugadorActual= 0;
+            while(!partidaAcabada){
+                //OPCIO 1 - ES PREGUNTA LA ACCIO QUE ES VOL FER DESDE EL PROPI JUGADOR (ACCIO ATRIBUT DE JUGADOR)
+                _Jugadors.get(_ordre.get(_JugadorActual)).accio();//el jugador fa la seva accio (veureCarta, accioRol o Intercanvi)
+            
+                //OPCIO 2 - ES PREGUNTA LA ACCIO QUE ES VOL FER DESDE LA PARTIDA (ACCCIO ATRIBUT DE PARTIDA)
+                int opcio;
+                if(opcio == 0) {
+                    //SELECCIONA CARTA PROPIA DEL JUGADOR ACTUAL
+                    mostrarCartesJugadorInterficie(JugadorActual);
+                    int intercanvi_u = rebreSignalGUI();
+                    
+                    //SELECCIONA JUGADOR
+                    mostrarJugadorsVectorInterficie();
+                    int aux = rebreSignalGUI();
+                    
+                    //SELECCIONA CARTA DEL JUGADOR  
+                    mostrarCartesJugadorInterficie(aux);
+                    int aux2 = rebreSignalGUI();
+                    
+                    
+                    
+                    atributAccio.ferIntercanvi()
+                    
+                else if(opcio == 1) ferConsulta
+                else ferAccioRol
+            
+            */
+        }
     
 }
