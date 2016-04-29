@@ -140,10 +140,6 @@ public class Partida {
                     _mazo.remove(_mazo.size()-6); //Esborrem l'Inquisidor
                 }
                 
-       
-                //REPARTIR JUTGE
-                int jugadorRandom= ThreadLocalRandom.current().nextInt(0,_Jugadors.size());
-                _Jugadors.get(jugadorRandom).afegirCarta(new Carta(new Jutge()));
                 
                 for(int i= 0; i<_Jugadors.size(); i++){
                     int nCartes= _Jugadors.get(i).nCartes();
