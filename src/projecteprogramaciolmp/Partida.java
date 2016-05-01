@@ -173,9 +173,7 @@ public class Partida {
         /* Per descartar cartes recorrem el mazo carta per carta. En cas que els 3 jugadors diguin sí a la carta actual, es descarta;
         en cas que hi hagi un o més "no" ja no es descarta. Restriccions a l'hora de descartar certes cartes, com el bisbe.
         */
-        /*
-        CAL ENCARA AFEGIR EL CAS DELS CAMPEROLS, SI UN ES DESCARTA, L'ALTRE AUTOMATICAMENT TAMBE HO FA
-        */
+        
         
         
             for (int i=1;i<_mazo.size()-1;i++){//comença desde 1 aixi no es descarta el jutge
@@ -190,6 +188,8 @@ public class Partida {
                 }
                 if (decisio) {
                     _mazo.remove(i);
+                    if(i==_mazo.size()-5)//COMPTE QUE NO SE SI ESTA BE
+                        _mazo.remove(i);//cas que s'esborri un camperol, l'altre tambe ho fara
                     i--;
                 } // Si els tres hem dit que sí, esborrem la carta i decrementem en 1 l'índex.
 
@@ -199,11 +199,24 @@ public class Partida {
         public void pagarMulta() {
         //Pre: --
         //Post: Afegeix una moneda al palau de justícia i resta'n una al/s jugador/s mentider/s.
+        /*
+        cal aconseguir d'alguna manera els jugadors que han mentit.
+        possible solucio: array (com a atribut potser) de _Jugadors.size() menys 1 (tots poden protestar menys 1)
+        
+        */
             _monedesJusticia.afegirMonedes(1);
-            //INACABAT, FALTA LA SEGONA PART DE LA POST.
+            //_Jugadors.get(_ordre.get(_jugadorActual)).pagarMulta();
         }
         
         public void dinamicaDelJoc(){
+            
+            _jugadorActual= 0;
+            boolean partidaAcabada= false;
+            while(!partidaAcabada){
+                //_Jugadors.get(_ordre.get(_jugadorActual)).
+            }
+            
+            
             
             /*
             _JugadorActual= 0;
@@ -238,5 +251,9 @@ public class Partida {
         public void treureMonedesBanc(int n){
             _monedesBanc.afegirMonedes(-n);
         }
-    
+    /*
+        SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
+        (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
+        es queixen --> agregar a un vector de interrupcions.
+        */
 }
