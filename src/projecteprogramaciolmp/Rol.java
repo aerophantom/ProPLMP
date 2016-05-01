@@ -22,7 +22,7 @@ public abstract class Rol extends Accio{
     }
     
     @Override
-    public void accioDeRol(){
+    public void accioDeRol(Partida p){
         
     }
     

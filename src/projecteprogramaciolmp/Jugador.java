@@ -57,16 +57,7 @@ public abstract class Jugador {
        }
        
        public Moneda retornaMonedes(){
-           //return _monedes;
-       }
-       public void esborrarCarta(int nCarta){
-           _cartesJugador.remove(nCarta);
-       }
-       public void afegirCarta(Carta nova){
-           _cartesJugador.add(nova);
-       }
-       public int nCartes(){
-           return _cartesJugador.size();
+           return _monedes;
        }
        public void esborrarCarta(int nCarta){
            _cartesJugador.remove(nCarta);

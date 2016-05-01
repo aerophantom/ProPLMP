@@ -35,18 +35,18 @@ public class Partida {
            PartidaSettings(nJugadors,6);
        }
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
-           _JugadorsQueJuguen= new ArrayList<Jugador> (nJugadors); //array de nJugadors
-            for (i=0; i< nJugadors; i++){
+           _Jugadors= new ArrayList<> (nJugadors); //array de nJugadors
+            for (int i=0; i< nJugadors; i++){
                 JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));
-                _JugadorsQueJuguen.add(new (new Moneda(monedesPerJugador))); //com coi implementem aixo?
+                _Jugadors.add(new (new Moneda(monedesPerJugador))); //com coi implementem aixo?
               }
-          
-           
-           
-           //inicialització del mazo. potser no va aqui, millor al constructor?
-           //EL JUTGE NO EL FIQUEM JA AL MAZO JA QUE SEMPRE ANIRA A UN JUGADOR
-           //Y ES REPARTIRA AMB TOTAL SEGURETAT AL METODE CORRESPONENT.
+       
+           setMazo();
+           EstablirOrdre();
+       }
+       private void setMazo(){
            _mazo= new ArrayList<>(Arrays.asList(
+                   new Carta(new Jutge()),
                    new Carta(new Reina()),
                    new Carta(new Rei()),
                    new Carta(new Bisbe()),
@@ -59,11 +59,7 @@ public class Partida {
                    new Carta(new Trampos()),
                    new Carta(new Espia()),
                    new Carta(new Lladre()) ));
-           
-           
-           EstablirOrdre();
        }
-    
     
     // ============================================================
     // Mètodes CONSULTORS
@@ -147,7 +143,7 @@ public class Partida {
                 }
                 
                 
-                //CAL fer que el jutge no sigui mai descartat.
+                //CAL fer que el jutge no sigui mai descartat. Responsabilitat del metode descartar
                 
                 for(int i= 0; i<_Jugadors.size(); i++){
                     int nCartes= _Jugadors.get(i).nCartes();
@@ -178,22 +174,23 @@ public class Partida {
         en cas que hi hagi un o més "no" ja no es descarta. Restriccions a l'hora de descartar certes cartes, com el bisbe.
         */
         
-        /*
-        for (i=0;i<_mazo.size()-1;i++){
-            mazo[i].mostrarPerPantalla
+        
+        for (int i=1;i<_mazo.size()-1;i++){//comença desde 1 aixi no es descarta el jutge
+            //mazo[i].mostrarPerPantalla
             int aux=0;
-            boolean decisio=juadorsQueJuguen[_ordre[aux]].accio.decidir();
+            boolean decisio=_Jugadors.get(_ordre.get(aux)).accio.decidir();
+            
             aux++;
             while (aux<_ordre.size()-1 && decisio) {
                  decisio=juadorsQueJuguen[_ordre[aux]].accio.decidir();
                  aux++;
             }
             if (decisio) {
-                _mazo.erase[i];
+                _mazo.remove(i);
                 i--;
             } // Si els tres hem dit que sí, esborrem la carta i decrementem en 1 l'índex.
             
-        */
+        
         }
 
         public void pagarMulta () {
@@ -233,6 +230,9 @@ public class Partida {
                 else ferAccioRol
             
             */
+        }
+        public void treureMonedesBanc(int n){
+            _monedesBanc.afegirMonedes(-n);
         }
     
 }

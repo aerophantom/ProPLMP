@@ -19,7 +19,12 @@ public class Reina extends Rol {
     // ============================================================
     
     public Reina() {
-        
         _nomRol="Reina";
+    }
+    public void accioDeRol(Partida p){
+        p.treureMonedesBanc(2);
+        /*
+        mateix cas que el rei
+        */
     }
 }

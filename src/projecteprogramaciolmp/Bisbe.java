@@ -22,7 +22,7 @@ public class Bisbe extends Rol {
     }
     
     @Override
-    public void accioDeRol(){
+    public void accioDeRol(Partida p){
         
     }
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package projecteprogramaciolmp;
-
+import java.util.*;
 /**
  *
  * @author aerop
@@ -16,12 +16,13 @@ public class Accio {
     public void consultaCarta(){
         
     }
-    public void accioDeRol(){
+    public void accioDeRol(Partida p){
         
     }
-    /*public boolean decidir() {
-        
-        
+    public boolean decidir() {
+        Scanner teclat= new Scanner(System.in);
+        System.out.print("Escriu 'Y' per dir SI o 'N' per dir NO");
+        return teclat.nextLine().equals("S");
         //return signal;
-    }*/
+    }
 }
