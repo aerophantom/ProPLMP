@@ -5,13 +5,6 @@
 ///
 ////////////////////////////////
 package projecteprogramaciolmp;
-
-import java.util.ArrayList;
-
-/**
- *
- * @author aerop
- */
 import java.util.ArrayList;
 public abstract class Jugador {
     // Atributs
@@ -19,6 +12,7 @@ public abstract class Jugador {
     Moneda _monedes; // Monedes de les que disposa el jugador
     private int _cartaJugada; // Carta que el Jugador utilitza en el torn
     private ArrayList<Carta> _cartesJugador;
+    Accio _accion;
     // --------------------
     
      // ============================================================
@@ -67,5 +61,8 @@ public abstract class Jugador {
        }
        public int nCartes(){
            return _cartesJugador.size();
+       }
+       public boolean decidir(){
+           return _accion.decidir();
        }
 }

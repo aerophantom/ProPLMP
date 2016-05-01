@@ -173,30 +173,34 @@ public class Partida {
         /* Per descartar cartes recorrem el mazo carta per carta. En cas que els 3 jugadors diguin sí a la carta actual, es descarta;
         en cas que hi hagi un o més "no" ja no es descarta. Restriccions a l'hora de descartar certes cartes, com el bisbe.
         */
+        /*
+        CAL ENCARA AFEGIR EL CAS DELS CAMPEROLS, SI UN ES DESCARTA, L'ALTRE AUTOMATICAMENT TAMBE HO FA
+        */
         
         
-        for (int i=1;i<_mazo.size()-1;i++){//comença desde 1 aixi no es descarta el jutge
-            //mazo[i].mostrarPerPantalla
-            int aux=0;
-            boolean decisio=_Jugadors.get(_ordre.get(aux)).accio.decidir();
-            
-            aux++;
-            while (aux<_ordre.size()-1 && decisio) {
-                 decisio=juadorsQueJuguen[_ordre[aux]].accio.decidir();
-                 aux++;
-            }
-            if (decisio) {
-                _mazo.remove(i);
-                i--;
-            } // Si els tres hem dit que sí, esborrem la carta i decrementem en 1 l'índex.
-            
-        
-        }
+            for (int i=1;i<_mazo.size()-1;i++){//comença desde 1 aixi no es descarta el jutge
+                //mazo[i].mostrarPerPantalla
+                int aux=0;
+                boolean decisio=_Jugadors.get(_ordre.get(aux)).decidir();
 
-        public void pagarMulta () {
+                aux++;
+                while (aux<_ordre.size()-1 && decisio) {
+                     decisio=_Jugadors.get(_ordre.get(aux)).decidir();
+                     aux++;
+                }
+                if (decisio) {
+                    _mazo.remove(i);
+                    i--;
+                } // Si els tres hem dit que sí, esborrem la carta i decrementem en 1 l'índex.
+
+
+            }
+        }
+        public void pagarMulta() {
         //Pre: --
         //Post: Afegeix una moneda al palau de justícia i resta'n una al/s jugador/s mentider/s.
-        
+            _monedesJusticia.afegirMonedes(1);
+            //INACABAT, FALTA LA SEGONA PART DE LA POST.
         }
         
         public void dinamicaDelJoc(){
