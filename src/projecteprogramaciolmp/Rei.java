@@ -8,7 +8,7 @@
 
 package projecteprogramaciolmp;
 
-public class Rei extends Rol {
+public class Rei extends Rol{
     
      // ============================================================
     // Mètodes CONSTRUCTORS
@@ -17,5 +17,8 @@ public class Rei extends Rol {
     public Rei() {
         
         _nomRol="Rei";
+    }
+    public void accioDeRol(){
+        
     }
 }
