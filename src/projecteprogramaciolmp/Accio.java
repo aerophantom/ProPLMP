@@ -16,10 +16,12 @@ public class Accio {
     public void consultaCarta(){
         
     }
-    
-    public boolean decidir() {
+    public void accioDeRol(){
+        
+    }
+    /*public boolean decidir() {
         
         
         //return signal;
-    }
+    }*/
 }

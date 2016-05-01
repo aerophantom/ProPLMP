@@ -11,7 +11,7 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public abstract class Rol {
+public abstract class Rol extends Accio{
     String _nomRol;//identificatiu i per tant unic per cada rol diferent.
     
     public Rol(){
@@ -22,8 +22,15 @@ public abstract class Rol {
     }
     
     @Override
+    public void accioDeRol(){
+        
+    }
+    
+    @Override
     public boolean equals(Object o){
        Rol r= (Rol)o;
        return compareTo(r)==0;
     }
+    
+    
 }

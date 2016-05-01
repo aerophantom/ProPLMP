@@ -19,5 +19,10 @@ public class Bisbe extends Rol {
         
         _nomRol="Bisbe";
     
-    } 
+    }
+    
+    @Override
+    public void accioDeRol(){
+        
+    }
 }
