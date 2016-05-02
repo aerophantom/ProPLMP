@@ -27,7 +27,12 @@ public class Accio {
     public boolean decidir() {
         Scanner teclat= new Scanner(System.in);
         System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");
-        return teclat.nextLine().equals("S");
+        String decisio = teclat.nextLine();
+        while (!decisio.equals("Y") && !decisio.equals("N")){
+            System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");
+            decisio = teclat.nextLine();
+        }
+        return decisio.equals("Y");
         //return signal;
     }
 }

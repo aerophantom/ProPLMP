@@ -149,6 +149,8 @@ public class Partida {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
             //ESQUEMA:
+            System.out.println("");
+            System.out.println("Hora de repartir les cartes");
                 int nCartesPerJugador= 1;
                 if (_Jugadors.size()<3) {
                     nCartesPerJugador= 3;
@@ -172,7 +174,6 @@ public class Partida {
                     int nCartes= _Jugadors.get(i).nCartes();
                     while(nCartes<nCartesPerJugador){
                         int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());
-                        System.out.println("El rol de la carta és ");
                         _mazo.get(carta).ensenya();
                         System.out.println("S'afageix al jugador amb ordre "+i);
                         _Jugadors.get(i).afegirCarta(_mazo.get(carta));
@@ -183,7 +184,7 @@ public class Partida {
                 }
         /*PROBLEMES: No s'hi fixa en les limitacions de la pag. 7 del PDF, cal pensar-lo.
         edit: al moodle hi ha encara mes restriccions
-        ANOTACIO: cal definir el metode per descartar cartes per consens dels
+        ANOTACIO: cal definir elmetode per descartar cartes per consens dels
         jugadors (pag. 7 - 3er parragref - PDF)
             */
         
@@ -198,13 +199,18 @@ public class Partida {
         */
         
             for (int i=1;i<_mazo.size()-1;i++){ //comença desde 1 aixi no es descarta el jutge
-                _mazo.get(i).ensenya();
-                //mazo[i].mostrarPerPantalla
                 int aux=0;
+                System.out.println("-=================================================================================-");
+                System.out.println("Hora de descartar cartes. Decidiu si la carta corresponent al rol per pantalla");
+                System.out.println("ha de ser descartada o no. En cas de que algu es negi, la carta no ho serà.");
+                System.out.println("");
+                _mazo.get(i).ensenya();
+                System.out.println("Decideix el jugador " + _ordre.get(aux));
                 boolean decisio=_Jugadors.get(_ordre.get(aux)).decidir();
-
+               
                 aux++;
-                while (aux<_ordre.size()-1 && decisio) {
+                while (aux<_ordre.size() && decisio) {
+                     System.out.println("Decideix el jugador " + _ordre.get(aux));
                      decisio=_Jugadors.get(_ordre.get(aux)).decidir();
                      aux++;
                 }
@@ -214,8 +220,13 @@ public class Partida {
                         _mazo.remove(i);//cas que s'esborri un camperol, l'altre tambe ho fara
                     i--;
                 } // Si els tres hem dit que sí, esborrem la carta i decrementem en 1 l'índex.
+                System.out.println("");
 
-
+            }
+            System.out.println("-=================================================================================-");
+            
+            for (int i=0; i<_mazo.size(); i++){
+                _mazo.get(i).ensenya();
             }
         }
         
@@ -234,8 +245,9 @@ public class Partida {
         
         
         public void mostrarCartesPerJugadors(){
-            for(int pos=0; pos<_Jugadors.size(); pos++){
-                _Jugadors.get(pos).ensenyaCartes();
+            for(int pos=0; pos<_ordre.size(); pos++){
+                System.out.println("Jugador "+_ordre.get(pos));
+                _Jugadors.get(_ordre.get(pos)).ensenyaCartes();
             }
         }
         
@@ -245,6 +257,9 @@ public class Partida {
             PartidaSettings(4);
             descartarCartes();
             repartirCartes();
+            
+            System.out.println("");
+            System.out.println("Aquest es el resultat");
             mostrarCartesPerJugadors();
             /*
             while(!partidaAcabada){
