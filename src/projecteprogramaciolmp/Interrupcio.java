@@ -50,7 +50,7 @@ public class Interrupcio {
      * PRE: --
      * POST: retorna cert si algu s'ha queixat
      */
-        return (!_vectorInterrupcions.isEmpty());
+        return !_vectorInterrupcions.isEmpty();
     }
 
     
