@@ -326,6 +326,14 @@ public class Partida {
         public int obtIndexJugadorExecutador(){
             return _indexJugadorAccio;
         }
+        public ArrayList<Integer> escollirJugadors(int n){
+        /**
+         * PRE: n>0
+         * POST: retorna un array que conte els index de <n> _Jugadors escollits pel
+         * jugador amb el torn actual
+         */
+            
+        }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si

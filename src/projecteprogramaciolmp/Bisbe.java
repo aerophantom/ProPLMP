@@ -42,8 +42,9 @@ public class Bisbe extends Rol {
             if(i==aux.size())
                 i--;
             p.afegirMonedesJugador(aux.get(i), -2);//restar monedes al jugador escollit
+            p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);//afegir monedes al jugador executador
             //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM
-            //falta afegir-ho al jugador que ha invocat aquest metode
+            
         }
     }
 }

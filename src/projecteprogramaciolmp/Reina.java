@@ -21,10 +21,8 @@ public class Reina extends Rol {
     public Reina() {
         _nomRol="Reina";
     }
-    public void accioDeRol(Partida p){
+    public void accioDeRol(Partida p, Interrupcio i){
         p.treureMonedesBanc(2);
-        /*
-        mateix cas que el rei
-        */
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);
     }
 }
