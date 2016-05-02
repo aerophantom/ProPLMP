@@ -36,7 +36,7 @@ public abstract class Rol extends Accio{
        return compareTo(r)==0;
     }
     
-    public String diuRol(){
+    public String getRol(){
         return _nomRol;
     }
 }
