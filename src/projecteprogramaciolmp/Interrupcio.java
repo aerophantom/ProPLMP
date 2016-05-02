@@ -19,7 +19,15 @@ public class Interrupcio {
         _vectorInterrupcions= new ArrayList<> ();
     }
     
-    
+    public int getIndex() {
+        // Pre: --
+        // Post: Retorna l'index del primer jugador que ha interromput, i l'esborra del vector d'interrupcions.
+        int i=_vectorInterrupcions.get(0); 
+        _vectorInterrupcions.remove(0);
+        return i;
+    }
+            
+            
     public void preguntarInterrupcio(Partida p) {
         
         boolean volInterrompre=false;

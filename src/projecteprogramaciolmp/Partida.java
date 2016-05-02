@@ -6,6 +6,24 @@ import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
+    // Atributs
+    // --------------------
+    private Moneda _monedesJusticia; // Monedes del palau de justícia
+    private Moneda _monedesBanc; // Monedes del banc nacional
+    private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
+    private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
+    private int _monedesPerGuanyar;
+    private int _monedesTotals;
+    private int _numJugadors;
+    private ArrayList<Jugador> _Jugadors;
+    private ArrayList<Carta>  _mazo;
+    private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
+    private int _indexJugadorAccio;
+    private int _nCartesPerJugador;
+    /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
+    establexi aquest ordre (pag. 9 - 1er parragref - PDF)
+    */
+    // --------------------
     
     // COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que establexi aquest ordre (pag. 9 - 1er parragref - PDF)
     
@@ -204,7 +222,20 @@ public class Partida {
             }
             _mazo.remove(pos);
         }
-
+    
+    // ============================================================
+    // Mètodes MODIFICADORS
+    // ============================================================
+        
+        
+        
+        public boolean comprovarCartaIJugador() {
+            
+            
+            
+            
+        }
+        */
         
         public void repartirCartes () {
         // Pre: --
@@ -229,7 +260,7 @@ public class Partida {
                 
                 for(int i= 0; i<_Jugadors.size(); i++){
                     int nCartes= _Jugadors.get(i).nCartes();
-                    while(nCartes<nCartesPerJugador){
+                    while(nCartes<_nCartesPerJugador){
                         int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());
                        // _mazo.get(carta).ensenya();
                        // System.out.println("S'afageix al jugador amb ordre "+i);
@@ -383,15 +414,28 @@ public class Partida {
                     
                 else if(opcio == 1) ferConsulta
                 else ferAccioRol
+            
             //////
-            INTERRUPCIONS
+            INTERRUPCIONS ----> tot aquest codi va junt amb el ferAccioDeRol. L'accio de Rol s'executa un cop acabades les interrupcions.
             
             Interrupcio intr;
+            _indexExecutador=_indexOrdre; // en cas que ningú menteixi, simplement executarà a qui li tocava segons l'indexOrdre.
             intr.preguntarInterrupcio(this); // li passem la partida actual com a parametre
-            
-            
-            
-            //////
+               
+            while (intr.hiHaInterrupcions()) {
+               int index=instr.getIndex(i); // retornem un index i alhora l'esborrem del vector d'interrupcions.
+               if (_Jugadors.get(index).getCarta().getRol()==_Jugadors.get(_ordre.get(_indexOrdre).getCarta().getRol()) { //cal fer una comparació entre rols. el getRol i getCarta es podrien unificar en un sol get
+                   _indexExecutador=index;
+                }
+                else  _Jugadors.get(index).pagarMulta();
+            }
+                       
+           
+            Ara executariem l'accio de rol
+       
+            _Jugadors.get(_indexExecutador)... --> fer accio de rol amb aquest jugador.
+             
+             //////
             
             */
         }
@@ -410,7 +454,12 @@ public class Partida {
             System.out.print("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
         }
         
-
+        public boolean preguntarJugadorActual(){
+            return _Jugadors.get(_ordre.get(_indexOrdre)).decidir();
+        }
+        public boolean preguntarJugador(int i) {
+            return _Jugadors.get(i).decidir();     
+        }
         public void afegirMonedesJugador(int nJugador, int nMonedes){
         /**
          * PRE: nJugador >= 0 (nJugador representa l'index de _Jugadors)
@@ -418,7 +467,63 @@ public class Partida {
          */
             _Jugadors.get(nJugador).afegirMonedes(nMonedes);
         }
-        
+        public int numeroTorn(){
+            return _indexOrdre;
+        }
+        public int obtIndexJugadorExecutador(){
+            return _indexJugadorAccio;
+        }
+        public ArrayList<Integer> escollirJugadors(int n){
+        /**
+         * PRE: n>0
+         * POST: retorna un array que conte els index de <n> _Jugadors escollits pel
+         * jugador amb el torn actual
+         */
+            int i= 0;
+            int nEscollits= 0;
+            ArrayList<Integer> retorn= new ArrayList<>();
+            System.out.print("Escull un total de "+n+" jugadors:");
+            while(i<_Jugadors.size() && nEscollits<n){
+                if(i!=_ordre.get(_indexOrdre)){
+                    System.out.print("Vols escollir el jugador "+i+" ?");
+                    if(_Jugadors.get(_ordre.get(_indexOrdre)).decidir()){
+                        retorn.add(i);
+                        nEscollits++;
+                    }  
+                }
+                i++;
+                if(i==_Jugadors.size() && nEscollits<n)
+                        i= 0;
+            }
+            return retorn;
+        }
+        public int escollirCarta(int nJugador){
+        /**
+         * PRE:--
+         * POST: retorna el index del array de cartes de _Jugadors[nJugador]. En cas de
+         * que no tingui mes d'una carta, retornara sempre 0.
+         */
+            int retorn= 0;
+            if(_nCartesPerJugador!=0){
+                int i=0;
+                boolean escollida= false;
+                System.out.print("Escull una carta del jugador "+ nJugador +": ");
+                while(i<_nCartesPerJugador && !escollida){
+                    System.out.print("Escollir carta nº "+ i +"? ");
+                    
+                    //A LA SEGUENT LINIA TINC DUBTES
+                    escollida= _Jugadors.get(_ordre.get(_indexOrdre)).decidir();
+                    if(!escollida)
+                        i++;
+                    if(!escollida && i==_nCartesPerJugador)
+                        i= 0;
+                }
+            }
+            return retorn;
+        }
+        public void intercanviarCartes(){
+            
+        }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
