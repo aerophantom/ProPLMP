@@ -6,54 +6,144 @@ import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
-    // Atributs
-    // --------------------
-    private Moneda _monedesJusticia; // Monedes del palau de justícia
-    private Moneda _monedesBanc; // Monedes del banc nacional
-    private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
-    private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
-    private int _monedesPerGuanyar;
-    private int _monedesTotals;
-    private int _numJugadors;
-    private ArrayList<Jugador> _Jugadors;
-    private ArrayList<Carta>  _mazo;
-    private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
-    private int _indexJugadorAccio;
-    /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
-    establexi aquest ordre (pag. 9 - 1er parragref - PDF)
-    */
-    // --------------------
     
-    // ============================================================
-    // Mètodes CONSTRUCTORS
-    // ============================================================
+    // COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que establexi aquest ordre (pag. 9 - 1er parragref - PDF)
+    
+    
+    // Atributs
+    // -----------------------------------------------------------------------------------------------------------------------------
+        private Moneda _monedesJusticia; // Monedes del palau de justícia
+        private Moneda _monedesBanc; // Monedes del banc nacional
+        private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
+        private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
+        private int _monedesPerGuanyar;
+        private int _monedesTotals;
+        private int _numJugadors;
+        private ArrayList<Jugador> _Jugadors;
+        private ArrayList<Carta>  _mazo;
+        private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
+        private int _indexJugadorAccio;   
+    // ------------------------------------------------------------------------------------------------------------------------------
+    
+        
+    // ========================================================================================================== //
+    //                                              Mètodes CONSTRUCTORS                                          //
+    // ========================================================================================================== //
        public Partida() {
            _monedesJusticia= new Moneda();
            _monedesBanc= new Moneda(Integer.MAX_VALUE); //al banc mai se li acaben les monedes.
        }
        
+    // ========================================================================================================== //
+    //                                              Mètodes CONSULTORS                                            //
+    // ========================================================================================================== //
+        
+       public int getNumJugadors() {
+        // Pre: --
+        // Post: Retorna el num de jugadors de la partida
+            return _numJugadors;
+        }
+        
+        public int getIndexOrdre() {
+        // Pre: --
+        // Post: Retorna l'index de l'ordre de jugador de la partida
+            return _indexOrdre;
+        }
+        
+        
+        public ArrayList<Integer> buscarJugadorMesRic () {
+        // Pre: --
+        // Post: Retorna un vector amb el/s index de la taula _Jugadors amb els jugador/s més rics
+            //PER COMPLETAR
+            Moneda topMonedas= new Moneda();                                           // El jugador més ric tindrà topMonedes
+            ArrayList<Integer> retorn= new ArrayList<>();                              // Array de retorn dels jugadors més rics de la partida
+            for(int i= 0; i<_Jugadors.size(); i++){                                   // Per a tots els jugadors
+                if(_Jugadors.get(i).retornaMonedes().compareTo(topMonedas) >= 0){      // Si les monedes del jugador són majors que topMonedes
+                    topMonedas.actualitzarMonedes(_Jugadors.get(i).retornaMonedes());  // Actualitza topMonedes
+              
+                }
+            }
+            for(int j= 0; j<_Jugadors.size();j++){                                  // Per a tots els jugadors
+                if(_Jugadors.get(j).retornaMonedes().compareTo(topMonedas) == 0){   // Mira si algun jugador té topMonedes
+                    retorn.add(j);                                                  // Afageix al array
+                }
+            }
+            return retorn;
+        }
+        
+               public boolean partidaAcabada () {
+        // Pre: --
+        // Post: Retorna TRUE si la partida s'ha acabat 
+        // Quan s'acaba? Algun jugador ja arribat al màxim de monedes per guanyar o pel
+        // contrari, algun altre se'n ha quedar sense.
+            
+            //Implementar quan s'acabi el torn d'un jugador.
+            
+            boolean fiPartida= false;
+            int i= 0;
+            while(i<_Jugadors.size() && !fiPartida){
+                 Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();
+                 int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();
+                 fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
+                 i++;
+            }
+            return fiPartida;
+        }
+               
+        public boolean preguntarJugador(int i) {
+            
+            return _Jugadors.get(i).decidir();     
+        }
+        
+        public boolean comprovarCartaIJugador() {
+            boolean o = false;
+            return o;
+        }
+        
+        public int numeroTorn(){
+            return _indexOrdre;
+        }
+        
+        public int obtIndexJugadorExecutador(){
+            return _indexJugadorAccio;
+        }
+        
+        public boolean preguntarJugadorActual(){
+            return _Jugadors.get(_ordre.get(_indexOrdre)).decidir();
+        }
+        
+        public ArrayList<Integer> escollirJugadors(int n){
+         /*
+         * PRE: n>0
+         * POST: retorna un array que conte els index de <n> _Jugadors escollits pel
+         * jugador amb el torn actual
+        */
+         ArrayList<Integer> vretorn = new ArrayList<>();
+         return vretorn;
+        }
+        
+       
+    // ========================================================================================================== //
+    //                                              Mètodes MODIFICADORS                                          //
+    // ========================================================================================================== //
+       
        public void PartidaSettings(int nJugadors){
-           //en el cas que no s'indiquin les monedes per jugador, s'invocara el 
-           //seguent metode que te per defecte 6 monedes per jugador.
+       // Pre: nJugadors = 2 or 3 or 4
+       // Post: Ajusta les opcions de partida invocant un segon metode
+       //en el cas que no s'indiquin les monedes per jugador, s'invocara el 
+       //seguent metode que te per defecte 6 monedes per jugador.
            PartidaSettings(nJugadors,6);
        }
        
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
-           _Jugadors= new ArrayList<> (nJugadors); //array de nJugadors
+           _Jugadors= new ArrayList<> (nJugadors);                                      //array de nJugadors
            _numJugadors=nJugadors;
-            for (int i=0; i< nJugadors; i++){
-                JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));
-                _Jugadors.add(p); //com coi implementem aixo?
+            for (int i=0; i< nJugadors; i++){                                           // Fes fins a nJugadors...
+                JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));     // Crea un jugador
+                _Jugadors.add(p);                                                       // Afageix-lo al array
               }
-       
-           _Jugadors= new ArrayList<> (nJugadors);  // Array de nJugadors 
-            for (int i=0; i< nJugadors; i++){       // Fes fins a nJugadors...
-                JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));  // Crea un jugador
-                _Jugadors.add(p); // Afageix-lo al array
-              }
-           setMazo(); // Estableix les cartes del mazo
-           EstablirOrdre(); // Estableix un ordre aleatori entre els jugadors
-           
+           setMazo();                                                                   // Estableix les cartes del mazo
+           EstablirOrdre();                                                             // Estableix un ordre aleatori entre els jugadors
        }
        
        private void setMazo(){
@@ -74,110 +164,47 @@ public class Partida {
                    new Carta(new Espia()),
                    new Carta(new Lladre()) ));
        }
-    
-    // ============================================================
-    // Mètodes CONSULTORS
-    // ============================================================
-        public ArrayList<Integer> buscarJugadorMesRic () {
-        // Pre: --
-        // Post: Retorna un vector amb el/s index de la taula _Jugadors amb els jugador/s més rics
-            
-            //PER COMPLETAR
-            Moneda topMonedas= new Moneda();
-            ArrayList<Integer> retorn= new ArrayList<>();
-            for(int i= 0; i<_Jugadors.size(); i++){
-                if(_Jugadors.get(i).retornaMonedes().compareTo(topMonedas) >= 0){
-                    topMonedas.actualitzarMonedes(_Jugadors.get(i).retornaMonedes());
-              
-                }
-            }
-            
-            for(int j= 0; j<_Jugadors.size();j++){
-                if(_Jugadors.get(j).retornaMonedes().compareTo(topMonedas) == 0){
-                    retorn.add(j); 
-                }
-            }
-            return retorn;
-        }
-        
-        public int getNumJugadors() {
-            
-            return _numJugadors;
-        }
-        
-        public int getIndexOrdre() {
-            
-            return _indexOrdre;
-        }
+       
+
+       
         
         private void EstablirOrdre() {
-         
-            int aux, nJugadors= _Jugadors.size();
-            _indexOrdre=0;
+        // Pre: --
+        // Post: Estableix un ordre entre els jugadors de la partida
+            int aux, nJugadors= _Jugadors.size();                              // AUX es el numero del jugador de la partida
+            _indexOrdre=0; 
             _ordre = new ArrayList<> (nJugadors);
-            for (int i=0;i<nJugadors;i++){
+            for (int i=0;i<nJugadors;i++){                                    // Per a cada numero de jugadors
                 aux= ThreadLocalRandom.current().nextInt(0,nJugadors);         //random(0..nJugadors-1); 
-                while (_ordre.contains(aux)){
-                    aux++;
-                    if (aux>=nJugadors) 
-                        aux=0;
+                while (_ordre.contains(aux)){                                 // Mentres aux ja estigui dins el array
+                    aux++;                                                     // Incrementa aux pq sigui diferet
+                    if (aux>=nJugadors)                                        // Cas aux sigui superior als jugadors que hi juguen
+                        aux=0;                                                 // Inicialitza aux
                 }
-                _ordre.add(i, aux); //Afageix en la posicio i el jugador amb num aux
+                _ordre.add(i, aux);                                            //Afageix en la posicio i el jugador amb num aux
             }
-            
-          /*  System.out.println("Ordre establert ");
+            /*
+           System.out.println("Ordre establert ");
             for(int i=0; i<_Jugadors.size(); i++){
                 System.out.print("Posicio "+i+" -> ");
                 System.out.println(_ordre.get(i));
             }
           */
         }
-        
-        public boolean partidaAcabada () {
-        // Pre: --
-        // Post: Retorna TRUE si la partida s'ha acabat 
-        // (algun jugador ja arribat al màxim de monedes per guanyar o pel
-        // contrari, algun altre se'n ha quedar sense)
-            
-            //Implementar quan s'acabi el torn d'un jugador.
-            
-            boolean fiPartida= false;
-            int i= 0;
-            while(i<_Jugadors.size() && !fiPartida){
-                 Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();
-                 int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();
-                 fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
-                 i++;
-            }
-            return fiPartida;
-        }
+       
         
         public void trobaPosCarta(String nom){
+        // Pre: nom és el jugador de algun rol del joc
+        // Post: Esborra la carta dins el array de cartes que té el rol amb aquest nom
             int pos=0;
             boolean trobat=false;
-            while (pos < _mazo.size() &&  !trobat){
-                if (_mazo.get(pos).getNom().equals(nom)) trobat=true;
+            while (pos < _mazo.size() &&  !trobat){                     // Mentres la posició no superi el tamany de l'array i no trobis la carta
+                if (_mazo.get(pos).getNom().equals(nom)) trobat=true;   // Si ho trobes
                 else pos++;
             }
             _mazo.remove(pos);
         }
-    
-    // ============================================================
-    // Mètodes MODIFICADORS
-    // ============================================================
-        
-        public boolean preguntarJugador(int i) {
-            
-            return _Jugadors.get(i).decidir();     
-        }
-        
-        public boolean comprovarCartaIJugador() {
-            
-            
-            
-            
-        }
-        */
+
         
         public void repartirCartes () {
         // Pre: --
@@ -383,9 +410,7 @@ public class Partida {
             System.out.print("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
         }
         
-        public boolean preguntarJugadorActual(){
-            return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
-        }
+
         public void afegirMonedesJugador(int nJugador, int nMonedes){
         /**
          * PRE: nJugador >= 0 (nJugador representa l'index de _Jugadors)
@@ -393,20 +418,7 @@ public class Partida {
          */
             _Jugadors.get(nJugador).afegirMonedes(nMonedes);
         }
-        public int numeroTorn(){
-            return _jugadorActual;
-        }
-        public int obtIndexJugadorExecutador(){
-            return _indexJugadorAccio;
-        }
-        public ArrayList<Integer> escollirJugadors(int n){
-        /**
-         * PRE: n>0
-         * POST: retorna un array que conte els index de <n> _Jugadors escollits pel
-         * jugador amb el torn actual
-         */
-            
-        }
+        
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
