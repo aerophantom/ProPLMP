@@ -44,7 +44,7 @@ public class Interrupcio {
      * PRE: --
      * POST: retorna cert si algu s'ha queixat
      */
-        return vectorInterrupcions.size() != 0;
+        return !vectorInterrupcions.isEmpty();
     }
     
     

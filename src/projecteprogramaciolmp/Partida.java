@@ -16,7 +16,7 @@ public class Partida {
     private ArrayList<Jugador> _Jugadors;
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
-    
+    private int _indexJugadorAccio;
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
     establexi aquest ordre (pag. 9 - 1er parragref - PDF)
     */
@@ -322,6 +322,9 @@ public class Partida {
         }
         public int numeroTorn(){
             return _jugadorActual;
+        }
+        public int obtIndexJugadorExecutador(){
+            return _indexJugadorAccio;
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors

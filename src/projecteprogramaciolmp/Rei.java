@@ -22,9 +22,7 @@ public class Rei extends Rol{
     @Override
     public void accioDeRol(Partida p, Interrupcio i){
         p.treureMonedesBanc(3);
-        if(i.hiHaInterrupcions()){
-            
-        }
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 3);
         /*
         falta afegir les monedes al jugador que ha executat l'accio de Rol.
         Cal tenir en compte que no sempre ho executara el jugador actual, si no
