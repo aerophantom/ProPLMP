@@ -167,10 +167,7 @@ public class Partida {
     // Mètodes MODIFICADORS
     // ============================================================
         
-        public boolean preguntarJugador(int i) {
-            
-            return _Jugadors.get(i).decidir();     
-        }
+        
         
         public boolean comprovarCartaIJugador() {
             
@@ -385,7 +382,10 @@ public class Partida {
         }
         
         public boolean preguntarJugadorActual(){
-            return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
+            return _Jugadors.get(_ordre.get(_indexOrdre)).decidir();
+        }
+        public boolean preguntarJugador(int i) {
+            return _Jugadors.get(i).decidir();     
         }
         public void afegirMonedesJugador(int nJugador, int nMonedes){
         /**
@@ -447,6 +447,9 @@ public class Partida {
                 }
             }
             return retorn;
+        }
+        public void intercanviarCartes(){
+            
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
