@@ -264,7 +264,7 @@ public class Partida {
         }
         
         public void dinamicaDelJoc(){
-            _jugadorActual= 0;
+            _indexOrdre= 0;
             boolean partidaAcabada= false;
             PartidaSettings(4);
             descartarCartes();
@@ -302,6 +302,15 @@ public class Partida {
                     
                 else if(opcio == 1) ferConsulta
                 else ferAccioRol
+            //////
+            INTERRUPCIONS
+            
+            Interrupcio intr;
+            intr.preguntarInterrupcio(this); // li passem la partida actual com a parametre
+            
+            
+            
+            //////
             
             */
         }
@@ -319,9 +328,7 @@ public class Partida {
             System.out.print("Jugador " + i);
             System.out.print("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
         }
-        public int retornaQuantitatJugadors(){
-            return _Jugadors.size();
-        }
+        
         public boolean preguntarJugadorActual(){
             return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
         }
