@@ -7,7 +7,7 @@
 //
 /////////////////////////////////////
 package projecteprogramaciolmp;
-
+import java.util.ArrayList;
 
 public class Bisbe extends Rol {
     
@@ -23,6 +23,14 @@ public class Bisbe extends Rol {
     
     @Override
     public void accioDeRol(Partida p){
-        
+        ArrayList<Integer> aux= p.buscarJugadorMesRic();
+        if(aux.size()>1){//hi han dos jugadors rics
+            boolean escollit= false;
+            while(!escollit){
+                System.out.print("Vols desplumar a aquest jugador?");
+                
+            }
+            
+        }
     }
 }

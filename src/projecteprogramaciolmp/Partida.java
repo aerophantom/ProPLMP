@@ -251,6 +251,15 @@ public class Partida {
         public void treureMonedesBanc(int n){
             _monedesBanc.afegirMonedes(-n);
         }
+        public void mostrarInfoJugador(int i){
+        /**
+         * PRE: i >= 0
+         * POST: Mostra per pantalla la informacio relacionada amb el jugador que te
+         * el <i> torn
+         */
+            System.out.print("Jugador " + _ordre.get(i));
+            System.out.print("Monedes: " + _Jugadors.get(_ordre.get(i)).retornaMonedes().retornaQuantitat());
+        }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
