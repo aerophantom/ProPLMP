@@ -23,13 +23,24 @@ public class Bisbe extends Rol {
     
     @Override
     public void accioDeRol(Partida p){
+    /**
+     * PRE: --
+     * POST: 
+     */
         ArrayList<Integer> aux= p.buscarJugadorMesRic();
         if(aux.size()>1){//hi han dos jugadors rics
             boolean escollit= false;
-            while(!escollit){
+            int i= 0;
+            
+            while(i<aux.size() && !escollit){
                 System.out.print("Vols desplumar a aquest jugador?");
-                
+                p.mostrarInfoJugador(aux.get(i));
+                escollit= p.preguntarJugadorActual();
+                if (!escollit)
+                    i++;
             }
+            
+            //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM
             
         }
     }

@@ -66,7 +66,7 @@ public class Partida {
     // ============================================================
         public ArrayList<Integer> buscarJugadorMesRic () {
         // Pre: --
-        // Post: Retorna un vector amb el/s jugador/s més rics
+        // Post: Retorna un vector amb el/s index de la taula _Jugadors amb els jugador/s més rics
             
             //PER COMPLETAR
             Moneda topMonedas= new Moneda();
@@ -248,6 +248,8 @@ public class Partida {
             
             */
         }
+        
+        //metode del gilipolles ja que mai se li acaben les monedes, pero per si de cas el deixo
         public void treureMonedesBanc(int n){
             _monedesBanc.afegirMonedes(-n);
         }
@@ -257,8 +259,21 @@ public class Partida {
          * POST: Mostra per pantalla la informacio relacionada amb el jugador que te
          * el <i> torn
          */
-            System.out.print("Jugador " + _ordre.get(i));
-            System.out.print("Monedes: " + _Jugadors.get(_ordre.get(i)).retornaMonedes().retornaQuantitat());
+            System.out.print("Jugador " + i);
+            System.out.print("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
+        }
+        public int retornaQuantitatJugadors(){
+            return _Jugadors.size();
+        }
+        public boolean preguntarJugadorActual(){
+            return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
+        }
+        public void restarMonedesJugador(int nJugador, int nMonedes){
+        /**
+         * PRE: nJugador >= 0 (nJugador representa l'index de _Jugadors)
+         * POST:
+         */
+            _Jugadors.get(nJugador).afegirMonedes(-nMonedes);
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
