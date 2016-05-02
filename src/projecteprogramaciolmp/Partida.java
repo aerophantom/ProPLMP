@@ -20,6 +20,7 @@ public class Partida {
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
     private int _indexJugadorAccio;
     private int _nCartesPerJugador;
+    private boolean _fiPartida;
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
     establexi aquest ordre (pag. 9 - 1er parragref - PDF)
     */
@@ -142,15 +143,15 @@ public class Partida {
             
             //Implementar quan s'acabi el torn d'un jugador.
             
-            boolean fiPartida= false;
+            _fiPartida= false;
             int i= 0;
-            while(i<_Jugadors.size() && !fiPartida){
+            while(i<_Jugadors.size() && !_fiPartida){
                  Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();
                  int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();
-                 fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
+                 _fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
                  i++;
             }
-            return fiPartida;
+            return _fiPartida;
         }
         
         public void trobaPosCarta(String nom){
@@ -175,7 +176,7 @@ public class Partida {
             
             
         }
-        */
+        
         
         public void repartirCartes () {
         // Pre: --
@@ -463,6 +464,9 @@ public class Partida {
         }
         public void intercanviarCartes(){
             
+        }
+        public void fiPartidaTrampos(int nouLimit){
+            _fiPartida= nouLimit<=_Jugadors.get(_indexJugadorAccio).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
