@@ -166,7 +166,7 @@ public class Partida {
                 }
         /*PROBLEMES: No s'hi fixa en les limitacions de la pag. 7 del PDF, cal pensar-lo.
         edit: al moodle hi ha encara mes restriccions
-        ANOTACIO: cal definir el metode per descartar cartes per consens dels
+        ANOTACIO: cal definir elmetode per descartar cartes per consens dels
         jugadors (pag. 7 - 3er parragref - PDF)
             */
         
