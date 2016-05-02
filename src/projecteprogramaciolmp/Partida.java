@@ -133,6 +133,8 @@ public class Partida {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
             //ESQUEMA:
+            System.out.println("");
+            System.out.println("Hora de repartir les cartes");
                 int nCartesPerJugador= 1;
                 if (_Jugadors.size()<3) {
                     nCartesPerJugador= 3;
@@ -181,7 +183,6 @@ public class Partida {
         */
         
             for (int i=1;i<_mazo.size()-1;i++){ //comença desde 1 aixi no es descarta el jutge
-                //mazo[i].mostrarPerPantalla
                 int aux=0;
                 System.out.println("-=================================================================================-");
                 System.out.println("Hora de descartar cartes. Decidiu si la carta corresponent al rol per pantalla");
@@ -192,7 +193,7 @@ public class Partida {
                 boolean decisio=_Jugadors.get(_ordre.get(aux)).decidir();
                
                 aux++;
-                while (aux<_ordre.size()-1 && decisio) {
+                while (aux<_ordre.size() && decisio) {
                      System.out.println("Decideix el jugador " + _ordre.get(aux));
                      decisio=_Jugadors.get(_ordre.get(aux)).decidir();
                      aux++;
@@ -240,6 +241,9 @@ public class Partida {
             PartidaSettings(4);
             descartarCartes();
             repartirCartes();
+            
+            System.out.println("");
+            System.out.println("Aquest es el resultat");
             mostrarCartesPerJugadors();
             /*
             while(!partidaAcabada){
