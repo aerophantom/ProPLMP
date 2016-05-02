@@ -27,6 +27,7 @@ public class Bruixa extends Rol {
     public void accioDeRol(Partida p){
         ArrayList<Integer> aux= new ArrayList<>();
         aux = p.escollirJugadors(1);
-        
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), p.obtMonedesJugador(aux.get(0)));
+        p.afegirMonedesJugador(aux.get(0), -p.obtMonedesJugador(p.obtIndexJugadorExecutador()));
     }
 }
