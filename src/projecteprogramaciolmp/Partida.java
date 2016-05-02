@@ -19,6 +19,7 @@ public class Partida {
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
     private int _indexJugadorAccio;
+    private int _nCartesPerJugador;
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
     establexi aquest ordre (pag. 9 - 1er parragref - PDF)
     */
@@ -163,13 +164,13 @@ public class Partida {
             //ESQUEMA:
             System.out.println("");
             System.out.println("Hora de repartir les cartes");
-                int nCartesPerJugador= 1;
+                _nCartesPerJugador= 1;
                 if (_Jugadors.size()<3) {
-                    nCartesPerJugador= 3;
+                    _nCartesPerJugador= 3;
                     _mazo.remove(_mazo.size()-1); //Esborrem el Lladre
                 }
                 if (_Jugadors.size()<4) {
-                    nCartesPerJugador= 2;
+                    _nCartesPerJugador= 2;
                     _mazo.remove(_mazo.size()-2); //Esborrem el Espia
                     _mazo.remove(_mazo.size()-3); //Esborrem el Trampos
                 }
@@ -184,7 +185,7 @@ public class Partida {
                 
                 for(int i= 0; i<_Jugadors.size(); i++){
                     int nCartes= _Jugadors.get(i).nCartes();
-                    while(nCartes<nCartesPerJugador){
+                    while(nCartes<_nCartesPerJugador){
                         int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());
                         _mazo.get(carta).ensenya();
                         System.out.println("S'afageix al jugador amb ordre "+i);
@@ -340,7 +341,7 @@ public class Partida {
             _Jugadors.get(nJugador).afegirMonedes(nMonedes);
         }
         public int numeroTorn(){
-            return _jugadorActual;
+            return _indexOrdre;
         }
         public int obtIndexJugadorExecutador(){
             return _indexJugadorAccio;
@@ -351,7 +352,47 @@ public class Partida {
          * POST: retorna un array que conte els index de <n> _Jugadors escollits pel
          * jugador amb el torn actual
          */
-            
+            int i= 0;
+            int nEscollits= 0;
+            ArrayList<Integer> retorn= new ArrayList<>();
+            System.out.print("Escull un total de "+n+" jugadors:");
+            while(i<_Jugadors.size() && nEscollits<n){
+                if(i!=_ordre.get(_indexOrdre)){
+                    System.out.print("Vols escollir el jugador "+i+" ?");
+                    if(_Jugadors.get(_ordre.get(_indexOrdre)).decidir()){
+                        retorn.add(i);
+                        nEscollits++;
+                    }  
+                }
+                i++;
+                if(i==_Jugadors.size() && nEscollits<n)
+                        i= 0;
+            }
+            return retorn;
+        }
+        public int escollirCarta(int nJugador){
+        /**
+         * PRE:--
+         * POST: retorna el index del array de cartes de _Jugadors[nJugador]. En cas de
+         * que no tingui mes d'una carta, retornara sempre 0.
+         */
+            int retorn= 0;
+            if(_nCartesPerJugador!=0){
+                int i=0;
+                boolean escollida= false;
+                System.out.print("Escull una carta del jugador "+ nJugador +": ");
+                while(i<_nCartesPerJugador && !escollida){
+                    System.out.print("Escollir carta nº "+ i +"? ");
+                    
+                    //A LA SEGUENT LINIA TINC DUBTES
+                    escollida= _Jugadors.get(_ordre.get(_indexOrdre)).decidir();
+                    if(!escollida)
+                        i++;
+                    if(!escollida && i==_nCartesPerJugador)
+                        i= 0;
+                }
+            }
+            return retorn;
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
