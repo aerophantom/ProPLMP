@@ -122,6 +122,22 @@ public class Partida {
     // ============================================================
     // Mètodes MODIFICADORS
     // ============================================================
+        
+        public boolean preguntarJugador() {
+            
+            
+            
+            
+        }
+        
+        public boolean comprovarCartaIJugador() {
+            
+            
+            
+            
+        }
+        
+        
         public void repartirCartes () {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
