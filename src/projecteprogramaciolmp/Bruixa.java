@@ -7,7 +7,7 @@
 /////////////////////////////////////
 
 package projecteprogramaciolmp;
-
+import java.util.ArrayList;
 /**
  *
  * @author aerop
@@ -25,6 +25,8 @@ public class Bruixa extends Rol {
         
     }
     public void accioDeRol(Partida p){
+        ArrayList<Integer> aux= new ArrayList<>();
+        aux = p.escollirJugadors(1);
         
     }
 }

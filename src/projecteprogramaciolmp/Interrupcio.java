@@ -54,7 +54,7 @@ public class Interrupcio {
         return !_vectorInterrupcions.isEmpty();
     }
     
-    
+    */
     
     
 }
