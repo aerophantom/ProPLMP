@@ -13,31 +13,30 @@ import java.util.Arrays;
  * @author TOSHIBA
  */
 public class Interrupcio {
-    private ArrayList<Integer> vectorInterrupcions;
+    private ArrayList<Integer> _vectorInterrupcions;
     
-    
-    
-    
-    public preguntarInterrupcio(Partida p) {
+    public Interrupcio() {
         
-        /*
-        for (int i=0;i<p.getNumJugadors;i++) {
+        _vectorInterrupcions= new ArrayList<> ();
+    }
+    
+    
+    public void preguntarInterrupcio(Partida p) {
+        
+        boolean volInterrompre=false;
+        for (int i=0;i<p.getNumJugadors();i++) {
             
-            if (i!=p.obtenirIndexJActual(){
+            if (i!=p.getIndexOrdre()){
                 
-                print("vols interrompre?");
-                
-                boolean volInterrompre=p.preguntarJugador(i);
+               System.out.println("vols interrompre?");
+               volInterrompre=p.preguntarJugador(i);
                 
                 if (volInterrompre) {
-                    vectorInterrupcions.add(i);
+                    _vectorInterrupcions.add(i);
                 }
-                
              }
-            
-            
         }
-        */
+        
     }
     public boolean hiHaInterrupcions(){
     /**

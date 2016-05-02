@@ -10,9 +10,11 @@ public class Partida {
     // --------------------
     private Moneda _monedesJusticia; // Monedes del palau de justícia
     private Moneda _monedesBanc; // Monedes del banc nacional
-    private int _jugadorActual; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
+    private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
+    private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;
     private int _monedesTotals;
+    private int _numJugadors;
     private ArrayList<Jugador> _Jugadors;
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
@@ -37,6 +39,7 @@ public class Partida {
        
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
            _Jugadors= new ArrayList<> (nJugadors); //array de nJugadors
+           _numJugadors=nJugadors;
             for (int i=0; i< nJugadors; i++){
                 JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));
                 _Jugadors.add(p); //com coi implementem aixo?
@@ -87,9 +90,20 @@ public class Partida {
             return retorn;
         }
         
+        public int getNumJugadors() {
+            
+            return _numJugadors;
+        }
+        
+        public int getIndexOrdre() {
+            
+            return _indexOrdre;
+        }
+        
         private void EstablirOrdre() {
          
             int aux, nJugadors= _Jugadors.size();
+            _indexOrdre=0;
             _ordre = new ArrayList<> (nJugadors);
             for (int i=0;i<nJugadors;i++){
                 aux= ThreadLocalRandom.current().nextInt(0,nJugadors);               //random(0..nJugadors-1); //No es pot repetir el numero d'ordre
@@ -130,11 +144,9 @@ public class Partida {
     // Mètodes MODIFICADORS
     // ============================================================
         
-        public boolean preguntarJugador() {
+        public boolean preguntarJugador(int i) {
             
-            
-            
-            
+            return _Jugadors.get(i).decidir();     
         }
         
         public boolean comprovarCartaIJugador() {
@@ -252,7 +264,7 @@ public class Partida {
         }
         
         public void dinamicaDelJoc(){
-            _jugadorActual= 0;
+            _indexOrdre= 0;
             boolean partidaAcabada= false;
             PartidaSettings(4);
             descartarCartes();
@@ -290,6 +302,15 @@ public class Partida {
                     
                 else if(opcio == 1) ferConsulta
                 else ferAccioRol
+            //////
+            INTERRUPCIONS
+            
+            Interrupcio intr;
+            intr.preguntarInterrupcio(this); // li passem la partida actual com a parametre
+            
+            
+            
+            //////
             
             */
         }
@@ -307,9 +328,7 @@ public class Partida {
             System.out.print("Jugador " + i);
             System.out.print("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
         }
-        public int retornaQuantitatJugadors(){
-            return _Jugadors.size();
-        }
+        
         public boolean preguntarJugadorActual(){
             return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
         }
