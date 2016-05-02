@@ -21,7 +21,7 @@ public class Accio {
     public void consultaCarta(){
         
     }
-    public void accioDeRol(Partida p){
+    public void accioDeRol(Partida p, Interrupcio I){
         
     }
     public boolean decidir() {
