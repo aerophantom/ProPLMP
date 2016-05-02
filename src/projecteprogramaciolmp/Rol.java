@@ -26,7 +26,7 @@ public abstract class Rol extends Accio{
         System.out.print(_nomRol);
     }
     @Override
-    public void accioDeRol(Partida p){
+    public void accioDeRol(Partida p, Interrupcio i){
         
     }
     

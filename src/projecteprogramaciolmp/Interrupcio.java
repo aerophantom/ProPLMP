@@ -38,6 +38,13 @@ public class Interrupcio {
         }
         
     }
+    public boolean hiHaInterrupcions(){
+    /**
+     * PRE: --
+     * POST: retorna cert si algu s'ha queixat
+     */
+        return !vectorInterrupcions.isEmpty();
+    }
     
     
     
