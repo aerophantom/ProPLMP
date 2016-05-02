@@ -21,6 +21,10 @@ public abstract class Rol extends Accio{
         return _nomRol.compareTo(in._nomRol);
     }
     
+    //Metode per consola
+    public void mostrarRol(){
+        System.out.print(_nomRol);
+    }
     @Override
     public void accioDeRol(Partida p){
         

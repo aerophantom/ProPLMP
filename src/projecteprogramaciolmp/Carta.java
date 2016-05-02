@@ -19,7 +19,11 @@ public class Carta {
         _rolCarta= rolCarta;
         _descoberta=true;
     }
-    
+    public void mostrarCarta(){
+        _descoberta= true;
+        _rolCarta.mostrarRol();
+        _descoberta= false;
+    }
     @Override
     public boolean equals(Object o){
         Carta c= (Carta)o;

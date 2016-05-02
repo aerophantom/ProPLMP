@@ -10,7 +10,7 @@ public class Partida {
     // --------------------
     private Moneda _monedesJusticia; // Monedes del palau de justícia
     private Moneda _monedesBanc; // Monedes del banc nacional
-    private int _jugadorActual; // Index de l'array de jugadors que indica el jugador actual.
+    private int _jugadorActual; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
     private int _monedesPerGuanyar;
     private int _monedesTotals;
     private ArrayList<Jugador> _Jugadors;
@@ -67,7 +67,7 @@ public class Partida {
     // ============================================================
         public ArrayList<Integer> buscarJugadorMesRic () {
         // Pre: --
-        // Post: Retorna un vector amb el/s jugador/s més rics
+        // Post: Retorna un vector amb el/s index de la taula _Jugadors amb els jugador/s més rics
             
             //PER COMPLETAR
             Moneda topMonedas= new Moneda();
@@ -129,6 +129,22 @@ public class Partida {
     // ============================================================
     // Mètodes MODIFICADORS
     // ============================================================
+        
+        public boolean preguntarJugador() {
+            
+            
+            
+            
+        }
+        
+        public boolean comprovarCartaIJugador() {
+            
+            
+            
+            
+        }
+        
+        
         public void repartirCartes () {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
@@ -278,16 +294,35 @@ public class Partida {
             */
         }
         
-        
-        
+        //metode del gilipolles ja que mai se li acaben les monedes, pero per si de cas el deixo
         public void treureMonedesBanc(int n){
             _monedesBanc.afegirMonedes(-n);
         }
-        
-        
-        
-        
-        
+        public void mostrarInfoJugador(int i){
+        /**
+         * PRE: i >= 0
+         * POST: Mostra per pantalla la informacio relacionada amb el jugador que te
+         * el <i> torn
+         */
+            System.out.print("Jugador " + i);
+            System.out.print("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
+        }
+        public int retornaQuantitatJugadors(){
+            return _Jugadors.size();
+        }
+        public boolean preguntarJugadorActual(){
+            return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
+        }
+        public void afegirMonedesJugador(int nJugador, int nMonedes){
+        /**
+         * PRE: nJugador >= 0 (nJugador representa l'index de _Jugadors)
+         * POST:
+         */
+            _Jugadors.get(nJugador).afegirMonedes(nMonedes);
+        }
+        public int numeroTorn(){
+            return _jugadorActual;
+        }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
