@@ -10,7 +10,7 @@ public class Partida {
     // --------------------
     private Moneda _monedesJusticia; // Monedes del palau de justícia
     private Moneda _monedesBanc; // Monedes del banc nacional
-    private int _jugadorActual; // Index de l'array de jugadors que indica el jugador actual.
+    private int _jugadorActual; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
     private int _monedesPerGuanyar;
     private int _monedesTotals;
     private ArrayList<Jugador> _Jugadors;
@@ -282,12 +282,15 @@ public class Partida {
         public boolean preguntarJugadorActual(){
             return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
         }
-        public void restarMonedesJugador(int nJugador, int nMonedes){
+        public void afegirMonedesJugador(int nJugador, int nMonedes){
         /**
          * PRE: nJugador >= 0 (nJugador representa l'index de _Jugadors)
          * POST:
          */
-            _Jugadors.get(nJugador).afegirMonedes(-nMonedes);
+            _Jugadors.get(nJugador).afegirMonedes(nMonedes);
+        }
+        public int numeroTorn(){
+            return _jugadorActual;
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
