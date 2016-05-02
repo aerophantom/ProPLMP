@@ -10,6 +10,11 @@ import java.util.*;
  * @author aerop
  */
 public class Accio {
+    
+    public Accio(){
+        
+    }
+    
     public void intercanviarCartes(){
         
     }
@@ -21,7 +26,7 @@ public class Accio {
     }
     public boolean decidir() {
         Scanner teclat= new Scanner(System.in);
-        System.out.print("Escriu 'Y' per dir SI o 'N' per dir NO");
+        System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");
         return teclat.nextLine().equals("S");
         //return signal;
     }

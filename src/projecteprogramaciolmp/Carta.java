@@ -29,4 +29,8 @@ public class Carta {
     public int compareTo(Carta in){
         return _rolCarta.compareTo(in._rolCarta);
     }
+    
+    public void ensenya(){
+        System.out.println("El rol de la carta correspon a "+_rolCarta.diuRol());
+    }
 }

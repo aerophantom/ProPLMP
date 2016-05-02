@@ -25,20 +25,21 @@ public class Partida {
     // Mètodes CONSTRUCTORS
     // ============================================================
        public Partida() {
-      
            _monedesJusticia= new Moneda();
            _monedesBanc= new Moneda(Integer.MAX_VALUE); //al banc mai se li acaben les monedes.
        }
+       
        public void PartidaSettings(int nJugadors){
            //en el cas que no s'indiquin les monedes per jugador, s'invocara el 
            //seguent metode que te per defecte 6 monedes per jugador.
            PartidaSettings(nJugadors,6);
        }
+       
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
            _Jugadors= new ArrayList<> (nJugadors); //array de nJugadors
             for (int i=0; i< nJugadors; i++){
                 JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));
-                _Jugadors.add(new (new Moneda(monedesPerJugador))); //com coi implementem aixo?
+                _Jugadors.add(p); //com coi implementem aixo?
               }
        
            setMazo();
@@ -89,7 +90,7 @@ public class Partida {
         private void EstablirOrdre() {
          
             int aux, nJugadors= _Jugadors.size();
-            
+            _ordre = new ArrayList<> (nJugadors);
             for (int i=0;i<nJugadors;i++){
                 aux= ThreadLocalRandom.current().nextInt(0,nJugadors);               //random(0..nJugadors-1); //No es pot repetir el numero d'ordre
                 while (_ordre.contains(aux)){
@@ -97,7 +98,13 @@ public class Partida {
                     if (aux>=nJugadors) 
                         aux=0;
                 }
-                _ordre.set(i, aux);
+                _ordre.add(i, aux);
+            }
+            
+            System.out.println("Ordre establert ");
+            for(int i=0; i<_Jugadors.size(); i++){
+                System.out.print("Posicio "+i+" -> ");
+                System.out.println(_ordre.get(i));
             }
         }
         
@@ -149,7 +156,9 @@ public class Partida {
                     int nCartes= _Jugadors.get(i).nCartes();
                     while(nCartes<nCartesPerJugador){
                         int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());
-                        
+                        System.out.println("El rol de la carta és ");
+                        _mazo.get(carta).ensenya();
+                        System.out.println("S'afageix al jugador amb ordre "+i);
                         _Jugadors.get(i).afegirCarta(_mazo.get(carta));
                         _mazo.remove(carta);
                         nCartes++;
@@ -166,17 +175,14 @@ public class Partida {
 
         private void descartarCartes () {
         // Pre: El bisbe no pot ser descartat.
-        // Post: Descarta cartes de la pila --->>>> (Quantes????)
-        //resposta: es pot descartar quantes volguem sempre que quedi almenys una
-        //al mazo.
-        
+        // Post: Descarta cartes de la pila sempre i quan n'hi quedi una al mazo de cartes 
+  
         /* Per descartar cartes recorrem el mazo carta per carta. En cas que els 3 jugadors diguin sí a la carta actual, es descarta;
         en cas que hi hagi un o més "no" ja no es descarta. Restriccions a l'hora de descartar certes cartes, com el bisbe.
         */
         
-        
-        
-            for (int i=1;i<_mazo.size()-1;i++){//comença desde 1 aixi no es descarta el jutge
+            for (int i=1;i<_mazo.size()-1;i++){ //comença desde 1 aixi no es descarta el jutge
+                _mazo.get(i).ensenya();
                 //mazo[i].mostrarPerPantalla
                 int aux=0;
                 boolean decisio=_Jugadors.get(_ordre.get(aux)).decidir();
@@ -196,6 +202,8 @@ public class Partida {
 
             }
         }
+        
+        
         public void pagarMulta() {
         //Pre: --
         //Post: Afegeix una moneda al palau de justícia i resta'n una al/s jugador/s mentider/s.
@@ -208,16 +216,23 @@ public class Partida {
             //_Jugadors.get(_ordre.get(_jugadorActual)).pagarMulta();
         }
         
+        
+        public void mostrarCartesPerJugadors(){
+            for(int pos=0; pos<_Jugadors.size(); pos++){
+                _Jugadors.get(pos).ensenyaCartes();
+            }
+        }
+        
         public void dinamicaDelJoc(){
-            
             _jugadorActual= 0;
             boolean partidaAcabada= false;
+            PartidaSettings(4);
+            descartarCartes();
+            repartirCartes();
+            mostrarCartesPerJugadors();
+            /*
             while(!partidaAcabada){
-                //_Jugadors.get(_ordre.get(_jugadorActual)).
-            }
-            
-            
-            
+            }          
             /*
             _JugadorActual= 0;
             while(!partidaAcabada){
@@ -239,8 +254,7 @@ public class Partida {
                     mostrarCartesJugadorInterficie(aux);
                     int aux2 = rebreSignalGUI();
                     
-                    
-                    
+              
                     atributAccio.ferIntercanvi();
                     
                 else if(opcio == 1) ferConsulta
@@ -248,9 +262,17 @@ public class Partida {
             
             */
         }
+        
+        
+        
         public void treureMonedesBanc(int n){
             _monedesBanc.afegirMonedes(-n);
         }
+        
+        
+        
+        
+        
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
