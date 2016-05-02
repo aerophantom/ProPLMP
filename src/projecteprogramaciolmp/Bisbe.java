@@ -7,7 +7,7 @@
 //
 /////////////////////////////////////
 package projecteprogramaciolmp;
-
+import java.util.ArrayList;
 
 public class Bisbe extends Rol {
     
@@ -23,6 +23,27 @@ public class Bisbe extends Rol {
     
     @Override
     public void accioDeRol(Partida p){
-        
+    /**
+     * PRE: --
+     * POST: 
+     */
+        ArrayList<Integer> aux= p.buscarJugadorMesRic();
+        if(aux.size()>1){//hi han dos jugadors rics
+            boolean escollit= false;
+            int i= 0;
+            
+            while(i<aux.size() && !escollit){
+                System.out.print("Vols desplumar a aquest jugador?");
+                p.mostrarInfoJugador(aux.get(i));
+                escollit= p.preguntarJugadorActual();
+                if (!escollit)
+                    i++;
+            }
+            if(i==aux.size())
+                i--;
+            p.afegirMonedesJugador(aux.get(i), -2);//restar monedes al jugador escollit
+            //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM
+            //falta afegir-ho al jugador que ha invocat aquest metode
+        }
     }
 }

@@ -19,7 +19,11 @@ public class Carta {
         _rolCarta= rolCarta;
         _descoberta=true;
     }
-    
+    public void mostrarCarta(){
+        _descoberta= true;
+        _rolCarta.mostrarRol();
+        _descoberta= false;
+    }
     @Override
     public boolean equals(Object o){
         Carta c= (Carta)o;
@@ -28,5 +32,9 @@ public class Carta {
     
     public int compareTo(Carta in){
         return _rolCarta.compareTo(in._rolCarta);
+    }
+    
+    public void ensenya(){
+        System.out.println("El rol de la carta correspon a "+_rolCarta.diuRol());
     }
 }

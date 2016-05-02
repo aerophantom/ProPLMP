@@ -24,4 +24,7 @@ public class Bruixa extends Rol {
         _nomRol="Bruixa";
         
     }
+    public void accioDeRol(Partida p){
+        
+    }
 }

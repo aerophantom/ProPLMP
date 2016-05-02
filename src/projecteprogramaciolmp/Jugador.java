@@ -22,10 +22,11 @@ public abstract class Jugador {
     public Jugador(){
         _monedes= new Moneda();
         _cartaJugada=0;
+        _accion = new Accio();
     }
     
     public Jugador(int monedes){
-        
+        _accion= new Accio();
         _monedes= new Moneda(monedes);
         
     }
@@ -64,5 +65,11 @@ public abstract class Jugador {
        }
        public boolean decidir(){
            return _accion.decidir();
+       }
+       
+       public void ensenyaCartes(){
+           for(int i=0; i<_cartesJugador.size(); i++){
+               _cartesJugador.get(i).ensenya();
+           }
        }
 }
