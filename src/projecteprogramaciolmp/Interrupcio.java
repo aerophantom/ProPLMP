@@ -16,7 +16,7 @@ public class Interrupcio {
     private ArrayList<Integer> vectorInterrupcions;
     
     
-    
+    /*
     
     public preguntarInterrupcio(Partida p) {
         
@@ -37,10 +37,10 @@ public class Interrupcio {
             
             
         }
-        */
+        
     }
     
-    
+    */
     
     
 }
