@@ -37,6 +37,10 @@ public abstract class Jugador {
     // Mètodes CONSULTORS
     // ============================================================
        
+     public Carta getCartaActual() {
+         
+         return _cartesJugador.get(_cartaJugada);
+     }
     
     // ============================================================
     // Mètodes MODIFICADORS
@@ -45,6 +49,7 @@ public abstract class Jugador {
        // Pre: --
        // Post: Resta una moneda al jugador per afegir-la al Palau de Justicia
             _monedes.afegirMonedes(-1);
+            // falta afegir la moneda al palau.
        }
        
        public void afegirMonedes (int mon) {
