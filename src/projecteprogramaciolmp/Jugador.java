@@ -87,7 +87,9 @@ public abstract class Jugador {
                _cartesJugador.get(i).ensenya();
            }
        }
-       
+       public void ensenyarCarta(int indexCarta){
+           _cartesJugador.get(indexCarta).mostrarCarta();
+       }
        public void accioDeRol(Partida p){
            _accion.accioDeRol(p);
        }

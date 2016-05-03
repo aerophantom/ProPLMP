@@ -31,6 +31,7 @@ public class Viuda extends Rol {
         }
         else{
             p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 10-monedesExecutador);
+            p.treureMonedesBanc(10-monedesExecutador);
         }
     }
     

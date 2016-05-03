@@ -21,6 +21,8 @@ public class Reina extends Rol {
     public Reina() {
         _nomRol="Reina";
     }
+    
+    @Override
     public void accioDeRol(Partida p){
         p.treureMonedesBanc(2);
         p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);
