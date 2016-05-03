@@ -103,6 +103,7 @@ public class Partida {
         public boolean comprovarCartaIJugador() {
         // PER FER
             boolean o = false;
+            
             return o;
         }
         
@@ -214,7 +215,7 @@ public class Partida {
           */
         }
         
-        public void trobaPosCarta(String nom){
+        public void eliminaCarta(String nom){
         // Pre: nom és el jugador de algun rol del joc
         // Post: Esborra la carta dins el array de cartes que té el rol amb aquest nom
             int pos=0;
@@ -242,18 +243,22 @@ public class Partida {
                 nCartesPerJugador= 2;
             }   
             
+           // System.out.println("Hey hola que ase");
             for (int i=0; i<_mazo.size(); i++){
                 _mazo.get(i).ensenya();
             }
                    
+           // System.out.println("Ara toca repartir cartes");
             for(int i= 0; i<_Jugadors.size(); i++){
                 int nCartes= _Jugadors.get(i).nCartes();
-                while(nCartes<_nCartesPerJugador){
+                //System.out.println("Num de cartes del jugador "+i+": "+nCartes);
+                while(nCartes<=_nCartesPerJugador){
                     int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());
-                    // _mazo.get(carta).ensenya();
+                   // System.out.println(carta);
+                     _mazo.get(carta).ensenya();
                     // System.out.println("S'afageix al jugador amb ordre "+i);
                     _Jugadors.get(i).afegirCarta(_mazo.get(carta));
-                    _mazo.remove(carta);
+                    //_mazo.remove(carta);
                     nCartes++;
                 }
             }
@@ -265,44 +270,28 @@ public class Partida {
         // Pre: El bisbe no pot ser descartat.
         // Post: Descarta cartes de la pila sempre i quan n'hi quedi una al mazo de cartes 
             if (_Jugadors.size()<3) {
-                trobaPosCarta("Lladre");                        //Esborrem el Lladre
+                eliminaCarta("Lladre");                        //Esborrem el Lladre
             }
             if (_Jugadors.size()<4) {
-                trobaPosCarta("Espia");
-                trobaPosCarta("Inquisidor");
+                eliminaCarta("Espia");
+                eliminaCarta("Inquisidor");
             }
             if (_Jugadors.size()<6) {
-                for (int q=0; q<_mazo.size(); q++){
-                     _mazo.get(q).ensenya();
-                }
-                System.out.println();
                 // Busca el primer camperol i borra'l
-                trobaPosCarta("Camperol");
-                for (int q=0; q<_mazo.size(); q++){
-                     _mazo.get(q).ensenya();
-                }
-                System.out.println();
+                eliminaCarta("Camperol");
                 // Busca el segon camperol i borra'l
-                trobaPosCarta("Camperol");
-                for (int q=0; q<_mazo.size(); q++){
-                    _mazo.get(q).ensenya();
-                }
-                System.out.println();
+                eliminaCarta("Camperol");
                 // Busca el inquisidor i borra'l
-                trobaPosCarta("Inquisidor");    
-                for (int q=0; q<_mazo.size(); q++){
-                     _mazo.get(q).ensenya();
-                }
-                System.out.println();
+                eliminaCarta("Inquisidor");    
             }  
                 
             for (int i=1;i<_mazo.size()-1;i++){                 // Comença des de 1 aixi no es descarta el jutge
                 int aux=0;
                 
-                System.out.println("-=================================================================================-");
+                /*System.out.println("-=================================================================================-");
                 System.out.println("Hora de descartar cartes. Decidiu si la carta corresponent al rol per pantalla");
                 System.out.println("ha de ser descartada o no. En cas de que algu es negi, la carta no ho serà.");
-                System.out.println("");
+                System.out.println("");*/
                
                 _mazo.get(i).ensenya();
                 System.out.println("Decideix el jugador " + _ordre.get(aux));
@@ -319,21 +308,21 @@ public class Partida {
                     boolean camperol = _mazo.get(i).getNom().equals("Camperol"); // Si la carta que es vol borrar es Camperol, camperol = true
                     _mazo.remove(i); // Borra la carta
                     if(camperol) // Si s'ha decidit borrar el camperol
-                        trobaPosCarta("Camperol"); // Borra l'altre camperol
+                        eliminaCarta("Camperol"); // Borra l'altre camperol
                     i--;
                 } 
                 System.out.println("");
-                for (int q=0; q<_mazo.size(); q++){
+                /*for (int q=0; q<_mazo.size(); q++){
                          _mazo.get(q).ensenya();
                 }
-                    System.out.println();
+                    System.out.println();*/
             }
-            System.out.println("-=================================================================================-");
-            
+          //  System.out.println("-=================================================================================-");
+            /*
             for (int q=0; q<_mazo.size(); q++){
                 _mazo.get(q).ensenya();
             }
-            System.out.println();
+            System.out.println();*/
         }
         
         
@@ -369,6 +358,17 @@ public class Partida {
             return pos;
         }
                      
+        public void actualitzaJugador(){
+            _indexExecutador = _ordre.get(_indexOrdre);
+        }
+        
+        public void incrementaOrdre(){
+            _indexOrdre++;
+            if(_indexOrdre > _ordre.size()){
+                _indexOrdre = 0;
+            }
+        }
+        
         public void dinamicaDelJoc(){
         // Pre: --
         // Post:
@@ -378,23 +378,50 @@ public class Partida {
             descartarCartes();
             repartirCartes();
             
+            System.out.println("Aquest es el capital del Banc Nacional: "+_monedesBanc.retornaQuantitat());
+            System.out.println("Aquest es el capital del Palau de Justicia: "+_monedesJusticia.retornaQuantitat());
             System.out.println("");
             System.out.println("Aquest es el resultat");
             mostrarCartesPerJugadors();
+            System.out.println("");
             
-            _indexExecutador = _ordre.get(_indexOrdre);
-            System.out.println("Escull un rol dels disponibles");
-            for (int q=0; q<_mazo.size(); q++){
-                 _mazo.get(q).ensenya();
+            boolean acabar = false;
+            System.out.println("Estadístiques dels jugadors");
+            for (int j=0; j < _Jugadors.size(); j++){
+                    _Jugadors.get(_ordre.get(j)).mostraEstadistiques(_ordre.get(j));
             }
-            System.out.println();
-            
-            Scanner teclat= new Scanner(System.in);
-            String rol = teclat.nextLine();
+            while (!acabar){
+                actualitzaJugador();
+                System.out.println("");
+                System.out.println("Ara juga el jugador "+_indexOrdre);
+                System.out.println("Escull un rol dels disponibles");
+                for (int q=0; q<_mazo.size(); q++){
+                     _mazo.get(q).ensenya();
+                }
+                System.out.print("Elecció: ");
 
-            Rol juga = _mazo.get(buscaCarta(rol)).getRolCarta();
-            _Jugadors.get(_indexExecutador).nouRol(juga);
-            _Jugadors.get(_indexExecutador).accioDeRol(this);
+                Scanner teclat= new Scanner(System.in);
+                String rol = teclat.nextLine();
+
+                Rol juga = _mazo.get(buscaCarta(rol)).getRolCarta();
+                _Jugadors.get(_indexExecutador).nouRol(juga);
+                _Jugadors.get(_indexExecutador).accioDeRol(this);
+                System.out.println();
+                System.out.println("============================================================");
+                // En aquest punt comprova les estadístiques dels jugadors
+                System.out.println("Estadístiques dels jugadors");
+                for (int j=0; j < _Jugadors.size(); j++){
+                    _Jugadors.get(_ordre.get(j)).mostraEstadistiques(j);
+                }
+                // En aquest punt mostra el capital del palau i del banc
+                System.out.println("Aquest es el capital del Banc Nacional: "+_monedesBanc.retornaQuantitat());
+                System.out.println("Aquest es el capital del Banc Nacional: "+_monedesJusticia.retornaQuantitat());
+                System.out.println("===========================================================");
+                System.out.println();
+
+                incrementaOrdre();
+                
+            }
             
             
             
@@ -468,8 +495,8 @@ public class Partida {
         public void mostrarInfoJugador(int i){
         // Pre: i>=0
         // Post: Mostra per pantalla la informació relacionada amb el jugador que te el i torn
-            System.out.print("Jugador " + i);
-            System.out.print("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
+            System.out.println("Jugador " + i);
+            System.out.println("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
         }
 
         public void afegirMonedesJugador(int nJugador, int nMonedes){

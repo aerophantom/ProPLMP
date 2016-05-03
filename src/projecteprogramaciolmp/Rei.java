@@ -22,6 +22,7 @@ public class Rei extends Rol{
     public void accioDeRol(Partida p){
         p.treureMonedesBanc(3);
         p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 3);
+     
         /*
         falta afegir les monedes al jugador que ha executat l'accio de Rol.
         Cal tenir en compte que no sempre ho executara el jugador actual, si no

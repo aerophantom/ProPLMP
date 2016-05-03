@@ -22,13 +22,13 @@ public class Bisbe extends Rol {
     }
     
    // @Override
-    public void accioDeRol(Partida p){
+public void accioDeRol(Partida p){
     /**
      * PRE: --
      * POST: 
      */
         ArrayList<Integer> aux= p.buscarJugadorMesRic();
-        if(aux.size()>1){//hi han dos jugadors rics
+        if(aux.size()>1){//hi ha dos jugadors rics
             boolean escollit= false;
             int i= 0;
             
@@ -42,9 +42,13 @@ public class Bisbe extends Rol {
             if(i==aux.size())
                 i--;
             p.afegirMonedesJugador(aux.get(i), -2);//restar monedes al jugador escollit
-            p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);//afegir monedes al jugador executador
-            //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM
+            //afegir monedes al jugador executador
+            //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM, O FER QUE EL WHILE NO PLEGUI FINS UNA ELECCIO.
             
         }
+        else{
+            p.afegirMonedesJugador(aux.get(0), -2);
+        }
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);
     }
 }
