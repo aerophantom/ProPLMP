@@ -22,5 +22,16 @@ public class Viuda extends Rol {
        _nomRol="Viuda"; 
     }
     
+    @Override
+    public void accioDeRol(Partida p){
+        //NOTA: SHA DE PODER CAMBIAR EL LIMIT PER OBTENIR (DE 10 A 8 O A 14, JOKESE)
+        int monedesExecutador= p.obtMonedesJugador(p.obtIndexJugadorExecutador());
+        if(monedesExecutador>=10){
+            System.out.print("No reps cap moneda ja que en tens el limit");
+        }
+        else{
+            p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 10-monedesExecutador);
+        }
+    }
     
 }

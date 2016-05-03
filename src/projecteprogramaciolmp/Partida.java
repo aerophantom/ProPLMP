@@ -368,7 +368,7 @@ public class Partida {
             }
             return pos;
         }
-        
+                     
         public void dinamicaDelJoc(){
         // Pre: --
         // Post:
@@ -440,7 +440,7 @@ public class Partida {
             Interrupcio intr;
             _indexExecutador=_indexOrdre; // en cas que ningú menteixi, simplement executarà a qui li tocava segons l'indexOrdre.
             intr.preguntarInterrupcio(this); // li passem la partida actual com a parametre
-               
+            
             while (intr.hiHaInterrupcions()) {
                int index=instr.getIndex(i); // retornem un index i alhora l'esborrem del vector d'interrupcions.
                if (_Jugadors.get(index).getCarta().getRol()==_Jugadors.get(_ordre.get(_indexOrdre).getCarta().getRol()) { //cal fer una comparació entre rols. el getRol i getCarta es podrien unificar en un sol get
@@ -505,6 +505,7 @@ public class Partida {
         }
         public void fiPartidaTrampos(int nouLimit){
             _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
+            _fiPartida= nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
         }
         public int obtMonedesJugador(int index){
             return _Jugadors.get(index).retornaMonedes().retornaQuantitat();
