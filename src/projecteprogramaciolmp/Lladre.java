@@ -25,23 +25,23 @@ public class Lladre extends Rol {
     
     @Override
     public void accioDeRol(Partida p){
-        int posicioActual= p.obtIndexJugadorExecutador();//lladre
+        //int posicioActual= p.obtIndexJugadorExecutador();//lladre
         int nJugadors= p.getNumJugadors();
+        int indexCorregit= p.getIndexExecutadorOrdre();
         
-        
-            if(posicioActual==0){
-                p.afegirMonedesJugador(1,-1);
-                p.afegirMonedesJugador(nJugadors-1,-1);
+            if(indexCorregit==0){
+                p.afegirMonedesJugador(p.obtIndexCorregit(1),-1);
+                p.afegirMonedesJugador(p.obtIndexCorregit(nJugadors-1),-1);
             }
-            else if(posicioActual==nJugadors-1){
-                p.afegirMonedesJugador(0,-1);
-                p.afegirMonedesJugador(posicioActual-1,-1);
+            else if(indexCorregit==nJugadors-1){
+                p.afegirMonedesJugador(p.obtIndexCorregit(0),-1);
+                p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit-1),-1);
             }
             else{
-                p.afegirMonedesJugador(posicioActual-1,-1);
-                p.afegirMonedesJugador(posicioActual+1,-1);
+                p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit-1),-1);
+                p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit+1),-1);
             }
-            p.afegirMonedesJugador(posicioActual,2);
+            p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit),2);
         }
     
     

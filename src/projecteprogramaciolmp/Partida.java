@@ -39,7 +39,7 @@ public class Partida {
        }
        
 ////// ================================================================================================================= //////
-//////                                              Mètodes MODIFICADORS                                                 //////
+//////                                              Mètodes CONSULTORS                                                 //////
 ////// ================================================================================================================= //////
         
        public int getNumJugadors() {
@@ -47,7 +47,17 @@ public class Partida {
         // Post: Retorna el num de jugadors de la partida
             return _numJugadors;
         }
+        public int getIndexExecutadorOrdre(){
+            return _Jugadors.indexOf(_indexExecutador);
+        }
+        public int obtIndexCorregit(int indexOrdre){
+        /**
+         * PRE: int >= 0
+         * POST: Retorna l'index de _Jugadors havent-li passat l'indexOrdre
+         */ 
         
+            return _ordre.get(indexOrdre);
+        }
         public int getIndexOrdre() {
         // Pre: --
         // Post: Retorna l'index de l'ordre de jugador de la partida
