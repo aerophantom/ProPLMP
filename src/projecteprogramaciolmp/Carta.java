@@ -21,9 +21,9 @@ public class Carta {
     }
     
     public Rol getRolCarta() {
-        
         return _rolCarta;
     }
+    
     public void mostrarCarta(){
         _descoberta= true;
         _rolCarta.mostrarRol();

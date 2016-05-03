@@ -15,12 +15,11 @@ public class Rei extends Rol{
     // ============================================================
     
     public Rei() {
-        
         _nomRol="Rei";
     }
     
     @Override
-    public void accioDeRol(Partida p, Interrupcio i){
+    public void accioDeRol(Partida p){
         p.treureMonedesBanc(3);
         p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 3);
         /*

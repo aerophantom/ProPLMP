@@ -3,6 +3,7 @@ package projecteprogramaciolmp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
@@ -33,6 +34,8 @@ public class Partida {
        public Partida() {
            _monedesJusticia= new Moneda();
            _monedesBanc= new Moneda(Integer.MAX_VALUE); //al banc mai se li acaben les monedes.
+           _indexOrdre = 0;
+           _indexExecutador = 0;
        }
        
 ////// ================================================================================================================= //////
@@ -110,7 +113,7 @@ public class Partida {
         }
         
         public int obtIndexJugadorExecutador(){
-            return _indexJugadorAccio;
+            return _indexExecutador;
         }
         
         public boolean preguntarJugadorActual(){
@@ -322,7 +325,7 @@ public class Partida {
                 System.out.println("");
                 for (int q=0; q<_mazo.size(); q++){
                          _mazo.get(q).ensenya();
-                    }
+                }
                     System.out.println();
             }
             System.out.println("-=================================================================================-");
@@ -356,6 +359,16 @@ public class Partida {
             }
         }
         
+        public int buscaCarta(String nom){
+            boolean trobada = false;
+            int pos = 0;
+            while (!trobada && pos < _mazo.size()){
+                if (_mazo.get(pos).getNom().equals(nom)) trobada=true;
+                else pos++;
+            }
+            return pos;
+        }
+        
         public void dinamicaDelJoc(){
         // Pre: --
         // Post:
@@ -369,8 +382,28 @@ public class Partida {
             System.out.println("Aquest es el resultat");
             mostrarCartesPerJugadors();
             
-            // Proves de execució de rols
+            _indexExecutador = _ordre.get(_indexOrdre);
+            System.out.println("Escull un rol dels disponibles");
+            for (int q=0; q<_mazo.size(); q++){
+                 _mazo.get(q).ensenya();
+            }
+            System.out.println();
             
+            Scanner teclat= new Scanner(System.in);
+            String rol = teclat.nextLine();
+
+            Rol juga = _mazo.get(buscaCarta(rol)).getRolCarta();
+            _Jugadors.get(_indexExecutador).nouRol(juga);
+            _Jugadors.get(_indexExecutador).accioDeRol(this);
+            
+            
+            
+            
+            // Proves de execució de rols
+            /*for (int i=0; i<_numJugadors; i++){
+                _indexExecutador = _ordre.get(_indexOrdre);
+                Rol _ajugar = _Jugadors.get(_indexExecutador)
+            }
             /*
             while(!partidaAcabada){
             }          
@@ -444,36 +477,7 @@ public class Partida {
         // Post: 
             _Jugadors.get(nJugador).afegirMonedes(nMonedes);
         }
-        public int numeroTorn(){
-            return _indexOrdre;
-        }
-        public int obtIndexJugadorExecutador(){
-            return _indexExecutador;
-        }
-        public ArrayList<Integer> escollirJugadors(int n){
-        /**
-         * PRE: n>0
-         * POST: retorna un array que conte els index de <n> _Jugadors escollits pel
-         * jugador amb el torn actual
-         */
-            int i= 0;
-            int nEscollits= 0;
-            ArrayList<Integer> retorn= new ArrayList<>();
-            System.out.print("Escull un total de "+n+" jugadors:");
-            while(i<_Jugadors.size() && nEscollits<n){
-                if(i!=_ordre.get(_indexOrdre)){
-                    System.out.print("Vols escollir el jugador "+i+" ?");
-                    if(_Jugadors.get(_ordre.get(_indexOrdre)).decidir()){
-                        retorn.add(i);
-                        nEscollits++;
-                    }  
-                }
-                i++;
-                if(i==_Jugadors.size() && nEscollits<n)
-                        i= 0;
-            }
-            return retorn;
-        }
+       
         public int escollirCarta(int nJugador){
         // Pre: --
         // Post: Retorna el índex del array de cartes de _Jugadors[nJugador]. EN cas de que no tingui més d'una carta, retorna 0
@@ -500,7 +504,7 @@ public class Partida {
             
         }
         public void fiPartidaTrampos(int nouLimit){
-            _fiPartida= nouLimit<=_Jugadors.get(_indexJugadorAccio).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
+            _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
         }
         public int obtMonedesJugador(int index){
             return _Jugadors.get(index).retornaMonedes().retornaQuantitat();
