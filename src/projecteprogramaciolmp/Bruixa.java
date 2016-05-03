@@ -29,7 +29,13 @@ public class Bruixa extends Rol {
     public void accioDeRol(Partida p){
         ArrayList<Integer> aux= new ArrayList<>();
         aux = p.escollirJugadors(1);
-        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), p.obtMonedesJugador(aux.get(0)));
-        p.afegirMonedesJugador(aux.get(0), -p.obtMonedesJugador(p.obtIndexJugadorExecutador()));
+        int monedesJugExe= p.obtMonedesJugador(p.obtIndexJugadorExecutador());
+        int monedesJugVictima= p.obtMonedesJugador(aux.get(0));
+        
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), -p.obtMonedesJugador(p.obtIndexJugadorExecutador()));
+        p.afegirMonedesJugador(aux.get(0), -p.obtMonedesJugador(aux.get(0)));
+        
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), monedesJugVictima);
+        p.afegirMonedesJugador(aux.get(0), monedesJugExe);
     }
 }

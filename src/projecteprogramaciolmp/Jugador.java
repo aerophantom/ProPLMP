@@ -41,6 +41,16 @@ public abstract class Jugador {
          return _cartesJugador.get(_cartaJugada);
      }
     
+     public void mostraEstadistiques(int j){
+         System.out.println("Les monedes del jugador "+j+" són: "+_monedes.retornaQuantitat());
+         for(int i=0; i < _cartesJugador.size(); i++){
+             _cartesJugador.get(i).ensenya();
+         }
+     }
+     
+     public Carta getCarta(int indexCarta){
+         return _cartesJugador.get(indexCarta);
+     }
     // ============================================================
     // Mètodes MODIFICADORS
     // ============================================================
@@ -54,7 +64,7 @@ public abstract class Jugador {
        public void afegirMonedes (int mon) {
        // Pre: mon >=0 mon <=0
        // Post: Realitza la operació _monedes + mon
-            //_monedes.afegirMonedes(mon);
+            _monedes.afegirMonedes(mon);
        }
        
        public Moneda retornaMonedes(){
@@ -80,7 +90,9 @@ public abstract class Jugador {
                _cartesJugador.get(i).ensenya();
            }
        }
-       
+       public void ensenyarCarta(int indexCarta){
+           _cartesJugador.get(indexCarta).mostrarCarta();
+       }
        public void accioDeRol(Partida p){
            _accion.accioDeRol(p);
        }
