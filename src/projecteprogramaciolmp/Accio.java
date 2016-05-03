@@ -10,19 +10,24 @@ import java.util.*;
  * @author aerop
  */
 public class Accio {
-    
+    Rol accioRol;
     public Accio(){
         
     }
-    
+    public Accio(Rol r){
+        accioRol= r;
+    }
+    public void nouRol(Rol r){
+        accioRol= r;
+    }
     public void intercanviarCartes(){
         
     }
     public void consultaCarta(){
         
     }
-    public void accioDeRol(Partida p, Interrupcio I){
-        
+    public void accioDeRol(Partida p){
+        accioRol.accioDeRol(p);
     }
     public boolean decidir() {
         Scanner teclat= new Scanner(System.in);
