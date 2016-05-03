@@ -24,6 +24,7 @@ public class Trampos extends Rol {
     }
     
     //S'HA DE PODER CAMBIAR EL VALOR LIMIT DE TRAMPOS A SETTINGS
+    @Override
     public void accioDeRol(Partida p){
         p.fiPartidaTrampos(10);
     }
