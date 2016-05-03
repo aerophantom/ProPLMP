@@ -504,8 +504,12 @@ public class Partida {
         public void descobrirCarta(int indexJugador, int indexCarta){
             _Jugadors.get(indexJugador).ensenyarCarta(indexCarta);
         }
-        public void intercanviarCartes(){
-            
+        public void intercanviarCartes(int indexJugador1, int indexCartaJugador1, int indexJugador2, int indexCartaJugador2){
+        /**
+         * PRE: tots els index >= 0. Els indexos jugador han de ser < _Jugador.size().
+         * Els indexos de carta han de ser < _nCartesPerJugador
+         * POST: 
+         */
         }
         public void fiPartidaTrampos(int nouLimit){
             _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
