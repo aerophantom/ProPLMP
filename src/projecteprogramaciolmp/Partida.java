@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
     // Atributs
-    // --------------------
+    // ---------------------
     private Moneda _monedesJusticia; // Monedes del palau de justícia
     private Moneda _monedesBanc; // Monedes del banc nacional
     private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
