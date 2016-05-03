@@ -445,7 +445,7 @@ public class Partida {
             }
         }*/
                      
-        public void actualitzaJugador(){
+        public void actualitzaIndexJugador(){
         // Pre: --
         // Post: Actualitza el valor de indexExecutar segons el ordre del jugador que toqui
             _indexExecutador = _ordre.get(_indexOrdre);
@@ -483,7 +483,7 @@ public class Partida {
                     _Jugadors.get(_ordre.get(j)).mostraEstadistiques(_ordre.get(j));
             }
             while (!partidaAcabada()){
-                actualitzaJugador();
+                actualitzaIndexJugador();
                 System.out.println("");
                 System.out.println("Ara juga el jugador "+_indexExecutador);
                 System.out.println("Escull un rol dels disponibles");
@@ -491,10 +491,10 @@ public class Partida {
                      _rolsDisp.get(q).ensenya();
                 }
                 System.out.print("Elecció: ");
-
+  
                 Scanner teclat= new Scanner(System.in);
                 String rol = teclat.nextLine();
-
+                // aqui aniria interrupcions();
                 Rol juga = _rolsDisp.get(buscaCarta(rol)).getRolCarta();
                 _Jugadors.get(_indexExecutador).nouRol(juga);
                 _Jugadors.get(_indexExecutador).accioDeRol(this);
