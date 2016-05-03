@@ -23,12 +23,15 @@ public class Accio {
     public void intercanviarCartes(){
         
     }
+    
     public void consultaCarta(){
         
     }
+    
     public void accioDeRol(Partida p){
         accioRol.accioDeRol(p);
     }
+    
     public boolean decidir() {
         Scanner teclat= new Scanner(System.in);
         System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");

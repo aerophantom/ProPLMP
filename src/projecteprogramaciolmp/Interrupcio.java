@@ -16,7 +16,6 @@ public class Interrupcio {
     private ArrayList<Integer> _vectorInterrupcions;
     
     public Interrupcio() {
-        
         _vectorInterrupcions= new ArrayList<> ();
     }
     
@@ -36,7 +35,7 @@ public class Interrupcio {
             
             if (i!=p.getIndexOrdre()){
                 
-               System.out.println("vols interrompre?");
+               System.out.println("Vols interrompre?");
                volInterrompre=p.preguntarJugador(i);
                 
                 if (volInterrompre) {
@@ -53,6 +52,7 @@ public class Interrupcio {
      */
         return !_vectorInterrupcions.isEmpty();
     }
+
     
     
     

@@ -21,7 +21,7 @@ public class Bisbe extends Rol {
     
     }
     
-    @Override
+   // @Override
     public void accioDeRol(Partida p){
     /**
      * PRE: --
@@ -42,9 +42,13 @@ public class Bisbe extends Rol {
             if(i==aux.size())
                 i--;
             p.afegirMonedesJugador(aux.get(i), -2);//restar monedes al jugador escollit
-            p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);//afegir monedes al jugador executador
+            //afegir monedes al jugador executador
             //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM
             
         }
+        else{
+            p.afegirMonedesJugador(aux.get(0), -2);
+        }
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);
     }
 }

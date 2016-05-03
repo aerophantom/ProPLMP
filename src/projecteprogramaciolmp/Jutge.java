@@ -22,5 +22,10 @@ public class Jutge extends Rol{
         
         _nomRol="Jutge";
     }
+    @Override
+    public void accioDeRol(Partida p){
+        Moneda aux= p.buidaPalauJusticia();
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), aux.retornaQuantitat());
+    }
     
 }
