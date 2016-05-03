@@ -59,16 +59,16 @@ public class Partida {
         // Pre: --
         // Post: Retorna un vector amb el/s index de la taula _Jugadors amb els jugador/s més rics
             //PER COMPLETAR
-            Moneda topMonedas= new Moneda();                                           // El jugador més ric tindrà topMonedes
+            Moneda topMonedes= new Moneda();                                           // El jugador més ric tindrà topMonedes
             ArrayList<Integer> retorn= new ArrayList<>();                              // Array de retorn dels jugadors més rics de la partida
             for(int i= 0; i<_Jugadors.size(); i++){                                   // Per a tots els jugadors
-                if(_Jugadors.get(i).retornaMonedes().compareTo(topMonedas) >= 0){      // Si les monedes del jugador són majors que topMonedes
-                    topMonedas.actualitzarMonedes(_Jugadors.get(i).retornaMonedes());  // Actualitza topMonedes
+                if(_Jugadors.get(i).retornaMonedes().compareTo(topMonedes) >= 0){      // Si les monedes del jugador són majors que topMonedes
+                    topMonedes.actualitzarMonedes(_Jugadors.get(i).retornaMonedes());  // Actualitza topMonedes
               
                 }
             }
             for(int j= 0; j<_Jugadors.size();j++){                                  // Per a tots els jugadors
-                if(_Jugadors.get(j).retornaMonedes().compareTo(topMonedas) == 0){   // Mira si algun jugador té topMonedes
+                if(_Jugadors.get(j).retornaMonedes().compareTo(topMonedes) == 0){   // Mira si algun jugador té topMonedes
                     retorn.add(j);                                                  // Afageix al array
                 }
             }
@@ -496,6 +496,7 @@ public class Partida {
                     if(!escollida && i==_nCartesPerJugador)
                         i= 0;
                 }
+                retorn=i;
             }
             return retorn;
         }

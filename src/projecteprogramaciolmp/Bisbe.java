@@ -28,7 +28,7 @@ public class Bisbe extends Rol {
      * POST: 
      */
         ArrayList<Integer> aux= p.buscarJugadorMesRic();
-        if(aux.size()>1){//hi han dos jugadors rics
+        if(aux.size()>1){//hi ha dos jugadors rics
             boolean escollit= false;
             int i= 0;
             
@@ -43,7 +43,7 @@ public class Bisbe extends Rol {
                 i--;
             p.afegirMonedesJugador(aux.get(i), -2);//restar monedes al jugador escollit
             //afegir monedes al jugador executador
-            //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM
+            //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM, O FER QUE EL WHILE NO PLEGUI FINS UNA ELECCIO.
             
         }
         else{
