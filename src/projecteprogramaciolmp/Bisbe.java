@@ -21,8 +21,8 @@ public class Bisbe extends Rol {
     
     }
     
-   // @Override
-public void accioDeRol(Partida p){
+   @Override
+    public void accioDeRol(Partida p){
     /**
      * PRE: --
      * POST: 

@@ -33,6 +33,7 @@ public class Espia extends Rol{
         System.out.print("Una vegada vista la carta del jugador, vols fer intercanvi? (si dius no es fara intercanvi fals)");
         if(p.preguntarJugador(p.obtIndexJugadorExecutador())){
             //fer intercanvi
+            p.intercanviarCartes(p.obtIndexJugadorExecutador(), 0, aux.get(0), nCarta);//<--- nCarta hauria de ser 0 SEMPRE ja que nomes hi ha una carta per jugador
         }
         System.out.print("Intercanvi fet (o no, MUAJAJA");
     }
