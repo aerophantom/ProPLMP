@@ -11,14 +11,13 @@ public class Partida {
     private Moneda _monedesJusticia; // Monedes del palau de justícia
     private Moneda _monedesBanc; // Monedes del banc nacional
     private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
-    private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
+    private int _indexExecutador; // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;
     private int _monedesTotals;
     private int _numJugadors;
     private ArrayList<Jugador> _Jugadors;
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
-    private int _indexJugadorAccio;
     private int _nCartesPerJugador;
     private boolean _fiPartida;
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
@@ -445,8 +444,36 @@ public class Partida {
         // Post: 
             _Jugadors.get(nJugador).afegirMonedes(nMonedes);
         }
-
-
+        public int numeroTorn(){
+            return _indexOrdre;
+        }
+        public int obtIndexJugadorExecutador(){
+            return _indexExecutador;
+        }
+        public ArrayList<Integer> escollirJugadors(int n){
+        /**
+         * PRE: n>0
+         * POST: retorna un array que conte els index de <n> _Jugadors escollits pel
+         * jugador amb el torn actual
+         */
+            int i= 0;
+            int nEscollits= 0;
+            ArrayList<Integer> retorn= new ArrayList<>();
+            System.out.print("Escull un total de "+n+" jugadors:");
+            while(i<_Jugadors.size() && nEscollits<n){
+                if(i!=_ordre.get(_indexOrdre)){
+                    System.out.print("Vols escollir el jugador "+i+" ?");
+                    if(_Jugadors.get(_ordre.get(_indexOrdre)).decidir()){
+                        retorn.add(i);
+                        nEscollits++;
+                    }  
+                }
+                i++;
+                if(i==_Jugadors.size() && nEscollits<n)
+                        i= 0;
+            }
+            return retorn;
+        }
         public int escollirCarta(int nJugador){
         // Pre: --
         // Post: Retorna el índex del array de cartes de _Jugadors[nJugador]. EN cas de que no tingui més d'una carta, retorna 0
