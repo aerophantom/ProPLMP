@@ -94,11 +94,7 @@ public class Partida {
             return fiPartida;
         }
                
-        public boolean preguntarJugador(int i) {
-        // Pre: i>=0 && i<=nJugadors
-        // Post: Retorna la decisió del jugador amb index en l'array i
-            return _Jugadors.get(i).decidir();     
-        }
+        
         
         public boolean comprovarCartaIJugador() {
         // PER FER
@@ -118,6 +114,11 @@ public class Partida {
         
         public boolean preguntarJugadorActual(){
             return _Jugadors.get(_ordre.get(_indexOrdre)).decidir();
+        }
+        public boolean preguntarJugador(int i) {
+        // Pre: i>=0 && i<=nJugadors
+        // Post: Retorna la decisió del jugador amb index en l'array i
+            return _Jugadors.get(i).decidir();     
         }
         
         public ArrayList<Integer> escollirJugadors(int n){
@@ -482,7 +483,7 @@ public class Partida {
         // Pre: --
         // Post: Retorna el índex del array de cartes de _Jugadors[nJugador]. EN cas de que no tingui més d'una carta, retorna 0
             int retorn= 0;
-            if(_nCartesPerJugador!=0){
+            if(_nCartesPerJugador>1){
                 int i=0;
                 boolean escollida= false;
                 System.out.print("Escull una carta del jugador "+ nJugador +": ");
@@ -499,7 +500,9 @@ public class Partida {
             }
             return retorn;
         }
-        
+        public void descobrirCarta(int indexJugador, int indexCarta){
+            _Jugadors.get(indexJugador).ensenyarCarta(indexCarta);
+        }
         public void intercanviarCartes(){
             
         }
