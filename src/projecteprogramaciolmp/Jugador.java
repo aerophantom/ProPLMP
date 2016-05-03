@@ -30,7 +30,7 @@ public abstract class Jugador {
         _accion= new Accio();
         _monedes= new Moneda(monedes);
         _cartesJugador = new ArrayList<> (3);
-        
+        _cartaJugada = 0;
     }
     
     // ============================================================
@@ -38,7 +38,6 @@ public abstract class Jugador {
     // ============================================================
        
      public Carta getCartaActual() {
-         
          return _cartesJugador.get(_cartaJugada);
      }
     
@@ -80,5 +79,13 @@ public abstract class Jugador {
            for(int i=0; i<_cartesJugador.size(); i++){
                _cartesJugador.get(i).ensenya();
            }
+       }
+       
+       public void accioDeRol(Partida p){
+           _accion.accioDeRol(p);
+       }
+       
+       public void nouRol (Rol r){
+           _accion.nouRol(r);
        }
 }

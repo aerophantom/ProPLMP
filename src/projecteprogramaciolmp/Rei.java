@@ -15,7 +15,6 @@ public class Rei extends Rol{
     // ============================================================
     
     public Rei() {
-        
         _nomRol="Rei";
     }
     

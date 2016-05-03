@@ -17,6 +17,11 @@ public abstract class Rol{
     public Rol(){
         _nomRol="none";
     }
+    
+    public Rol(String nom){
+        _nomRol = nom;
+    }
+    
     public int compareTo(Rol in){
         return _nomRol.compareTo(in._nomRol);
     }
