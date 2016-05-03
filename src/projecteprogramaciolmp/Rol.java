@@ -25,7 +25,8 @@ public abstract class Rol{
     public void mostrarRol(){
         System.out.print(_nomRol);
     }
-    @Override
+    
+    
     public void accioDeRol(Partida p){
        /**
         * res

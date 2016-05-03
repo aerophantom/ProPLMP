@@ -462,7 +462,7 @@ public class Partida {
             
         }
         public void fiPartidaTrampos(int nouLimit){
-            _fiPartida= nouLimit<=_Jugadors.get(_indexJugadorAccio).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
+            _fiPartida= nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
         }
         public int obtMonedesJugador(int index){
             return _Jugadors.get(index).retornaMonedes().retornaQuantitat();
