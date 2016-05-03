@@ -466,6 +466,9 @@ public class Partida {
         public void intercanviarCartes(){
             
         }
+        public void fiPartidaTrampos(int nouLimit){
+            _fiPartida= nouLimit<=_Jugadors.get(_indexJugadorAccio).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
+        }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
