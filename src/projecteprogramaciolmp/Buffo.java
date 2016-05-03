@@ -22,6 +22,7 @@ public class Buffo extends Rol {
         
         _nomRol="Buffo";
     }
+    @Override
     public void accioDeRol(Partida p){
         
         //escullo dos jugadors, en forma de index corresponents a _Jugadors

@@ -470,6 +470,16 @@ public class Partida {
         public int obtMonedesJugador(int index){
             return _Jugadors.get(index).retornaMonedes().retornaQuantitat();
         }
+        public Moneda buidaPalauJusticia(){
+        /**
+         * PRE:--
+         * POST: Retorna un contenidor Moneda amb la quantitat de monedes total
+         * del palau de justicia. Ara el palau de justicia te 0 monedes.
+         */
+            Moneda aux= new Moneda(_monedesJusticia.retornaQuantitat());
+            _monedesJusticia.actualitzarMonedes(new Moneda());
+            return aux;
+        }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
