@@ -40,7 +40,9 @@ public abstract class Jugador {
      public Carta getCartaActual() {
          return _cartesJugador.get(_cartaJugada);
      }
-    
+     public Carta getCarta(int indexCarta){
+         return _cartesJugador.get(indexCarta);
+     }
     // ============================================================
     // Mètodes MODIFICADORS
     // ============================================================

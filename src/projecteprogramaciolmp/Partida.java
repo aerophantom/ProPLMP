@@ -508,8 +508,20 @@ public class Partida {
         /**
          * PRE: tots els index >= 0. Els indexos jugador han de ser < _Jugador.size().
          * Els indexos de carta han de ser < _nCartesPerJugador
-         * POST: 
+         * POST: Intercanvia les cartes entre el jugador1 i jugador2 (carta1 <--> carta2).
          */
+            //copiar cartes abans d'esborrar
+            Carta aux1= _Jugadors.get(indexJugador1).getCarta(indexCartaJugador1);
+            Carta aux2= _Jugadors.get(indexJugador2).getCarta(indexCartaJugador2);
+            
+            //esborrar cartes corresponents
+            _Jugadors.get(indexJugador1).esborrarCarta(indexCartaJugador1);
+            _Jugadors.get(indexJugador2).esborrarCarta(indexCartaJugador2);
+            
+            //afegir cartes copiades
+            _Jugadors.get(indexJugador1).afegirCarta(aux2);
+            _Jugadors.get(indexJugador1).afegirCarta(aux1);
+            
         }
         public void fiPartidaTrampos(int nouLimit){
             _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
