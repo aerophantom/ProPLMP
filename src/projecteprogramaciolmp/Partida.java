@@ -371,6 +371,10 @@ public class Partida {
                     
                 else if(opcio == 1) ferConsulta
                 else ferAccioRol
+                
+                Accio a;
+            
+                a.accioDeRol(this);
             
             
             
