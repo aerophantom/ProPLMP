@@ -27,10 +27,28 @@ public class Lladre extends Rol {
         int nJugadors= p.getNumJugadors();
         
         if(nJugadors==2){
-            
+            if(posicioActual==1){
+                p.afegirMonedesJugador(0, -1);
+            }
+            else{
+                p.afegirMonedesJugador(1,-1);
+            }
+             p.afegirMonedesJugador(posicioActual,1);    
         }
         else{
-            
+            if(posicioActual==0){
+                p.afegirMonedesJugador(1,-1);
+                p.afegirMonedesJugador(nJugadors-1,1);
+            }
+            else if(posicioActual==nJugadors-1){
+                p.afegirMonedesJugador(0,-1);
+                p.afegirMonedesJugador(posicioActual-1,1);
+            }
+            else{
+                p.afegirMonedesJugador(posicioActual-1,-1);
+                p.afegirMonedesJugador(posicioActual+1,1);
+            }
+            p.afegirMonedesJugador(posicioActual,2);
         }
     }
     

@@ -11,14 +11,13 @@ public class Partida {
     private Moneda _monedesJusticia; // Monedes del palau de justícia
     private Moneda _monedesBanc; // Monedes del banc nacional
     private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
-    private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
+    private int _indexExecutador; // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;
     private int _monedesTotals;
     private int _numJugadors;
     private ArrayList<Jugador> _Jugadors;
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
-    private int _indexJugadorAccio;
     private int _nCartesPerJugador;
     private boolean _fiPartida;
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
@@ -412,7 +411,7 @@ public class Partida {
             return _indexOrdre;
         }
         public int obtIndexJugadorExecutador(){
-            return _indexJugadorAccio;
+            return _indexExecutador;
         }
         public ArrayList<Integer> escollirJugadors(int n){
         /**
