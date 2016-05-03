@@ -11,15 +11,15 @@ public class Partida {
     private Moneda _monedesJusticia; // Monedes del palau de justícia
     private Moneda _monedesBanc; // Monedes del banc nacional
     private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
-    private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
+    private int _indexExecutador; // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;
     private int _monedesTotals;
     private int _numJugadors;
     private ArrayList<Jugador> _Jugadors;
     private ArrayList<Carta>  _mazo;
     private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
-    private int _indexJugadorAccio;
     private int _nCartesPerJugador;
+    private boolean _fiPartida;
     /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
     establexi aquest ordre (pag. 9 - 1er parragref - PDF)
     */
@@ -142,15 +142,15 @@ public class Partida {
             
             //Implementar quan s'acabi el torn d'un jugador.
             
-            boolean fiPartida= false;
+            _fiPartida= false;
             int i= 0;
-            while(i<_Jugadors.size() && !fiPartida){
+            while(i<_Jugadors.size() && !_fiPartida){
                  Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();
                  int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();
-                 fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
+                 _fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar;
                  i++;
             }
-            return fiPartida;
+            return _fiPartida;
         }
         
         public void trobaPosCarta(String nom){
@@ -167,10 +167,7 @@ public class Partida {
     // Mètodes MODIFICADORS
     // ============================================================
         
-        public boolean preguntarJugador(int i) {
-            
-            return _Jugadors.get(i).decidir();     
-        }
+        
         
         public boolean comprovarCartaIJugador() {
             
@@ -178,7 +175,7 @@ public class Partida {
             
             
         }
-        */
+        
         
         public void repartirCartes () {
         // Pre: --
@@ -398,7 +395,10 @@ public class Partida {
         }
         
         public boolean preguntarJugadorActual(){
-            return _Jugadors.get(_ordre.get(_jugadorActual)).decidir();
+            return _Jugadors.get(_ordre.get(_indexOrdre)).decidir();
+        }
+        public boolean preguntarJugador(int i) {
+            return _Jugadors.get(i).decidir();     
         }
         public void afegirMonedesJugador(int nJugador, int nMonedes){
         /**
@@ -411,7 +411,7 @@ public class Partida {
             return _indexOrdre;
         }
         public int obtIndexJugadorExecutador(){
-            return _indexJugadorAccio;
+            return _indexExecutador;
         }
         public ArrayList<Integer> escollirJugadors(int n){
         /**
@@ -460,6 +460,15 @@ public class Partida {
                 }
             }
             return retorn;
+        }
+        public void intercanviarCartes(){
+            
+        }
+        public void fiPartidaTrampos(int nouLimit){
+            _fiPartida= nouLimit<=_Jugadors.get(_indexJugadorAccio).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
+        }
+        public int obtMonedesJugador(int index){
+            return _Jugadors.get(index).retornaMonedes().retornaQuantitat();
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors

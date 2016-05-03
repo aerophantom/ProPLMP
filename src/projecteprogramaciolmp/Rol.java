@@ -11,7 +11,7 @@ package projecteprogramaciolmp;
  *
  * @author aerop
  */
-public abstract class Rol extends Accio{
+public abstract class Rol{
     String _nomRol;//identificatiu i per tant unic per cada rol diferent.
     
     public Rol(){
@@ -26,8 +26,10 @@ public abstract class Rol extends Accio{
         System.out.print(_nomRol);
     }
     @Override
-    public void accioDeRol(Partida p, Interrupcio i){
-        
+    public void accioDeRol(Partida p){
+       /**
+        * res
+        */ 
     }
     
     @Override
