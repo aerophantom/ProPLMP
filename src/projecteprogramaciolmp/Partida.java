@@ -6,22 +6,26 @@ import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
-    
     // Atributs
-    // -----------------------------------------------------------------------------------------------------------------------------
-        private Moneda _monedesJusticia; // Monedes del palau de justícia
-        private Moneda _monedesBanc; // Monedes del banc nacional
-        private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
-        private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
-        private int _monedesPerGuanyar;
-        private int _monedesTotals;
-        private int _numJugadors;
-        private ArrayList<Jugador> _Jugadors;
-        private ArrayList<Carta>  _mazo;
-        private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
-        private int _indexJugadorAccio;
-        private int _nCartesPerJugador;
-    // ------------------------------------------------------------------------------------------------------------------------------
+    // --------------------
+    private Moneda _monedesJusticia; // Monedes del palau de justícia
+    private Moneda _monedesBanc; // Monedes del banc nacional
+    private int _indexOrdre; // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
+    private int _indexExecutador; // Index de l'array que indica el jugador que executarà l'acció de rol.
+    private int _monedesPerGuanyar;
+    private int _monedesTotals;
+    private int _numJugadors;
+    private ArrayList<Jugador> _Jugadors;
+    private ArrayList<Carta>  _mazo;
+    private ArrayList<Integer> _ordre; // array amb l'ordre de tirades. L'int determina la posició del vector del jugador.
+    private int _indexJugadorAccio;
+    private int _nCartesPerJugador;
+    private boolean _fiPartida;
+    /*COMENTARI: L'ordre es arbitrari: llavors hem d'implementar un metode que 
+    establexi aquest ordre (pag. 9 - 1er parragref - PDF)
+    */
+    // --------------------
+    
     
         
 ////// ================================================================================================================= //////
@@ -207,7 +211,6 @@ public class Partida {
             }
           */
         }
-       
         
         public void trobaPosCarta(String nom){
         // Pre: nom és el jugador de algun rol del joc
@@ -221,7 +224,7 @@ public class Partida {
             _mazo.remove(pos);
         }
 
-       
+        
         public void repartirCartes () {
         // Pre: --
         // Post: Reparteix les cartes als diferents jugadors de la partida
@@ -366,6 +369,9 @@ public class Partida {
             System.out.println("");
             System.out.println("Aquest es el resultat");
             mostrarCartesPerJugadors();
+            
+            // Proves de execució de rols
+            
             /*
             while(!partidaAcabada){
             }          
@@ -468,6 +474,9 @@ public class Partida {
         }
         public void fiPartidaTrampos(int nouLimit){
             _fiPartida= nouLimit<=_Jugadors.get(_indexJugadorAccio).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
+        }
+        public int obtMonedesJugador(int index){
+            return _Jugadors.get(index).retornaMonedes().retornaQuantitat();
         }
     /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors

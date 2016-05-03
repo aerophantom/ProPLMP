@@ -22,5 +22,16 @@ public class Lladre extends Rol {
         
         _nomRol="Lladre";
     }
+    public void accioDeRol(Partida p){
+        int posicioActual= p.obtIndexJugadorExecutador();//lladre
+        int nJugadors= p.getNumJugadors();
+        
+        if(nJugadors==2){
+            
+        }
+        else{
+            
+        }
+    }
     
 }
