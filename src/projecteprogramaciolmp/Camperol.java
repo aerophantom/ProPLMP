@@ -15,8 +15,10 @@ public class Camperol extends Rol {
     // Mètodes CONSTRUCTORS
     // ============================================================
     
-    public Camperol() {
-        
+    public Camperol() {/**
+     * PRE:--
+     * POST: Seteja el identificador de rol a "Camperol"
+     */
         _nomRol="Camperol";
     }
 }
