@@ -22,6 +22,7 @@ public abstract class Rol{
         _nomRol = nom;
     }
     
+    
     public int compareTo(Rol in){
         return _nomRol.compareTo(in._nomRol);
     }

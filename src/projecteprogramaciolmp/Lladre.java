@@ -44,5 +44,4 @@ public class Lladre extends Rol {
             p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit),2);
         }
     
-    
 }

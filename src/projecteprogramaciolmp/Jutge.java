@@ -8,10 +8,7 @@
 
 package projecteprogramaciolmp;
 
-/**
- *
- * @author aerop
- */
+
 public class Jutge extends Rol{
     
      // ============================================================
@@ -19,9 +16,9 @@ public class Jutge extends Rol{
     // ============================================================
     
     public Jutge() {
-        
         _nomRol="Jutge";
     }
+    
     @Override
     public void accioDeRol(Partida p){
         Moneda aux= p.buidaPalauJusticia();
