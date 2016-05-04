@@ -43,14 +43,17 @@ public abstract class Jugador {
     
      public void mostraEstadistiques(int j){
          System.out.println("Les monedes del jugador "+j+" són: "+_monedes.retornaQuantitat());
+         /*
          for(int i=0; i < _cartesJugador.size(); i++){
              _cartesJugador.get(i).ensenya();
          }
+        */
      }
      
      public Carta getCarta(int indexCarta){
          return _cartesJugador.get(indexCarta);
      }
+     
     // ============================================================
     // Mètodes MODIFICADORS
     // ============================================================
