@@ -6,6 +6,7 @@
 ////////////////////////////////
 package projecteprogramaciolmp;
 import java.util.ArrayList;
+import java.util.Scanner;
 public abstract class Jugador {
     // Atributs
     // --------------------
@@ -93,6 +94,19 @@ public abstract class Jugador {
        public void ensenyarCarta(int indexCarta){
            _cartesJugador.get(indexCarta).mostrarCarta();
        }
+       
+       public void escollirCarta() {
+           
+           System.out.println("Escull una carta");
+           for (int i=0;i<_cartesJugador.size();i++) {
+               System.out.println("carta "+i);
+           }
+           Scanner teclat= new Scanner(System.in);
+           int carta = teclat.nextLine();
+           // falta implementar el codi de triar la carta, basicament donar valor a _cartaJugada
+           
+       }
+       
        public void accioDeRol(Partida p){
            _accion.accioDeRol(p);
        }

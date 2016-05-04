@@ -33,7 +33,7 @@ public class Interrupcio {
         boolean volInterrompre=false;
         for (int i=0;i<p.getNumJugadors();i++) {
             
-            if (i!=p.getIndexOrdre()){
+            if (i!=p.obtIndexJugadorExecutador()){
                 
                System.out.println("Vols interrompre?");
                volInterrompre=p.preguntarJugador(i);
@@ -42,6 +42,7 @@ public class Interrupcio {
                     _vectorInterrupcions.add(i);
                 }
              }
+            else  _vectorInterrupcions.add(i);
         }
         
     }
