@@ -57,6 +57,7 @@ public class Partida {
         public int getIndexExecutadorOrdre(){
             return _Jugadors.indexOf(_indexExecutador);
         }
+        
         public int obtIndexCorregit(int indexOrdre){
         /**
          * PRE: int >= 0
@@ -469,20 +470,19 @@ public class Partida {
             descartarCartes();
             repartirCartes();
             
-            System.out.println("Aquest es el capital del Banc Nacional: "+_monedesBanc.retornaQuantitat());
-            System.out.println("Aquest es el capital del Palau de Justicia: "+_monedesJusticia.retornaQuantitat());
-            System.out.println("");
             System.out.println("Aquest es el resultat");
             mostrarCartesPerJugadors();
             System.out.println("");
             
             
             boolean acabar = false;
-            System.out.println("Estadístiques dels jugadors");
+            /*System.out.println("Estadístiques dels jugadors");
             for (int j=0; j < _Jugadors.size(); j++){
                     _Jugadors.get(_ordre.get(j)).mostraEstadistiques(_ordre.get(j));
             }
-            while (!partidaAcabada()){
+           */
+            while (!acabar){
+                
                 actualitzaIndexJugador();
                 System.out.println("");
                 System.out.println("Ara juga el jugador "+_indexExecutador);
@@ -584,15 +584,15 @@ public class Partida {
          * Els indexos de carta han de ser < _nCartesPerJugador
          * POST: Intercanvia les cartes entre el jugador1 i jugador2 (carta1 <--> carta2).
          */
-            //copiar cartes abans d'esborrar
+            // Copies les cartes abans de fer res
             Carta aux1= _Jugadors.get(indexJugador1).getCarta(indexCartaJugador1);
             Carta aux2= _Jugadors.get(indexJugador2).getCarta(indexCartaJugador2);
             
-            //esborrar cartes corresponents
+            // Esborrar cartes corresponents
             _Jugadors.get(indexJugador1).esborrarCarta(indexCartaJugador1);
             _Jugadors.get(indexJugador2).esborrarCarta(indexCartaJugador2);
             
-            //afegir cartes copiades
+            // Afegir cartes copiades
             _Jugadors.get(indexJugador1).afegirCarta(aux2);
             _Jugadors.get(indexJugador1).afegirCarta(aux1);
             
