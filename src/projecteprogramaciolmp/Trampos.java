@@ -10,7 +10,7 @@ package projecteprogramaciolmp;
 
 /**
  *
- * @author aerop
+ * @author aerop  
  */
 public class Trampos extends Rol {
     
