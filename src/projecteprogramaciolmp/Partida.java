@@ -447,7 +447,21 @@ public class Partida {
         
         
         
- 
+        public void interrupcions(Rol rol) {
+             // Pre: --
+             // Post: els jugadorsque interrompen mentiders paguen la multa, al que diu la veritat se li guarda l'index a _indexExecutador.
+            
+            Interrupcio intr = new Interrupcio();
+            intr.preguntarInterrupcio(this); // li passem la partida actual com a parametre
+            
+            while (intr.hiHaInterrupcions()) {
+               int index=intr.getIndex(); // retornem un index i alhora l'esborrem del vector d'interrupcions.
+               if (_Jugadors.get(index).getCartaActual().getRolCarta().equals(rol)) { // falta implementar la part d'escollir la carta que vol mostrar.
+                   _indexExecutador=index;
+            }
+               else  _Jugadors.get(index).pagarMulta();
+            }
+        }
                      
         public void actualitzaIndexJugador(){
         // Pre: --
@@ -491,7 +505,9 @@ public class Partida {
                 
                 actualitzaIndexJugador();
                 System.out.println("");
-                System.out.println("Ara es el torn del jugador " + _indexExecutador);
+                System.out.println("Ara juga el jugador "+_indexExecutador);
+                // escollir carta
+                _Jugadors.get(_indexExecutador).escollirCarta(); // en aquesta accio es guarda l'index de carta actual.
                 System.out.println("Escull un rol dels disponibles");
                 for (int q=0; q<_rolsDisp.size(); q++){
                      _rolsDisp.get(q).ensenya();
@@ -500,8 +516,8 @@ public class Partida {
   
                 Scanner teclat= new Scanner(System.in);
                 String rol = teclat.nextLine();
-                // aqui aniria interrupcions();
                 Rol juga = _rolsDisp.get(buscaCarta(rol)).getRolCarta();
+                interrupcions(juga);
                 _Jugadors.get(_indexExecutador).nouRol(juga);
                 _Jugadors.get(_indexExecutador).accioDeRol(this);
                 System.out.println();
