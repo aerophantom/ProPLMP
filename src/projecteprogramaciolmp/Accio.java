@@ -10,18 +10,23 @@ import java.util.*;
  * @author aerop
  */
 public class Accio {
-    Rol accioRol;
+    Rol _accioRol;
     public Accio(){
         
     }
     public Accio(Rol r){
-        accioRol= r;
+        _accioRol= r;
     }
     public void nouRol(Rol r){
-        accioRol= r;
+        _accioRol= r;
     }
-    public void intercanviarCartes(){
-        
+    public void intercanviarCartes(Partida p){
+        System.out.println("Selecciona una carta del mazo");
+        p.mostraCartesMazo();
+        //per acabar
+    }
+    public Rol getRol(){
+        return _accioRol;
     }
     
     public void consultaCarta(Jugador j) {
@@ -33,7 +38,11 @@ public class Accio {
         System.out.println("Quina carta vols consular?"); 
         Scanner teclat= new Scanner(System.in);
         int carta = teclat.nextInt();
-        while (carta)
+        while (carta<0 || carta>j.nCartes()-1){
+                 System.out.println();
+                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
+                 carta = teclat.nextInt();
+            }
         String rol=j.getCarta(carta).getRolCarta().getRol();
         System.out.println("La carta "+carta+ " té el rol de "+rol);
         
@@ -41,7 +50,7 @@ public class Accio {
     }
     
     public void accioDeRol(Partida p){
-        accioRol.accioDeRol(p);
+        _accioRol.accioDeRol(p);
     }
     
     public boolean decidir() {
