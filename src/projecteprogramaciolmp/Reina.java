@@ -8,22 +8,25 @@
 
 package projecteprogramaciolmp;
 
-/**
- *
- * @author aerop
- */
 public class Reina extends Rol {
     
      // ============================================================
     // Mètodes CONSTRUCTORS
     // ============================================================
     
-    public Reina() {
+    public Reina() {/**
+     * PRE:--
+     * POST: L'identificador de Rol ara es "Reina".
+     */
         _nomRol="Reina";
     }
     
     @Override
-    public void accioDeRol(Partida p){
+    public void accioDeRol(Partida p){/**
+     * PRE: <p> setejat.
+     * POST: Resta dos monedes al banc de <p> i s'afegeix la mateixa quantitat al
+     * compte corrent del jugador executador.
+     */
         p.treureMonedesBanc(2);
         p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);
     }

@@ -15,40 +15,43 @@ public class Bisbe extends Rol {
     // Mètodes CONSTRUCTORS
     // ============================================================
     
-    public Bisbe() {
-        
+    public Bisbe() {/**
+     * PRE:--
+     * POST: l'identificador del rol ara es "Bisbe"
+     */        
         _nomRol="Bisbe";
     
     }
     
    @Override
-    public void accioDeRol(Partida p){
-    /**
-     * PRE: --
-     * POST: 
-     */
-        ArrayList<Integer> aux= p.buscarJugadorMesRic();
-        if(aux.size()>1){//hi ha dos jugadors rics
-            boolean escollit= false;
+    public void accioDeRol(Partida p){/**
+     * PRE: <p> setejat
+     * POST: Es roba dos monedes al jugador mes ric i s'afegeixen al executador.
+     * En cas d'haver-n'hi dos de rics, l'executador selecciona la victima.
+     */ 
+        //RECOLLIDA DADES
+        ArrayList<Integer> aux= p.buscarJugadorMesRic();                        //Es guarda al array els indexos dels jugadors rics
+        
+        //TRACTAMENT DADES
+        if(aux.size()>1){                                                       //Si hi ha més d'un jugador ric
+            boolean escollit= false;                
             int i= 0;
             
-            while(i<aux.size() && !escollit){
-                System.out.print("Vols desplumar a aquest jugador? - ");
-                p.mostrarInfoJugador(aux.get(i));
-                escollit= p.preguntarJugadorActual();
+            while(i<aux.size() && !escollit){                                   //Recorre els jugadors rics
+                System.out.print("Vols desplumar a aquest jugador? - ");        //Es pregunta per cada iteracio
+                p.mostrarInfoJugador(aux.get(i));                               //si es vol escullir aquest jugador
+                escollit= p.preguntarJugadorActual();                           //com a victima
                 if (!escollit)
                     i++;
+                if(i==aux.size() && !escollit)
+                    i= 0;
             }
-            if(i==aux.size())
-                i--;
-            p.afegirMonedesJugador(aux.get(i), -2);//restar monedes al jugador escollit
-            //afegir monedes al jugador executador
-            //DE MOMENT SI NO S'ECULL A CAP JUGADOR, ES DESPLUMARA AL ULTIM, O FER QUE EL WHILE NO PLEGUI FINS UNA ELECCIO.
             
+            p.afegirMonedesJugador(aux.get(i), -2);                             //Es resten les 2 monedes al jugador victima seleccionat pel executador              
         }
         else{
-            p.afegirMonedesJugador(aux.get(0), -2);
+            p.afegirMonedesJugador(aux.get(0), -2);                             //Es resten les 2 monedes al jugador victima seleccionat per partida
         }
-        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);
+        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);               //S'afegeixen dos monedes al executador
     }
 }

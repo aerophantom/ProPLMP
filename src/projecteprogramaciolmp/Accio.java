@@ -10,24 +10,23 @@ import java.util.*;
  * @author aerop
  */
 public class Accio {
-    
+///////////////////////////////ATRIBUTS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     Rol _accioRol;
     
+///////////////////////////////CONSTRUCTORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     public Accio(){
-        
     }
-    public Accio(Rol r){
+    public Accio(Rol r){/**
+     * PRE:--
+     * POST: Accio ara te com a rol <r>
+     */
         _accioRol= r;
     }
-    public void nouRol(Rol r){
-        _accioRol= r;
-    }
-    public void intercanviarCartes(Partida p){
-        System.out.println("Selecciona una carta del mazo");
-        p.mostraCartesMazo();
-        //per acabar
-    }
-    public Rol getRol(){
+///////////////////////////////CONSULTORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    public Rol getRol(){/**
+     * PRE:--
+     * POST: Retorna el rol de l'accio
+     */
         return _accioRol;
     }
     
@@ -35,7 +34,7 @@ public class Accio {
         
         System.out.println("Cartes a consultar: "); 
         for (int i=0;i<j.nCartes();i++){
-            System.out.println(i);   
+            System.out.println("Carta "+i);   
         }
         System.out.println("Quina carta vols consular?"); 
         Scanner teclat= new Scanner(System.in);
@@ -51,11 +50,10 @@ public class Accio {
         
     }
     
-    public void accioDeRol(Partida p){
-        _accioRol.accioDeRol(p);
-    }
-    
-    public boolean decidir() {
+    public boolean decidir() {/**
+     * PRE: --
+     * POST: Es retorna cert o fals en funcio de la decisió escrita per consola
+     */
         Scanner teclat= new Scanner(System.in);
         System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");
         String decisio = teclat.nextLine();
@@ -65,5 +63,29 @@ public class Accio {
         }
         return decisio.equals("Y");
         //return signal;
+    }
+    public void consultaCarta(Partida p){
+        p.escollirCarta(p.obtIndexJugadorExecutador());
+        //per acabar crec
+    }
+///////////////////////////////MODIFICADORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    public void nouRol(Rol r){/**
+     * PRE: <r> instanciat.
+     * POST: Accio ara té un nou rol.
+     */
+        _accioRol= r;
+    }
+    
+    public void intercanviarCartes(Partida p){
+        System.out.println("Selecciona una carta del mazo");
+        p.mostraCartesMazo();
+        //per acabar
+    }
+        
+    public void accioDeRol(Partida p){/**
+     * PRE: <p> setejat
+     * POST: Executa l'accio de rol que te actualment Accio.
+     */
+        _accioRol.accioDeRol(p);
     }
 }

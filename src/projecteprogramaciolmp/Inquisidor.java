@@ -23,19 +23,30 @@ public class Inquisidor extends Rol {
         _nomRol="Inquisidor";
     }
     @Override
-    public void accioDeRol(Partida p){
-        ArrayList<Integer> aux= new ArrayList<>();
-        aux= p.escollirJugadors(1);
-        System.out.println("Jugador "+ aux.get(0)+" t'han obligat a escollir un rol dels que tens. Si menteixes hauras de pagar 4 monedes al jugador executador");
-        p.setRolJugador(p.escollirRol(), aux.get(0)); // Actualitza el rol de la victima
-        p.escollirCarta(aux.get(0));
-        if(!p.checkPlayerRolCards(aux.get(0))){//SI no te el rol escollit a la carta seleccionada per ell
-            System.out.println("Mentideeeeer, hauras de sofrir i pagar 4 monedes al cabron del inquisidor!");
-            p.afegirMonedesJugador(aux.get(0), -4);
-            p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 4);
+    public void accioDeRol(Partida p){/**
+     * PRE: <p> setejat
+     * POST: El jugador executador guanyarà 4 monedes si el jugador que ha seleccionat
+     * acerta amb el rol que ha dit (comparant-la amb les seves cartes).
+     */
+        //RECOLLIDA DADES
+        ArrayList<Integer> aux= new ArrayList<>();                              //Array on es guardara l'index del jugador victima
+        aux= p.escollirJugadors(1);                                             //S'escull el jugador victima
+        System.out.println("Jugador "+ aux.get(0)+" t'han obligat a escollir un "
+                + "rol dels que tens. Si menteixes hauras de pagar 4 monedes al "
+                + "jugador executador");
+        
+        //TRACTAMENT DADES
+        p.setRolJugador(p.escollirRol(), aux.get(0));                           //S'escull un Rol i es guarda com a Rol actual al jugador victima
+        p.escollirCarta(aux.get(0));                                            //Jugador victima escull amb quina carta vol jugar (en aquest cas comparar)
+        if(!p.checkPlayerRolCards(aux.get(0))){                                 //SI no te el rol escollit a la carta seleccionada per ell
+            System.out.println("Mentideeeeer, hauras de sofrir i pagar 4 "
+                    + "monedes al cabron del inquisidor!");
+            p.afegirMonedesJugador(aux.get(0), -4);                             //Resto 4 monedes al jugador victima
+            p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 4);           //afegeixo 4 monedes al jugador executador
         }
         else{
-            System.out.println("Ufffff, has dit la veritat, aquest cop t'has lliurat d'una bona");
+            System.out.println("Ufffff, has dit la veritat, aquest cop t'has"   
+                    + " lliurat d'una bona");  
         }
     }
 }
