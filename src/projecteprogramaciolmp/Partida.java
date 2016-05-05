@@ -497,6 +497,11 @@ public class Partida {
             return juga;
         }
          
+        public void setRolJugador(Rol r, int i){
+           
+            
+            _Jugadors.get(i).nouRol(r);
+        }
         
         public void dinamicaDelJoc(){
         // Pre: --
