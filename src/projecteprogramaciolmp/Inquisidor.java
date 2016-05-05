@@ -26,6 +26,7 @@ public class Inquisidor extends Rol {
     public void accioDeRol(Partida p){
         ArrayList<Integer> aux= new ArrayList<>();
         aux= p.escollirJugadors(1);
+        System.out.print("Jugador "+ aux.get(0)+" t'han obligat a escollir un rol dels que tens. Si menteixes hauras de pagar 4 monedes al jugador executador");
         
     }
 }

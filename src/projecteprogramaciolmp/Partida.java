@@ -623,7 +623,7 @@ public class Partida {
         // Post: _fiPartida = true si el Jugador trampos ha superat el limit que imposa el seu rol
             _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
         }
-        
+        public 
 
         /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
