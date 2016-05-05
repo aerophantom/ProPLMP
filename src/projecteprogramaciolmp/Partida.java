@@ -659,6 +659,15 @@ public class Partida {
          */
             _Jugadors.get(indexJugador).escollirCarta();
         }
+        public void mostraCartesMazo(){/**
+         * PRE:--
+         * POST: Mostra per consola les cartes del mazo (carta 0, carta 1, etc)
+         */
+            for(int i= 0; i<_mazo.size(); i++){
+                System.out.println("Carta "+i);
+            }
+            
+        }
         /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si

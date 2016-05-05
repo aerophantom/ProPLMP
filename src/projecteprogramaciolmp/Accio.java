@@ -20,8 +20,10 @@ public class Accio {
     public void nouRol(Rol r){
         _accioRol= r;
     }
-    public void intercanviarCartes(){
-        
+    public void intercanviarCartes(Partida p){
+        System.out.println("Selecciona una carta del mazo");
+        p.mostraCartesMazo();
+        //per acabar
     }
     public Rol getRol(){
         return _accioRol;
