@@ -18,7 +18,9 @@ public class Lladre extends Rol {
     // Mètodes CONSTRUCTORS
     // ============================================================
     
-    public Lladre() {
+    public Lladre() {/**
+     * PRE:--
+     */
         
         _nomRol="Lladre";
     }

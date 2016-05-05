@@ -461,7 +461,7 @@ public class Partida {
                     if (_Jugadors.get(index).getCartaActual().getRolCarta().equals(rol)) { // falta implementar la part d'escollir la carta que vol mostrar.
                     _indexExecutador=index;
                     }
-                    else  _Jugadors.get(index).pagarMulta();
+                    else  _Jugadors.get(index).afegirMonedes(-1);               //Paga multa de una moneda (se li resta)
                 }
             }
             else intr.buidaVectorIntr();

@@ -29,10 +29,30 @@ public class Accio {
      */
         return _accioRol;
     }
+    
+    public void consultaCarta(Jugador j) {
+        
+        System.out.println("Cartes a consultar: "); 
+        for (int i=0;i<j.nCartes();i++){
+            System.out.println("Carta "+i);   
+        }
+        System.out.println("Quina carta vols consular?"); 
+        Scanner teclat= new Scanner(System.in);
+        int carta = teclat.nextInt();
+        while (carta<0 || carta>j.nCartes()-1){
+                 System.out.println();
+                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
+                 carta = teclat.nextInt();
+            }
+        String rol=j.getCarta(carta).getRolCarta().getRol();
+        System.out.println("La carta "+carta+ " té el rol de "+rol);
+        
+        
+    }
+    
     public boolean decidir() {/**
-     * PRE:--
-     * POST: Retorna un cert (Yes) o false (No) depenent de la voluntad de la persona
-     * que ha escrit a consola
+     * PRE: --
+     * POST: Es retorna cert o fals en funcio de la decisió escrita per consola
      */
         Scanner teclat= new Scanner(System.in);
         System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");

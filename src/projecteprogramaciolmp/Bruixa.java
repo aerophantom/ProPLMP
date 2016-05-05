@@ -21,7 +21,6 @@ public class Bruixa extends Rol {
      * POST: Estableix com a identificador del rol "Bruixa"
      */
         _nomRol="Bruixa";
-        
     }
     
     @Override
@@ -31,8 +30,7 @@ public class Bruixa extends Rol {
      * altre seleccionat.
      */
         //RECOLLIDA DADES
-        ArrayList<Integer> aux= new ArrayList<>();                                                                      //Crear array on  guardarem l'index del jugador seleccionat
-        aux = p.escollirJugadors(1);                                                                                    //Guardem al array el jugador seleccionat
+        ArrayList<Integer> aux = p.escollirJugadors(1);                                                                                    //Guardem al array el jugador seleccionat
         int monedesJugExe= p.obtMonedesJugador(p.obtIndexJugadorExecutador());                                          //Guardem en una variable local les monedes que te el jugador executador
         int monedesJugVictima= p.obtMonedesJugador(aux.get(0));                                                         //Guardem en una variable local les monedes que te el jugador victima
        

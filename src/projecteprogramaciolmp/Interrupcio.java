@@ -26,8 +26,10 @@ public class Interrupcio {
         return !_vectorInterrupcions.isEmpty();
     }
     
-    public int numInterrupcions() {
-        
+    public int numInterrupcions() {/**
+     * PRE:--
+     * POST: Retorna el nombre de jugadors que han protesta
+     */
         return _vectorInterrupcions.size();
     }
     
@@ -66,7 +68,6 @@ public class Interrupcio {
                 }
              }
             else  _vectorInterrupcions.add(i);
-        }
-        
+        } 
     }
 }
