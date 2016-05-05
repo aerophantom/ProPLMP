@@ -8,22 +8,24 @@
 
 package projecteprogramaciolmp;
 
-/**
- *
- * @author aerop
- */
 public class Viuda extends Rol {
     
      // ============================================================
     // Mètodes CONSTRUCTORS
     // ============================================================
-    public Viuda() {
-        
+    public Viuda() {/**
+     * PRE:--
+     * POST: L'identificatiu de Rol ara es "Viuda".
+     */ 
        _nomRol="Viuda"; 
     }
     
     @Override
-    public void accioDeRol(Partida p){
+    public void accioDeRol(Partida p){/**
+     * PRE: <p> setejat.
+     * POST: L'executador obte una certa quantitat de monedes del banc el qual
+     * la suma amb les monedes actuals no passarà de 10.
+     */
         //NOTA: SHA DE PODER CAMBIAR EL LIMIT PER OBTENIR (DE 10 A 8 O A 14, JOKESE)
         int monedesExecutador= p.obtMonedesJugador(p.obtIndexJugadorExecutador());
         if(monedesExecutador>=10){
