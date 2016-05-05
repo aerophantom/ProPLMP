@@ -454,13 +454,16 @@ public class Partida {
             Interrupcio intr = new Interrupcio();
             intr.preguntarInterrupcio(this); // li passem la partida actual com a parametre
             
-            while (intr.hiHaInterrupcions()) {
-               int index=intr.getIndex(); // retornem un index i alhora l'esborrem del vector d'interrupcions.
-               if (_Jugadors.get(index).getCartaActual().getRolCarta().equals(rol)) { // falta implementar la part d'escollir la carta que vol mostrar.
-                   _indexExecutador=index;
+            if (intr.numInterrupcions()!=1) {
+                while (intr.hiHaInterrupcions()) {
+                    int index=intr.getIndex(); // retornem un index i alhora l'esborrem del vector d'interrupcions.
+                    if (_Jugadors.get(index).getCartaActual().getRolCarta().equals(rol)) { // falta implementar la part d'escollir la carta que vol mostrar.
+                    _indexExecutador=index;
+                    }
+                    else  _Jugadors.get(index).pagarMulta();
+                }
             }
-               else  _Jugadors.get(index).pagarMulta();
-            }
+            else intr.buidaVectorIntr();
         }
                      
         public void actualitzaIndexJugador(){
