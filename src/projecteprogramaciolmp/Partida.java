@@ -498,7 +498,8 @@ public class Partida {
         }
          
         public void setRolJugador(Rol r, int i){
-           
+        // Pre: Rol r és un rol di
+        // Post:
             
             _Jugadors.get(i).nouRol(r);
         }

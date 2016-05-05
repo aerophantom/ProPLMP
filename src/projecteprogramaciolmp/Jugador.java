@@ -95,6 +95,8 @@ public abstract class Jugador {
            }
        }
        public void ensenyarCarta(int indexCarta){
+       // Pre: 
+       // Post:
            _cartesJugador.get(indexCarta).mostrarCarta();
        }
        

@@ -42,7 +42,7 @@ public abstract class Rol{
     @Override
     public boolean equals(Object o){
        Rol r= (Rol)o;
-       return compareTo(r)==0;
+       return compareTo(r) == 0;
     }
     
     public String getRol(){
