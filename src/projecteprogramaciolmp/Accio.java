@@ -33,7 +33,7 @@ public class Accio {
         
         System.out.println("Cartes a consultar: "); 
         for (int i=0;i<j.nCartes();i++){
-            System.out.println(i);   
+            System.out.println("Carta "+i);   
         }
         System.out.println("Quina carta vols consular?"); 
         Scanner teclat= new Scanner(System.in);
