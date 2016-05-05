@@ -505,9 +505,10 @@ public class Partida {
         return juga;
     }
 
-    public void setRolJugador(Rol r, int i){
-
-
+    public void setRolJugador(Rol r, int i){/**
+     * PRE: <r> instanciat, 0 <= i < _Jugadors.size()
+     * POST: El jugador amb index <i> ara te un nou Rol <r> actiu.
+     */
         _Jugadors.get(i).nouRol(r);
     }
 
