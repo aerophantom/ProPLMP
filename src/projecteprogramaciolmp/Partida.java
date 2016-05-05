@@ -52,7 +52,7 @@ public class Partida {
         
             return _numJugadors;        // Retorna el número de jugadors de la partida
         }
-       
+      
         public int getIndexExecutadorOrdre(){
         // Pre: --
         // Post: Retorna el num de la posició del _jugador determinat per l'index executador
@@ -191,6 +191,7 @@ public class Partida {
                 if (_rolsDisp.get(pos).getNom().equals(nom)) trobada=true;       // Si l'has trobada, retornaràs TRUE
                 else pos++;                                                      // Altrament incrementa l'índex de posicio
             }
+            if (!trobada) pos = -1;
             return pos;                                                          // Retorna la posicio de la carta trobada
         }
         
@@ -327,13 +328,13 @@ public class Partida {
                 }
                 _ordre.add(i, aux);                                            //Afageix en la posicio i el jugador amb num aux
             }
-            /*
-           System.out.println("Ordre establert ");
-            for(int i=0; i<_Jugadors.size(); i++){
-                System.out.print("Posicio "+i+" -> ");
-                System.out.println(_ordre.get(i));
-            }
-          */
+            System.out.println("");
+            System.out.println("Ordre establert ");
+             for(int i=0; i<_Jugadors.size(); i++){
+                 System.out.print("Posicio "+i+" , Jugador ");
+                 System.out.println(_ordre.get(i));
+             }
+             System.out.println("");
         }
         
         public void eliminaCartaNom(String nom){
@@ -378,7 +379,7 @@ public class Partida {
                 while(nCartes<=_nCartesPerJugador){                                         // Mentres no s'hagin repartit totes les cartes al jugador corresponent i
                     int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());         // Agafa un valor random (0 - Tamany del MAZO)
                    // System.out.println(carta);
-                     _mazo.get(carta).ensenya();                                            // Ensenya la carta que s'ha escollit
+                   //  _mazo.get(carta).ensenya();                                            // Ensenya la carta que s'ha escollit
                     // System.out.println("S'afageix al jugador amb ordre "+i);
                     _Jugadors.get(i).afegirCarta(_mazo.get(carta));                         // Afageix la carta al jugador i
                     _mazo.remove(carta);                                                    // Treu-la del mazo de cartes disponibles
@@ -480,6 +481,28 @@ public class Partida {
             }
         }
         
+        public Rol escollirRol(){
+        // Pre: --
+        // Post: Retorna el rol determinat per un string entrat. El string ha de fer referència a un rol existent
+            System.out.print("Elecció: ");
+            Scanner teclat= new Scanner(System.in);
+            String rol = teclat.nextLine();
+            int posC = buscaCarta(rol);
+            while (posC == -1){
+                System.out.println("El rol entrat no existeix. Elecció: ");
+                rol = teclat.nextLine();
+                posC = buscaCarta(rol);
+            }
+            Rol juga = _rolsDisp.get(buscaCarta(rol)).getRolCarta();
+            return juga;
+        }
+         
+        public void setRolJugador(Rol r, int i){
+           
+            
+            _Jugadors.get(i).nouRol(r);
+        }
+        
         public void dinamicaDelJoc(){
         // Pre: --
         // Post: Estableix la dinamica del joc fins que la partida s'acabi
@@ -490,36 +513,33 @@ public class Partida {
             descartarCartes();
             repartirCartes();
             
+            System.out.println("");
             System.out.println("Aquest es el resultat");
             mostrarCartesPerJugadors();
             System.out.println("");
             
             
             boolean acabar = false;
-            /*System.out.println("Estadístiques dels jugadors");
-            for (int j=0; j < _Jugadors.size(); j++){
-                    _Jugadors.get(_ordre.get(j)).mostraEstadistiques(_ordre.get(j));
-            }
-           */
             while (!acabar){
-                
                 actualitzaIndexJugador();
+                // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,
                 System.out.println("");
                 System.out.println("Ara juga el jugador "+_indexExecutador);
-                // escollir carta
-                _Jugadors.get(_indexExecutador).escollirCarta(); // en aquesta accio es guarda l'index de carta actual.
+                System.out.println("");
+                
+                // Escollir carta
+                _Jugadors.get(_indexExecutador).escollirCarta();                           // En aquesta accio es guarda l'index de carta actual.
                 System.out.println("Escull un rol dels disponibles");
                 for (int q=0; q<_rolsDisp.size(); q++){
                      _rolsDisp.get(q).ensenya();
                 }
-                System.out.print("Elecció: ");
-  
-                Scanner teclat= new Scanner(System.in);
-                String rol = teclat.nextLine();
-                Rol juga = _rolsDisp.get(buscaCarta(rol)).getRolCarta();
+                Rol juga = escollirRol();
+                System.out.println("");
                 interrupcions(juga);
                 _Jugadors.get(_indexExecutador).nouRol(juga);
                 _Jugadors.get(_indexExecutador).accioDeRol(this);
+                
+                
                 System.out.println();
                 System.out.println("============================================================");
                 // En aquest punt comprova les estadístiques dels jugadors
@@ -527,6 +547,7 @@ public class Partida {
                 for (int j=0; j < _Jugadors.size(); j++){
                     _Jugadors.get(_ordre.get(j)).mostraEstadistiques(_ordre.get(j));
                 }
+                
                 // En aquest punt mostra el capital del palau i del banc
                 System.out.println("Aquest es el capital del Banc Nacional: "+_monedesBanc.retornaQuantitat());
                 System.out.println("Aquest es el capital del Banc Nacional: "+_monedesJusticia.retornaQuantitat());

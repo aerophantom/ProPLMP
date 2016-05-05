@@ -33,7 +33,7 @@ public class Bisbe extends Rol {
             int i= 0;
             
             while(i<aux.size() && !escollit){
-                System.out.print("Vols desplumar a aquest jugador?");
+                System.out.print("Vols desplumar a aquest jugador? - ");
                 p.mostrarInfoJugador(aux.get(i));
                 escollit= p.preguntarJugadorActual();
                 if (!escollit)

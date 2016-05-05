@@ -102,10 +102,19 @@ public abstract class Jugador {
            
            System.out.println("Escull una carta");
            for (int i=0;i<_cartesJugador.size();i++) {
-               System.out.println("carta "+i);
+               System.out.println("Carta " + i);
            }
            Scanner teclat= new Scanner(System.in);
-           int carta = teclat.nextLine();
+           int carta = teclat.nextInt();
+           while (carta<1 || carta>_cartesJugador.size()-1 || carta.){
+                 System.out.println();
+                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
+              // for (int i=0;i<_cartesJugador.size();i++) {
+              //   System.out.println("Carta " + i);
+              // }
+              // carta = teclat.nextInt();
+         //  }
+           _cartaJugada = carta;
            // falta implementar el codi de triar la carta, basicament donar valor a _cartaJugada
            
        }

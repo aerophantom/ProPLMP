@@ -45,9 +45,8 @@ public class Interrupcio {
         
         boolean volInterrompre=false;
         for (int i=0;i<p.getNumJugadors();i++) {
-            
             if (i!=p.obtIndexJugadorExecutador()){
-                
+               System.out.println("Jugador " + i);
                System.out.println("Vols interrompre?");
                volInterrompre=p.preguntarJugador(i);
                 
