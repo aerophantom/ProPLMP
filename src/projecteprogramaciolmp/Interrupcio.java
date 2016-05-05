@@ -26,6 +26,11 @@ public class Interrupcio {
         return !_vectorInterrupcions.isEmpty();
     }
     
+    public int numInterrupcions() {
+        
+        return _vectorInterrupcions.size();
+    }
+    
 ////////////////////////////////MODIFICADORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     public int getIndex() {/**
      * PRE: --
@@ -36,6 +41,12 @@ public class Interrupcio {
         _vectorInterrupcions.remove(0);
         return i;
     }       
+    
+    public void buidaVectorIntr() {
+        //PRE: --
+        // Post: Esborra l'unic jugador que hi ha a _vectorInterrupcions.
+        _vectorInterrupcions.remove(0);
+    }
     public void preguntarInterrupcio(Partida p) {/**
      * PRE: <p> setejat
      * POST: Pregunta a tots els jugadors de <p> si vol interrompre. En cas que 
