@@ -8,17 +8,21 @@ package projecteprogramaciolmp;
 import java.util.ArrayList;
 import java.util.Scanner;
 public abstract class Jugador {
+    
     // Atributs
     // --------------------
-    Moneda _monedes; // Monedes de les que disposa el jugador
-    private int _cartaJugada; // Carta que el Jugador utilitza en el torn
-    private ArrayList<Carta> _cartesJugador;
-    Accio _accion;
+        Moneda _monedes; // Monedes de les que disposa el jugador
+        private int _cartaJugada; // Carta que el Jugador utilitza en el torn
+        private ArrayList<Carta> _cartesJugador;
+        Accio _accion;
     // --------------------
     
-     // ============================================================
-    // Mètodes CONSTRUCTORS
-    // ============================================================
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                              CONSTRUCTORS                                                         //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
     
     public Jugador(){
         _monedes= new Moneda();
@@ -37,7 +41,8 @@ public abstract class Jugador {
     // ============================================================
     // Mètodes CONSULTORS
     // ============================================================
-       
+     
+     
      public Carta getCartaActual() {
          return _cartesJugador.get(_cartaJugada);
      }
@@ -82,8 +87,8 @@ public abstract class Jugador {
        }
        
        public int nCartes(){
-           int nC = _cartesJugador.size();
-           System.out.println(nC);
+           
+           
            return _cartesJugador.size();
        }
        
@@ -102,27 +107,30 @@ public abstract class Jugador {
            _cartesJugador.get(indexCarta).mostrarCarta();
        }
        
-        public void escollirCarta() {
-        // Pre: 
-        // Post:
+       public void consultarCarta() {
+
+           _accion.consultaCarta(this);           
+       }
        
-            System.out.println("Escull una carta");
-            for (int i=0;i<_cartesJugador.size();i++) {
+       public void escollirCarta() {
+           
+           System.out.println("Escull una carta");
+           for (int i=0;i<_cartesJugador.size();i++) {
                System.out.println("Carta " + i);
-            }
-            Scanner teclat= new Scanner(System.in);
-            int carta = teclat.nextInt();
-            while (carta<0 || carta>_cartesJugador.size()-1){
+           }
+           Scanner teclat= new Scanner(System.in);
+           int carta = teclat.nextInt();
+           while (carta<0 || carta>_cartesJugador.size()-1){
                 System.out.println();
                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
                 for (int i=0;i<_cartesJugador.size();i++) {
                     System.out.println("Carta " + i);
                 }
                 carta = teclat.nextInt();
-            }
+           }
            _cartaJugada = carta;
            // falta implementar el codi de triar la carta, basicament donar valor a _cartaJugada
-        }
+       }
 
        public Rol getRolActual(){
            return _accion.getRol();

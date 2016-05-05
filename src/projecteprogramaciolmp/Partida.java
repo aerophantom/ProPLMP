@@ -15,7 +15,6 @@ public class Partida {
     private int _indexExecutador;            // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;          // Monedes necessàries per a que un jugador guanyi la partida
     private int _monedesTotals;              // Monedes totals en la partida
-    private int _numJugadors;                // Num de jugadors que juguen en la partida
     private ArrayList<Jugador> _Jugadors;    // Array dels jugadors que estan en la partida
     private ArrayList<Carta>  _mazo;         // Cartes disponibles en la partida (NO ESTÀN DESCARTADES I TAMPOC LES TENEN ELS JUGADORS)
     private ArrayList<Carta> _rolsDisp;      // Rols disponibles per jugadr (NO ESTÀN DESCARTADES I PODEN TENIR-HO ELS JUGADORS)
@@ -32,11 +31,12 @@ public class Partida {
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
     
-       public Partida() {
+       public Partida(int numJug) {
            _monedesJusticia= new Moneda();              // Monedes del Palau de Justicia
            _monedesBanc= new Moneda(Integer.MAX_VALUE); // Al banc mai se li acaben les monedes.
            _indexOrdre = 0;                             // Index per moure's pel vector que determina l'ordre dels jugadors
            _indexExecutador = 0;                        // Index per saber dins el vector de jugadors quins jugador està jugant
+           PartidaSettings(numJug);
        }
        
      
@@ -99,7 +99,7 @@ public class Partida {
         // Pre: --
         // Post: Retorna el num de jugadors de la partida
         
-            return _numJugadors;        // Retorna el número de jugadors de la partida
+            return _Jugadors.size();        // Retorna el número de jugadors de la partida
         }
       
         public int getIndexExecutadorOrdre(){
@@ -300,13 +300,13 @@ public class Partida {
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
        
-       public void PartidaSettings(int nJugadors){
+       public void PartidaSettings(int numJug){
        // Pre: nJugadors = 2 or 3 or 4
        // Post: Ajusta les opcions de partida invocant un segon metode
        //en el cas que no s'indiquin les monedes per jugador, s'invocara el 
        //seguent metode que te per defecte 6 monedes per jugador.
        
-           PartidaSettings(nJugadors,6);
+           PartidaSettings(numJug,6);
        }
        
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
@@ -314,7 +314,6 @@ public class Partida {
        // Post: Ajusta les opcions de la partida. Estableix ordre i guarda les cartes com toca
        
            _Jugadors= new ArrayList<> (nJugadors);                                      // Array de nJugadors
-           _numJugadors=nJugadors;
             for (int i=0; i< nJugadors; i++){                                           // Fes fins a nJugadors...
                 JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));     // Crea un jugador
                 _Jugadors.add(p);                                                       // Afageix-lo al array
@@ -583,7 +582,8 @@ public class Partida {
                         
                     }
                     else {
-                        
+                        _Jugadors.get(_indexExecutador).consultarCarta();
+                        incrementaOrdre();
                     }
                     System.out.println();
                     System.out.println("============================================================");
@@ -686,26 +686,29 @@ public class Partida {
         // Post: _fiPartida = true si el Jugador trampos ha superat el limit que imposa el seu rol
             _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
         }
-        public boolean checkPlayerRolCards(int indexJugador){/**
-         * PRE: indexJugador>=0
-         * POST: Comproba si pot executar el rol (si el te a les seves cartes).
-         */
-            return _Jugadors.get(indexJugador).getCartaActual().getRolCarta().equals(_Jugadors.get(indexJugador).getRolActual());
+        
+        public boolean checkPlayerRolCards(int indexJugador){
+        // Pre: indexJugador >= 0  
+        // Post: Comprova si pot executar el rol (si el te a les seves cartes)
+
+            return _Jugadors.get(indexJugador).getCartaActual().getRolCarta().equals(_Jugadors.get(indexJugador).getRolActual()); 
+            // *** S'ha DE SIMPLIFICAR *** //
         }
-        public void selectCartaActualJugador(int indexJugador){/**
-         * PRE: indexJugador >= 0
-         * POST: Actualitza l'index de la carta del jugador indexJugador
-         */
+        
+        public void selectCartaActualJugador(int indexJugador){
+        // Pre: indexJugador >= 0
+        // Post: Actualitza l'índex de la carta del jugador indexJugador
+
             _Jugadors.get(indexJugador).escollirCarta();
         }
-        public void mostraCartesMazo(){/**
-         * PRE:--
-         * POST: Mostra per consola les cartes del mazo (carta 0, carta 1, etc)
-         */
+        
+        public void mostraCartesMazo(){
+        // Pre: --
+        // Post: Mostra per consola les cartes del mazo
+
             for(int i= 0; i<_mazo.size(); i++){
                 System.out.println("Carta "+i);
             }
-            
         }
         /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors

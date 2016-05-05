@@ -8,6 +8,8 @@
 
 package projecteprogramaciolmp;
 
+import java.util.Scanner;
+
 /**
  *
  * @author aerop
@@ -18,7 +20,11 @@ public class ProjecteProgramacioLMP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Partida nova = new Partida();
+        System.out.println("Quants jugadors jugaràn?");
+        Scanner teclat = new Scanner (System.in);
+        int numJug = teclat.nextInt();
+        Partida nova = new Partida(numJug);
+        
         nova.dinamicaDelJoc();
     }
     
