@@ -4,7 +4,7 @@
 //  Serveix per verificar si un jugador pot fer realment un rol
 //  ATRIBUTS: un rol especific.
 //
-/////////////////////////////////////
+///////////////////////////////////// 
 package projecteprogramaciolmp;
 
 /**
