@@ -15,15 +15,16 @@ public class Camperol extends Rol {
     // Mètodes CONSTRUCTORS
     // ============================================================
     
-    public Camperol() {/**
-     * PRE:--
-     * POST: Seteja el identificador de rol a "Camperol"
-     */
+    public Camperol() {
+    // Pre: --
+    // Post: Seteja el identificador del rol com a Camperol
         _nomRol="Camperol";
     }
     
     @Override
     public void accioDeRol(Partida p){
+    // Pre:
+    // Post:
         //p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), );
     }
 }

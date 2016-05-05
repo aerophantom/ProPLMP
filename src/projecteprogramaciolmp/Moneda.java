@@ -1,11 +1,17 @@
-/*
- * Com va dir en Castro, faig la classe monedes que sera comuna a totes les
-classes que implementin monedes. 
- */
+
 package projecteprogramaciolmp;
 
 public class Moneda {
+    // ATRIBUTS
+    // ---------------------
     int _numeroMonedes;
+    // ---------------------
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             CONSTRUCTORS                                                          //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
     
     public Moneda(){/**
      * PRE: --
@@ -19,39 +25,31 @@ public class Moneda {
      */
         _numeroMonedes= n;
     }
-    public int retornaQuantitat(){/**
-     * PRE:--
-     * POST: Retorna en forma de Integer el numero de monedes del contenidor.
-     */
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             MÈTODES CONSULTORS                                                    //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+    
+    public int retornaQuantitat(){
+    // Pre: --
+    // Post: Retorna enter que correspon al número de monedes de l'objecte
         return _numeroMonedes;
-    }
-    public void afegirMonedes(int n){/**
-     * PRE:--
-     * POST: S'afegeixen <n> monedes al contenidor.
-     */
-        _numeroMonedes+= n;
-    }
-    public void actualitzarMonedes(Moneda n){/**
-     * PRE: <n> instanciat
-     * POST: les monedes del contenidor ara son les del contenidor <n>.
-     */
-        _numeroMonedes= n._numeroMonedes;
     }
     
     @Override
-    public boolean equals(Object o){/**
-     * PRE: <o> castejable a Moneda
-     * POST: Retorna cert en cas que <o> tingui la mateixa quantitat de monedes que
-     * <this>.
-     */
+    public boolean equals(Object o){
+    // Pre: o castejable a Moneda
+    // Post: Retorna TRUE en cas que o tingui la mateixa quantitat de monedes
         Moneda m= (Moneda)o;
         return compareTo(m)==0;
     }
-    public int compareTo(Moneda in){/**
-     * PRE: <in> instanciat.
-     * POST: Retorna -1 si <this> es mes petit (en quantitat de monedes sempre) que 
-     * <in>, zero si tenen la mateixa quantitat o 1 si té més.
-     */
+    
+    public int compareTo(Moneda in){
+    // Pre: in instanciat
+    // Post: Retorna -1 si -->this és més petit (en quantitat de monedes) que
+    // in, zero si tenen la mateixa quantitat o 1 si en té més
         int retorn= 0;
         if(_numeroMonedes>in._numeroMonedes)
            retorn = 1;
@@ -59,5 +57,23 @@ public class Moneda {
            retorn = -1;
         return retorn;
     }
+
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             MÈTODES MODIFICADORS                                                  //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+
+    public void afegirMonedes(int n){
+    // Pre: --
+    // Post: S'afegeixen n monedes al num de monedes ja guardat en l'objecte
+        _numeroMonedes+= n;
+    }
     
-}
+    public void actualitzarMonedes(Moneda n){
+    // Pre: n instanciat
+    // Post: Les monedes de l'objecte ara tenen la mateixa quantitat que la de l'objecte n
+        _numeroMonedes= n._numeroMonedes;
+    }
+    
+} // END OF CLASS MONEDA

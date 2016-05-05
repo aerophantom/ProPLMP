@@ -16,10 +16,9 @@ public class Rei extends Rol{
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
     
-    public Rei() {/**
-     * PRE:--
-     * POST: L'identificador del Rol ara es "Rei".
-     */
+    public Rei() {
+    // Pre: --
+    // Post: L'identificador del Rol ara és REI
         _nomRol="Rei";
     }
     
@@ -36,11 +35,9 @@ public class Rei extends Rol{
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
     @Override
-    public void accioDeRol(Partida p){/**
-     * PRE: <p> setejat.
-     * POST: Es resten 3 monedes al banc de <p> i s'afegeix la mateixa quantitat
-     * al compte corrent del jugador executador.
-     */
+    public void accioDeRol(Partida p){
+    // Pre: p setejat
+    // Post: Es resten 3 monedes del Banc Nacional i s'afegeix la mateixa quantitat al compte corrent del jugador executador
         p.treureMonedesBanc(3);
         p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 3);
         

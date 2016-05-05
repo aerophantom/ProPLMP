@@ -12,72 +12,89 @@ package projecteprogramaciolmp;
  * @author aerop
  */
 public class Carta {
-//////////////////////////////////ATRIBUTS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    // ATRIBUTS
+    // --------------------------------
     Rol _rolCarta;
-    boolean _descoberta;                                                        //true quan esta descoberta, false quan és boca baix.
+    boolean _descoberta;                                                        // True quan esta descoberta, false quan és boca baix.
+    // --------------------------------
+
     
-//////////////////////////////////CONSTRUCTORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    public Carta(Rol rolCarta){/**
-     * PRE: <rolCarta> instanciat.
-     * POST: Carta ara te un nou rol. La carta esta descoberta.
-     */
+        
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                              CONSTRUCTORS                                                         //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+    
+    public Carta(Rol rolCarta){
+    // Pre: rolCarta instanciat
+    // Post: Carta ara té un nou rol. La carta està descoberta des de un inici
         _rolCarta= rolCarta;
         _descoberta=true;
     }
    
-//////////////////////////////////CONSULTORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ 
-    public Rol getRolCarta() {/**
-     * PRE:--
-     * POST: Retorna el rol de la carta.
-     */
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             MÈTODES CONSULTORS                                                    //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+    
+    public Rol getRolCarta() {
+    // Pre: --
+    // Post Retorna el rol de la carta
+    
         return _rolCarta;
     }
     
     @Override
-    public boolean equals(Object o){/**
-     * PRE: <o> castejable a Carta
-     * POST: Retorna cert en cas que el rol sigui el mateix.
-     */
+    public boolean equals(Object o){
+    // Pre: <o> castejable a Carta
+    // Post: Retorna TRUE en cas que el rol sigui el mateix
         Carta c= (Carta)o;
         return compareTo(c)==0;
     }
     
-    public String getNom(){/**
-     * PRE:--
-     * POST: Retorna el nom de la carta, es a dir, el nom del rol.
-     */
+    public String getNom(){
+    // Pre: --
+    // Post: Retorna el nom de la carta, o sigui, el nom del rol
         return _rolCarta.getRol();
     }
     
-    public int compareTo(Carta in){/**
-     * PRE: <in> instanciat
-     * POST: Retorna nomes si tenen el mateix Rol o no (0 en cas de ser iguals).
-     */
+    public int compareTo(Carta in){
+    // Pre: in instanciat
+    // Post: Retorna si tenen el mateix Rol o NO (0 en cas de ser iguals)
         return _rolCarta.compareTo(in._rolCarta);
     }
     
     
-    //////////////////////////Metodes quasi redundants//////////////////////////
     public void ensenya(){
         System.out.println("El rol de la carta correspon a "+_rolCarta.getRol());
     }
+    
     public void mostrarCarta(){
         descobrir();
+        System.out.print("Té la carta amb rol ");
         _rolCarta.mostrarRol();
         cobrir();
     }
-    ////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////MODIFICADORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    public void cobrir(){/**
-     * PRE:--
-     * POST: fixa l'estat de la carta com a coberta
-     */
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             MÈTODES MODIFICADORS                                                  //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+    
+    public void cobrir(){
+    // Pre: --
+    // Post: Fixa l'estat de la carta com a coberta
         _descoberta= false;
     }
-    public void descobrir(){/**
-     * PRE:--
-     * POST: fixa l'estat de la carta com a descoberta
-     */
+    public void descobrir(){
+    // Pre: --
+    // Post: Fixa l'estat de la carta com a descoberta
         _descoberta= true;        
     }
-}
+    
+    
+} // END OF CLASS CARTA
