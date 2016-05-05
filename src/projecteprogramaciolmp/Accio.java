@@ -24,7 +24,19 @@ public class Accio {
         
     }
     
-    public void consultaCarta(){
+    public void consultaCarta(Jugador j) {
+        
+        System.out.println("Cartes a consultar: "); 
+        for (int i=0;i<j.nCartes();i++){
+            System.out.println(i);   
+        }
+        System.out.println("Quina carta vols consular?"); 
+        Scanner teclat= new Scanner(System.in);
+        int carta = teclat.nextInt();
+        while (carta)
+        String rol=j.getCarta(carta).getRolCarta().getRol();
+        System.out.println("La carta "+carta+ " té el rol de "+rol);
+        
         
     }
     

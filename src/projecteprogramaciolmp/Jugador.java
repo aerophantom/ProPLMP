@@ -37,7 +37,8 @@ public abstract class Jugador {
     // ============================================================
     // Mètodes CONSULTORS
     // ============================================================
-       
+     
+     
      public Carta getCartaActual() {
          return _cartesJugador.get(_cartaJugada);
      }
@@ -81,8 +82,8 @@ public abstract class Jugador {
            _cartesJugador.add(nova);
        }
        public int nCartes(){
-           int nC = _cartesJugador.size();
-           System.out.println(nC);
+           
+           
            return _cartesJugador.size();
        }
        public boolean decidir(){
@@ -96,6 +97,14 @@ public abstract class Jugador {
        }
        public void ensenyarCarta(int indexCarta){
            _cartesJugador.get(indexCarta).mostrarCarta();
+       }
+       
+       public void consultarCarta() {
+           
+           
+           
+           _accion.consultaCarta(this);
+           
        }
        
        public void escollirCarta() {
