@@ -10,26 +10,30 @@ import java.util.*;
  * @author aerop
  */
 public class Accio {
-    Rol accioRol;
+    Rol _accioRol;
     public Accio(){
         
     }
     public Accio(Rol r){
-        accioRol= r;
+        _accioRol= r;
     }
     public void nouRol(Rol r){
-        accioRol= r;
+        _accioRol= r;
     }
-    public void intercanviarCartes(){
-        
+    public void intercanviarCartes(Partida p){
+        System.out.println("Selecciona una carta del mazo");
+        p.mostraCartesMazo();
+        //per acabar
     }
-    
+    public Rol getRol(){
+        return _accioRol;
+    }
     public void consultaCarta(){
         
     }
     
     public void accioDeRol(Partida p){
-        accioRol.accioDeRol(p);
+        _accioRol.accioDeRol(p);
     }
     
     public boolean decidir() {

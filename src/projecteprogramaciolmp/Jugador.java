@@ -112,18 +112,21 @@ public abstract class Jugador {
             }
             Scanner teclat= new Scanner(System.in);
             int carta = teclat.nextInt();
-            while (carta < 0 || carta>_cartesJugador.size()-1){
+            while (carta<0 || carta>_cartesJugador.size()-1){
                 System.out.println();
                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
                 for (int i=0;i<_cartesJugador.size();i++) {
                     System.out.println("Carta " + i);
                 }
-              carta = teclat.nextInt();
+                carta = teclat.nextInt();
             }
            _cartaJugada = carta;
-        }           
+           // falta implementar el codi de triar la carta, basicament donar valor a _cartaJugada
+        }
 
-       
+       public Rol getRolActual(){
+           return _accion.getRol();
+       }
        public void accioDeRol(Partida p){
            _accion.accioDeRol(p);
        }
