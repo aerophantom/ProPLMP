@@ -12,7 +12,7 @@ public abstract class Jugador {
     // Atributs
     // --------------------
         Moneda _monedes; // Monedes de les que disposa el jugador
-        private int _cartaJugada; // Carta que el Jugador utilitza en el torn
+        private int _cartaActual; // Carta que el Jugador utilitza en el torn
         private ArrayList<Carta> _cartesJugador;
         Accio _accion;
     // --------------------
@@ -65,11 +65,9 @@ public abstract class Jugador {
     
     public void mostraEstadistiques(int j){
         System.out.println("Les monedes del jugador "+j+" són: "+_monedes.retornaQuantitat());
-         /*
-         for(int i=0; i < _cartesJugador.size(); i++){
-             _cartesJugador.get(i).ensenya();
-         }
-        */
+        for(int i=0; i < _cartesJugador.size(); i++){
+            _cartesJugador.get(i).ensenya();
+        }
     }
      
     public Carta getCarta(int indexCarta){/**
@@ -84,6 +82,7 @@ public abstract class Jugador {
         */
         return _monedes;
     }
+    
     public int nCartes(){/** ¿¿¿CAL AQUEST METODE???
     * PRE:--
     * POST: Retorna quantes cartes té el jugador
@@ -145,16 +144,14 @@ public abstract class Jugador {
         while (carta<0 || carta>_cartesJugador.size()-1){
               System.out.println();
               System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
-           // for (int i=0;i<_cartesJugador.size();i++) {
-           //   System.out.println("Carta " + i);
-           // }
-           // carta = teclat.nextInt();
-      //  }
+              for (int i=0;i<_cartesJugador.size();i++) {
+                  System.out.println("Carta " + i);
+              }
+              carta = teclat.nextInt();
+        }
         _cartaActual = carta;
-        // falta implementar el codi de triar la carta, basicament donar valor a _cartaJugada
-
-         }
     }
+    
     
     public void accioDeRol(Partida p){/**
      * PRE: <p> setejat.
