@@ -21,4 +21,9 @@ public class Camperol extends Rol {
      */
         _nomRol="Camperol";
     }
+    
+    @Override
+    public void accioDeRol(Partida p){
+        //p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), );
+    }
 }
