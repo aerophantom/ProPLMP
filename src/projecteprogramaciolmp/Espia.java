@@ -37,11 +37,11 @@ public class Espia extends Rol{
         //la siguiente linea mepa que esta mal ¿pq el parametro es el que es y no el del jugador seleccionado?
         int nCarta= p.escollirCarta(p.obtIndexJugadorExecutador());                     //Guardo en una variable local l'index de la carta 
         p.descobrirCarta(aux.get(0), nCarta);
-        System.out.print("Una vegada vista la carta del jugador, vols fer intercanvi? (si dius no es fara intercanvi fals)");
+        System.out.println("Una vegada vista la carta del jugador, vols fer intercanvi? (si dius no, es farà intercanvi fals)");
         if(p.preguntarJugador(p.obtIndexJugadorExecutador())){
             //fer intercanvi
             p.intercanviarCartes(p.obtIndexJugadorExecutador(), 0, aux.get(0), nCarta);//<--- nCarta hauria de ser 0 SEMPRE ja que nomes hi ha una carta per jugador
         }
-        System.out.print("Intercanvi fet (o no, MUAJAJA");
+        System.out.println("Intercanvi fet (o no) MUAJAJA");
     }
 }

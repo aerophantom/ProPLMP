@@ -46,6 +46,55 @@ public class Partida {
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
         
+       public int eleccioMenu(){
+       // Pre:    
+       // Post:
+            int opcio = -1;
+            System.out.println("=================================================================================================================");
+            System.out.println("Escull un número dels següents per triar que fer en el joc:");
+            System.out.println("1 .- Segueix amb el joc");
+            System.out.println("2 .- Mostra l'estat de la partida");
+            System.out.println("3 .- Mostra les cartes dels jugadors");
+            System.out.println("=================================================================================================================");
+            System.out.println("");
+            
+            Scanner teclat = new Scanner(System.in);
+            opcio = teclat.nextInt();
+            
+            return opcio;
+       }
+       
+       
+       public int triarAccio() {
+       // Pre:   
+       // Post:
+            System.out.println("===================================================================================");
+            System.out.println("1 .- Fer accio de rol");
+            System.out.println("2 .- Intercanviar cartes amb el mazo disponible");
+            System.out.println("3 .- Consultar una carta de les que tens");
+            System.out.println("===================================================================================");           
+            System.out.println("");
+            Scanner teclat= new Scanner(System.in);
+            int opcio = teclat.nextInt();
+            return opcio;
+       }
+       
+       public Rol escollirRol(){
+       // Pre: --
+       // Post: Retorna el rol determinat per un string entrat. El string ha de fer referència a un rol existent
+            System.out.print("Elecció: ");
+            Scanner teclat= new Scanner(System.in);
+            String rol = teclat.nextLine();
+            int posC = buscaCarta(rol);
+            while (posC == -1){
+                System.out.println("El rol entrat no existeix. Elecció: ");
+                rol = teclat.nextLine();
+                posC = buscaCarta(rol);
+            }
+            Rol juga = _rolsDisp.get(buscaCarta(rol)).getRolCarta();
+            return juga;
+        }
+               
        public int getNumJugadors() {
         // Pre: --
         // Post: Retorna el num de jugadors de la partida
@@ -379,7 +428,7 @@ public class Partida {
                 while(nCartes<=_nCartesPerJugador){                                         // Mentres no s'hagin repartit totes les cartes al jugador corresponent i
                     int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());         // Agafa un valor random (0 - Tamany del MAZO)
                    // System.out.println(carta);
-                   //  _mazo.get(carta).ensenya();                                            // Ensenya la carta que s'ha escollit
+                   //  _mazo.get(carta).ensenya();                                 // Ensenya la carta que s'ha escollit
                     // System.out.println("S'afageix al jugador amb ordre "+i);
                     _Jugadors.get(i).afegirCarta(_mazo.get(carta));                         // Afageix la carta al jugador i
                     _mazo.remove(carta);                                                    // Treu-la del mazo de cartes disponibles
@@ -434,7 +483,6 @@ public class Partida {
                 } 
                 System.out.println("");
             }
-
         }
         
         
@@ -461,7 +509,10 @@ public class Partida {
                     if (_Jugadors.get(index).getCartaActual().getRolCarta().equals(rol)) { // falta implementar la part d'escollir la carta que vol mostrar.
                     _indexExecutador=index;
                     }
-                    else  _Jugadors.get(index).pagarMulta();
+                    else  {
+                        _Jugadors.get(index).pagarMulta();
+                        _monedesJusticia.afegirMonedes(1);
+                    }
                 }
             }
             else intr.buidaVectorIntr();
@@ -483,22 +534,7 @@ public class Partida {
                 _indexOrdre = 0;
             }
         }
-        
-        public Rol escollirRol(){
-        // Pre: --
-        // Post: Retorna el rol determinat per un string entrat. El string ha de fer referència a un rol existent
-            System.out.print("Elecció: ");
-            Scanner teclat= new Scanner(System.in);
-            String rol = teclat.nextLine();
-            int posC = buscaCarta(rol);
-            while (posC == -1){
-                System.out.println("El rol entrat no existeix. Elecció: ");
-                rol = teclat.nextLine();
-                posC = buscaCarta(rol);
-            }
-            Rol juga = _rolsDisp.get(buscaCarta(rol)).getRolCarta();
-            return juga;
-        }
+       
          
         public void setRolJugador(Rol r, int i){
         // Pre: Rol r és un rol di
@@ -526,40 +562,44 @@ public class Partida {
             boolean acabar = false;
             while (!acabar){
                 actualitzaIndexJugador();
-                // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,
-                System.out.println("");
-                System.out.println("Ara juga el jugador "+_indexExecutador);
-                System.out.println("");
-                
-                // Escollir carta
-                _Jugadors.get(_indexExecutador).escollirCarta();                           // En aquesta accio es guarda l'index de carta actual.
-                System.out.println("Escull un rol dels disponibles");
-                for (int q=0; q<_rolsDisp.size(); q++){
-                     _rolsDisp.get(q).ensenya();
-                }
-                Rol juga = escollirRol();
-                System.out.println("");
-                interrupcions(juga);
-                _Jugadors.get(_indexExecutador).nouRol(juga);
-                _Jugadors.get(_indexExecutador).accioDeRol(this);
-                
-                
-                System.out.println();
-                System.out.println("============================================================");
-                // En aquest punt comprova les estadístiques dels jugadors
-                System.out.println("Estadístiques dels jugadors");
-                for (int j=0; j < _Jugadors.size(); j++){
-                    _Jugadors.get(_ordre.get(j)).mostraEstadistiques(_ordre.get(j));
-                }
-                
-                // En aquest punt mostra el capital del palau i del banc
-                System.out.println("Aquest es el capital del Banc Nacional: "+_monedesBanc.retornaQuantitat());
-                System.out.println("Aquest es el capital del Banc Nacional: "+_monedesJusticia.retornaQuantitat());
-                System.out.println("===========================================================");
-                System.out.println();
+                // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,                    
+                    System.out.println("");
+                    System.out.println("Ara juga el jugador "+_indexExecutador);
+                    int accio = triarAccio();
+                    if (accio == 1){
+                        // Escollir carta
+                        _Jugadors.get(_indexExecutador).escollirCarta();                           // En aquesta accio es guarda l'index de carta actual.
+                        System.out.println("Escull un rol dels disponibles");
+                        for (int q=0; q<_rolsDisp.size(); q++){
+                             _rolsDisp.get(q).ensenya();
+                        }
+                        Rol juga = escollirRol();
+                        System.out.println("");
+                        interrupcions(juga);
+                        _Jugadors.get(_indexExecutador).nouRol(juga);
+                        _Jugadors.get(_indexExecutador).accioDeRol(this);
+                        incrementaOrdre();
+                    }
+                    else if (accio == 2){
+                        
+                    }
+                    else {
+                        
+                    }
+                    System.out.println();
+                    System.out.println("============================================================");
+                    // En aquest punt comprova les estadístiques dels jugadors
+                    System.out.println("Estadístiques dels jugadors");
+                    for (int j=0; j < _Jugadors.size(); j++){
+                        _Jugadors.get(_ordre.get(j)).mostraEstadistiques(_ordre.get(j));
+                    }
 
-                incrementaOrdre();
-                
+                    // En aquest punt mostra el capital del palau i del banc
+                    System.out.println("Aquest es el capital del Banc Nacional: "+_monedesBanc.retornaQuantitat());
+                    System.out.println("Aquest es el capital del Palau de Justicia: "+_monedesJusticia.retornaQuantitat());
+                    System.out.println("===========================================================");
+                    System.out.println();
+                }         
             }
             
             
@@ -598,7 +638,6 @@ public class Partida {
             
             
             */
-        }
         
         
         //metode del gilipolles ja que mai se li acaben les monedes, pero per si de cas el deixo

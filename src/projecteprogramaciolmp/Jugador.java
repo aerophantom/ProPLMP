@@ -80,11 +80,13 @@ public abstract class Jugador {
        public void afegirCarta(Carta nova){
            _cartesJugador.add(nova);
        }
+       
        public int nCartes(){
            int nC = _cartesJugador.size();
            System.out.println(nC);
            return _cartesJugador.size();
        }
+       
        public boolean decidir(){
           return _accion.decidir();
        }
@@ -100,26 +102,27 @@ public abstract class Jugador {
            _cartesJugador.get(indexCarta).mostrarCarta();
        }
        
-       public void escollirCarta() {
-           
-           System.out.println("Escull una carta");
-           for (int i=0;i<_cartesJugador.size();i++) {
+        public void escollirCarta() {
+        // Pre: 
+        // Post:
+       
+            System.out.println("Escull una carta");
+            for (int i=0;i<_cartesJugador.size();i++) {
                System.out.println("Carta " + i);
-           }
-           Scanner teclat= new Scanner(System.in);
-           int carta = teclat.nextInt();
-           while (carta<1 || carta>_cartesJugador.size()-1 || carta.){
-                 System.out.println();
-                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
-              // for (int i=0;i<_cartesJugador.size();i++) {
-              //   System.out.println("Carta " + i);
-              // }
-              // carta = teclat.nextInt();
-         //  }
+            }
+            Scanner teclat= new Scanner(System.in);
+            int carta = teclat.nextInt();
+            while (carta < 0 || carta>_cartesJugador.size()-1){
+                System.out.println();
+                System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
+                for (int i=0;i<_cartesJugador.size();i++) {
+                    System.out.println("Carta " + i);
+                }
+              carta = teclat.nextInt();
+            }
            _cartaJugada = carta;
-           // falta implementar el codi de triar la carta, basicament donar valor a _cartaJugada
-           
-       }
+        }           
+
        
        public void accioDeRol(Partida p){
            _accion.accioDeRol(p);
