@@ -644,8 +644,18 @@ public class Partida {
         // Post: _fiPartida = true si el Jugador trampos ha superat el limit que imposa el seu rol
             _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();//es pot fer amb Moneda per polirlo millor
         }
-        public 
-
+        public boolean checkPlayerRolCards(int indexJugador){/**
+         * PRE: indexJugador>=0
+         * POST: Comproba si pot executar el rol (si el te a les seves cartes).
+         */
+            return _Jugadors.get(indexJugador).getCartaActual().getRolCarta().equals(_Jugadors.get(indexJugador).getRolActual());
+        }
+        public void selectCartaActualJugador(int indexJugador){/**
+         * PRE: indexJugador >= 0
+         * POST: Actualitza l'index de la carta del jugador indexJugador
+         */
+            _Jugadors.get(indexJugador).escollirCarta();
+        }
         /*
         SUGERENCIA: per fer lo de les queixes recomano fer un 'for' per a tots els jugadors
         (menys el que jugador actual obviament) i anar preguntant si es queixen (decisio). Si
