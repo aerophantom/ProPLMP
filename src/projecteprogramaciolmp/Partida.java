@@ -657,7 +657,7 @@ public class Partida {
             
             // Afegir cartes copiades
             _Jugadors.get(indexJugador1).afegirCarta(aux2);
-            _Jugadors.get(indexJugador1).afegirCarta(aux1);
+            _Jugadors.get(indexJugador2).afegirCarta(aux1);
         }
         
         public void fiPartidaTrampos(int nouLimit){
