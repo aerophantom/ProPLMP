@@ -593,21 +593,32 @@ public class Partida {
                     incrementaOrdre();
                 }
                 else if (accio == 2){
-                    System.out.println("");
-                    System.out.println("Escull una carta del mazo de cartes de la taula");
-                    for (int i=0; i<_mazo.size(); i++){
-                        _mazo.get(i).ensenya();
+                    System.out.println("Amb qui vols intercanviar, amb el mall (Y) o algun jugador (N)?");
+                    if (_Jugadors.get(_indexExecutador).decidir()){
+                        System.out.println("");
+                        System.out.println("Escull una carta del mazo de cartes de la taula");
+                        for (int i=0; i<_mazo.size(); i++){
+                            System.out.println("Carta "+i);
+                        }
+                        System.out.println("");
+                        Scanner teclat = new Scanner(System.in);
+                        System.out.print("Elecció carta mazo: ");
+                        int posC = teclat.nextInt();
+
+                        _Jugadors.get(_indexExecutador).escollirCarta();
+                        Carta jugador = _Jugadors.get(_indexExecutador).getCartaActual();
+                        _Jugadors.get(_indexExecutador).borraCarta();
+                        intercanviaMazo(jugador, posC);
+                        
+                        // Pels debuggers
+                        mostraCartesMazo();
                     }
-                    Scanner teclat = new Scanner(System.in);
-                    System.out.print("Elecció: ");
-                    String nom = teclat.nextLine();
-                    int posC = buscaCarta(nom,2);
-                    
-                    _Jugadors.get(_indexExecutador).escollirCarta();
-                    Carta jugador = _Jugadors.get(_indexExecutador).getCartaActual();
-                    _Jugadors.get(_indexExecutador).borraCarta();
-                    intercanviaMazo(jugador, posC);
-                    mostraCartesMazo();
+                    else {
+                        ArrayList<Integer> aux = escollirJugadors(1);
+                        int cartaEsc = escollirCarta(aux.get(0));
+                        _Jugadors.get(_indexExecutador).escollirCarta();
+                        intercanviarCartes(_indexExecutador, _Jugadors.get(_indexExecutador).getIndCartaActual(), aux.get(0), cartaEsc);
+                    }
                     incrementaOrdre();
                 }
                 else {

@@ -114,6 +114,11 @@ public abstract class Jugador {
         _cartesJugador.get(indexCarta).mostrarCarta();
     }
 
+    public int getIndCartaActual(){
+    // Pre:
+    // Post:
+        return _cartaActual;
+    }
         
     
 ////// ================================================================================================================= //////
