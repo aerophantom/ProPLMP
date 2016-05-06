@@ -30,13 +30,13 @@ public class Partida {
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
     
-       public Partida(int numJug) {
+       public Partida(int numJug, int monedesPerGuanyar, int monedesPerJugador) {
            _monedesJusticia= new Moneda();              // Monedes del Palau de Justicia
            _monedesBanc= new Moneda(Integer.MAX_VALUE); // Al banc mai se li acaben les monedes.
            _indexOrdre = 0;                             // Index per moure's pel vector que determina l'ordre dels jugadors
            _indexExecutador = 0;                        // Index per saber dins el vector de jugadors quins jugador està jugant
-           _monedesPerGuanyar = 16;
-           PartidaSettings(numJug);
+           _monedesPerGuanyar = monedesPerGuanyar;
+           PartidaSettings(numJug,monedesPerJugador);
        }
        
      
@@ -329,14 +329,7 @@ public class Partida {
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
        
-       public void PartidaSettings(int numJug){
-       // Pre: nJugadors = 2 or 3 or 4
-       // Post: Ajusta les opcions de partida invocant un segon metode
-       //en el cas que no s'indiquin les monedes per jugador, s'invocara el 
-       //seguent metode que te per defecte 6 monedes per jugador.
        
-           PartidaSettings(numJug,6);
-       }
        
        public void PartidaSettings(int nJugadors,int monedesPerJugador) {
        // Pre: nJugadors = 2 or 3 or 4

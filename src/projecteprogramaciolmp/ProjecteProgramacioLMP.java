@@ -23,7 +23,14 @@ public class ProjecteProgramacioLMP {
         System.out.println("Quants jugadors jugaràn?");
         Scanner teclat = new Scanner (System.in);
         int numJug = teclat.nextInt();
-        Partida nova = new Partida(numJug);
+        
+        System.out.println("Amb quantes monedes es guanya la partida?");
+        int numMG= teclat.nextInt();
+        
+        System.out.println("Quantes monedes per jugador?");
+        int numMJ= teclat.nextInt();
+        
+        Partida nova = new Partida(numJug,numMG,numMJ);
         
         nova.dinamicaDelJoc();
     }
@@ -33,7 +40,7 @@ public class ProjecteProgramacioLMP {
 
 
 /*
-* Introduir monedesperjugador, monedesperguanyar, cartesperjugador, per consola més instruccions
+* cartesperjugador, per consola més instruccions
 * Per la setmana que ve IA
 *
 *
