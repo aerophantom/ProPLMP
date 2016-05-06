@@ -14,7 +14,6 @@ public class Partida {
     private int _indexOrdre;                 // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
     private int _indexExecutador;            // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;          // Monedes necessàries per a que un jugador guanyi la partida
-    private int _monedesTotals;              // Monedes totals en la partida
     private ArrayList<Jugador> _Jugadors;    // Array dels jugadors que estan en la partida
     private ArrayList<Carta>  _mazo;         // Cartes disponibles en la partida (NO ESTÀN DESCARTADES I TAMPOC LES TENEN ELS JUGADORS)
     private ArrayList<Carta> _rolsDisp;      // Rols disponibles per jugadr (NO ESTÀN DESCARTADES I PODEN TENIR-HO ELS JUGADORS)
@@ -81,20 +80,20 @@ public class Partida {
        }
        
        
-       public int triarAccio() {
+       public String triarAccio() {
        // Pre: --
        // Post: Pregunta al jugador si vol fer accioDeRol, intercanviar cartes amb el mazo o be consultar-ne alguna de les seves disponibles
        
-            int opcio = -1;
+            String opcio = "";
             Scanner teclat= new Scanner(System.in);
-            while ((opcio!=1) && (opcio!=2) && (opcio!=3)){                                                                        // Mentres s'esculleixi el que no toca, demana opcio
+            while ((!opcio.equals("1")) && (!opcio.equals("2")) && (!opcio.equals("3"))){                                                                        // Mentres s'esculleixi el que no toca, demana opcio
                 System.out.println("===================================================================================");
-                System.out.println("1 .- Fer accio de rol");
-                System.out.println("2 .- Intercanviar cartes amb el mazo disponible");
-                System.out.println("3 .- Consultar una carta de les que tens");
+                System.out.println("||                  1 .- Fer accio de rol                                        ||");
+                System.out.println("||                  2 .- Intercanviar cartes amb el mazo disponible              ||");
+                System.out.println("||                  3 .- Consultar una carta de les que tens                     ||");
                 System.out.println("===================================================================================");           
                 System.out.println("");
-                opcio = teclat.nextInt();
+                opcio = teclat.nextLine();
             }
             return opcio;
        }
@@ -341,7 +340,16 @@ public class Partida {
             for (int i=0; i< nJugadors; i++){                                           // Fes fins a nJugadors...
                 JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));     // Crea un jugador
                 _Jugadors.add(p);                                                       // Afageix-lo al array
-              }
+            }
+            _nCartesPerJugador=1;
+
+            if (_Jugadors.size()<4) {                                           // Si el numero de jugador és menor a 4
+               _nCartesPerJugador= 2;                                           // Les cartes que toquena a cada jugador és 2
+            }   
+            if (_Jugadors.size()<3) {                                           // Si el numero de jugadors és menor a 3
+                _nCartesPerJugador= 3;                                           // Les cartes que toquen a cada jugador és 3
+            }
+        
            setMazo();                                                                   // Estableix les cartes del mazo
            EstablirOrdre();                                                             // Estableix un ordre aleatori entre els jugadors
        }
@@ -434,15 +442,8 @@ public class Partida {
 
     public void repartirCartes () {
     // Pre: --
-    // Post: Reparteix les cartes als diferents jugadors de la partida
-        int nCartesPerJugador= 1;                                           // Numero de cartes per jugador a repartir
-        if (_Jugadors.size()<3) {                                           // Si el numero de jugadors és menor a 3
-            nCartesPerJugador= 3;                                           // Les cartes que toquen a cada jugador és 3
-        }
-        if (_Jugadors.size()<4) {                                           // Si el numero de jugador és menor a 4
-            nCartesPerJugador= 2;                                           // Les cartes que toquena a cada jugador és 2
-        }   
-        
+    // Post: Reparteix les cartes als diferents jugadors de la partida        
+
         System.out.println("Cartes disponibles en el mazo de la taula: ");
         for (int i=0; i<_mazo.size(); i++){                                // Ensenya les cartes disponibles des de un principi
             _mazo.get(i).ensenya();
@@ -450,7 +451,7 @@ public class Partida {
 
         for(int i= 0; i<_Jugadors.size(); i++){                                         // Per a cada jugador
             int nCartes= _Jugadors.get(i).nCartes();                                    // Agafa el número de cartes del jugador i
-            while(nCartes<=_nCartesPerJugador){                                         // Mentres no s'hagin repartit totes les cartes al jugador corresponent i
+            while(nCartes<_nCartesPerJugador){                                         // Mentres no s'hagin repartit totes les cartes al jugador corresponent i
                 int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());         // Agafa un valor random (0 - Tamany del MAZO)
                 _Jugadors.get(i).afegirCarta(_mazo.get(carta));                         // Afageix la carta al jugador i
                 _mazo.remove(carta);                                                    // Treu-la del mazo de cartes disponibles
@@ -468,7 +469,6 @@ public class Partida {
         }
         if (_Jugadors.size()<4) {                             // Si el numJugador és menor a 4
             eliminaCartaNom("Espia");                         // Esborra l'Espia
-            eliminaCartaNom("Inquisidor");                    // Esborra l'Inquisidor
         }
         if (_Jugadors.size()<6) {                            // Si el numJugador és menor a 6
             // Busca el primer camperol i borra'l
@@ -480,9 +480,9 @@ public class Partida {
         }  
         
         int i = 1;
-        while ((i < _mazo.size()-1) && _mazo.size() > _Jugadors.size()+1){               // Comença des de 1 aixi no es descarta el jutge, recorrer tota les cartes
+        int limit = 1+(_Jugadors.size() * _nCartesPerJugador);
+        while ((i < _mazo.size()-1) && (_mazo.size() > limit)){               // Comença des de 1 aixi no es descarta el jutge, recorrer tota les cartes
             int aux=0;
-
             _mazo.get(i).ensenya();                                                      // Ensenya la carta que s'ha de decidir si borrar'la
             System.out.println("Decideix el jugador " + _ordre.get(aux));                // Pregunta al jugador aux
             boolean decisio=_Jugadors.get(_ordre.get(aux)).decidir();                   // Formula pregunta de SI (TRUE) o NO (FALSE)
@@ -581,8 +581,8 @@ public class Partida {
                 // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,                    
                 System.out.println("");
                 System.out.println("És el torn del jugador "+_indexExecutador);
-                int accio = triarAccio();
-                if (accio == 1){
+                String accio = triarAccio();
+                if (accio.equals("1")){
                     // Escollir carta
                     _Jugadors.get(_indexExecutador).escollirCarta();                           // En aquesta accio es guarda l'index de carta actual.
                     System.out.println("Escull un rol dels disponibles");
@@ -592,13 +592,13 @@ public class Partida {
                     Rol juga = escollirRol();
                     System.out.println("");
                     interrupcions(juga);
-                    // JUGA = CAMPEROL
-                    // 
+                    System.out.println();
+                    System.out.println("El jugador que executa l'acció: " + _indexExecutador);
                     _Jugadors.get(_indexExecutador).nouRol(juga);
                     _Jugadors.get(_indexExecutador).accioDeRol(this);
                     incrementaOrdre();
                 }
-                else if (accio == 2){
+                else if (accio.equals("2")){
                     System.out.println("Amb qui vols intercanviar, amb el mall (Y) o algun jugador (N)?");
                     if (_Jugadors.get(_indexExecutador).decidir()){
                         System.out.println("");
