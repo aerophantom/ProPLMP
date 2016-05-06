@@ -46,7 +46,7 @@ public class Inquisidor extends Rol {
         //TRACTAMENT DADES
         p.setRolJugador(p.escollirRol(), aux.get(0));                           // S'escull un Rol i es guarda com a Rol actual al jugador victima
         p.escollirCartaVictima(aux.get(0));                                            // Jugador victima escull amb quina carta vol jugar (en aquest cas comparar)
-        if(!p.checkPlayerRolCards(aux.get(0))){                                 // SI no te el rol escollit a la carta seleccionada per ell
+        if(!p.potExecutarRol(aux.get(0))){                                 // SI no te el rol escollit a la carta seleccionada per ell
             System.out.println("Mentideeeeer, hauras de sofrir i pagar 4 "
                     + "monedes al cabron del inquisidor!");
             p.afegirMonedesJugador(aux.get(0), -4);                             // Resto 4 monedes al jugador victima
