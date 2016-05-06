@@ -29,3 +29,14 @@ public class ProjecteProgramacioLMP {
     }
     
 }
+
+
+
+/*
+* Introduir monedesperjugador, monedesperguanyar, cartesperjugador
+*
+*
+*
+*
+*
+*/

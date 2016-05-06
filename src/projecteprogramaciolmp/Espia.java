@@ -42,8 +42,8 @@ public class Espia extends Rol{
         //RECOLLIDA DADES
         ArrayList<Integer> aux= p.escollirJugadors(1);                                  // Guardo al array el index del jugador seleccionat pel jugador executador
              
-        int nCartaExecutador= p.escollirCarta(p.obtIndexJugadorExecutador());           // Guardo en una variable local l'index de la carta que ha escollit veure l'espia
-        int nCartaVictima= p.escollirCarta(aux.get(0));
+        int nCartaExecutador= p.escollirCartaVictima(p.obtIndexJugadorExecutador());           // Guardo en una variable local l'index de la carta que ha escollit veure l'espia
+        int nCartaVictima= p.escollirCartaVictima(aux.get(0));
         
         //TRACTAMENT DADES
         p.descobrirCarta(aux.get(0), nCartaVictima);                                    // Es veu per pantalla el rol de la carta del executador seleccionada pel executador

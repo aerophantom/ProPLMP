@@ -76,6 +76,7 @@ public class Interrupcio {
                volInterrompre=p.preguntarJugador(i);    // Recull la resposta
                 
                 if (volInterrompre) {                   // Si vol interrompre
+                    p.escollirCartaJugador(i);
                     _vectorInterrupcions.add(i);        // afegeix-lo
                 }
              }

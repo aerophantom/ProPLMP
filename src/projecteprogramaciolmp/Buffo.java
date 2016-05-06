@@ -32,8 +32,8 @@ public class Buffo extends Rol {
         //RECOLLIDA DADES
         ArrayList<Integer> aux= p.escollirJugadors(2);                          // Escullo dos jugadors, en forma de index corresponents a _Jugadors
         
-        int carta1= p.escollirCarta(aux.get(0));                                // Escullo la carta dels dos jugadors per intercanviar
-        int carta2= p.escollirCarta(aux.get(1));
+        int carta1= p.escollirCartaVictima(aux.get(0));                                // Escullo la carta dels dos jugadors per intercanviar
+        int carta2= p.escollirCartaVictima(aux.get(1));
         
         //TRACTAMENT DADES
         System.out.print("Vols fer un intercanvi fals (compte, que no vegin els "

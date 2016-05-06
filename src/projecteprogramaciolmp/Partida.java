@@ -113,6 +113,12 @@ public class Partida {
             Rol juga = _rolsDisp.get(buscaCarta(rol,1)).getRolCarta();
             return juga;
         }
+       
+       public void escollirCartaJugador(int indexJug){
+       // Pre:
+       // Post:
+           _Jugadors.get(indexJug).escollirCarta();
+       }
                
        public int getNumJugadors() {
         // Pre: --
@@ -266,7 +272,7 @@ public class Partida {
         System.out.println("Monedes: " + _Jugadors.get(i).retornaMonedes().retornaQuantitat());
     }
 
-    public int escollirCarta(int nJugador){
+    public int escollirCartaVictima(int nJugador){
     // Pre: --
     // Post: Retorna el índex del array de cartes de _Jugadors[nJugador]. En cas de que no tingui més d'una carta, retorna 0
 
@@ -274,9 +280,9 @@ public class Partida {
         if(_nCartesPerJugador>1){                                                       // Cas que el numero de cartes que tenen els jugadors sigui superior a 1
             int i=0;
             boolean escollida= false;
-            System.out.print("Escull una carta del jugador "+ nJugador +": ");          // Demana que escullin carta
+            System.out.println("Escull una carta del jugador "+ nJugador +": ");          // Demana que escullin carta
             while(i<_nCartesPerJugador && !escollida){                                 // Mentres no hagis recorregut les cartes i no s'hagi escollit cap
-                System.out.print("Escollir carta nº "+ i +"? ");
+                System.out.println("Escollir carta nº "+ i +"? ");
                 escollida= _Jugadors.get(_ordre.get(_indexOrdre)).decidir();            // Formula pregunta de SI(TRUE) o NO(FALSE)
                 if(!escollida)                                                          // Si no s'ha escollit 
                     i++;                                                                // Incrementa l'index que recorre les cartes
@@ -523,10 +529,10 @@ public class Partida {
             _indexExecutador = _ordre.get(_indexOrdre);
         }
         
-        public void interrupcions(Rol rol) {
+        public boolean interrupcions(Rol rol) {
              // Pre: --
              // Post: els jugadorsque interrompen mentiders paguen la multa, al que diu la veritat se li guarda l'index a _indexExecutador.
-            
+            boolean totsmenteixen = true;
             Interrupcio intr = new Interrupcio();
             intr.preguntarInterrupcio(this); // li passem la partida actual com a parametre
             
@@ -534,7 +540,8 @@ public class Partida {
                 while (intr.hiHaInterrupcions()) {
                     int index=intr.getIndex(); // retornem un index i alhora l'esborrem del vector d'interrupcions.
                     if (_Jugadors.get(index).getCartaActual().getRolCarta().equals(rol)) { // falta implementar la part d'escollir la carta que vol mostrar.
-                    _indexExecutador=index;
+                        _indexExecutador=index;
+                        totsmenteixen=false;
                     }
                     else  {
                         _Jugadors.get(index).afegirMonedes(-1);               //Paga multa de una moneda (se li resta)
@@ -542,6 +549,8 @@ public class Partida {
                     }
                 }
             }
+            else totsmenteixen = false;
+            return totsmenteixen;
         }
        
         public void setRolJugador(Rol r, int i){
@@ -591,11 +600,14 @@ public class Partida {
                     }
                     Rol juga = escollirRol();
                     System.out.println("");
-                    interrupcions(juga);
-                    System.out.println();
-                    System.out.println("El jugador que executa l'acció: " + _indexExecutador);
-                    _Jugadors.get(_indexExecutador).nouRol(juga);
-                    _Jugadors.get(_indexExecutador).accioDeRol(this);
+                    boolean totsmenteixen = false;
+                    totsmenteixen = interrupcions(juga);
+                    if (!totsmenteixen){
+                        System.out.println();
+                        System.out.println("El jugador que executa l'acció: Jugador " + _indexExecutador);
+                        _Jugadors.get(_indexExecutador).nouRol(juga);
+                        _Jugadors.get(_indexExecutador).accioDeRol(this);
+                    }
                     incrementaOrdre();
                 }
                 else if (accio.equals("2")){
@@ -621,7 +633,7 @@ public class Partida {
                     }
                     else {
                         ArrayList<Integer> aux = escollirJugadors(1);
-                        int cartaEsc = escollirCarta(aux.get(0));
+                        int cartaEsc = escollirCartaVictima(aux.get(0));
                         _Jugadors.get(_indexExecutador).escollirCarta();
                         intercanviarCartes(_indexExecutador, _Jugadors.get(_indexExecutador).getIndCartaActual(), aux.get(0), cartaEsc);
                     }
