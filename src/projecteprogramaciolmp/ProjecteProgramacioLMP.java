@@ -33,8 +33,8 @@ public class ProjecteProgramacioLMP {
 
 
 /*
-* Introduir monedesperjugador, monedesperguanyar, cartesperjugador
-*
+* Introduir monedesperjugador, monedesperguanyar, cartesperjugador, per consola més instruccions
+* Per la setmana que ve IA
 *
 *
 *
