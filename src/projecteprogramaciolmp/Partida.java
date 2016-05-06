@@ -166,15 +166,19 @@ public class Partida {
         // Post: Retorna TRUE si la partida s'ha acabat 
         // Quan s'acaba? Algun jugador ja arribat al màxim de monedes per guanyar o pel
         // contrari, algun altre se'n ha quedar sense.            
-        
-            boolean fiPartida= false;                                                       // Boolea que determina si s'ha acabat
-            int i= 0;
-            while(i<_Jugadors.size() && !fiPartida){                                         // Recorre tots els jugadors per comprovar si algun ha arribat al topMonedes guanyar
-                 Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();              // Monedes del jugador que estem inspeccionant en el while
-                 int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();  // Recull en enter el num de monedes                  
-                 fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar; // Comprova si arriben al top de monedes
-                 i++;                                                                           // Mou al seguent jugador
+            boolean fiPartida;
+            if(!_fiPartida){
+                fiPartida= false;                                                       // Boolea que determina si s'ha acabat
+                int i= 0;
+                while(i<_Jugadors.size() && !fiPartida){                                         // Recorre tots els jugadors per comprovar si algun ha arribat al topMonedes guanyar
+                     Moneda monedesJugadorActual= _Jugadors.get(i).retornaMonedes();              // Monedes del jugador que estem inspeccionant en el while
+                     int quantitatMonedesJugadorActual= monedesJugadorActual.retornaQuantitat();  // Recull en enter el num de monedes                  
+                     fiPartida= quantitatMonedesJugadorActual == 0  || quantitatMonedesJugadorActual >= _monedesPerGuanyar; // Comprova si arriben al top de monedes
+                     i++;                                                                           // Mou al seguent jugador
+                }
             }
+            else
+                fiPartida= true;
             return fiPartida;                                                               // Retorna
         }
                
@@ -413,7 +417,7 @@ public class Partida {
              System.out.println("");
         }
 
-        public void eliminaCartaNom(String nom){
+        private void eliminaCartaNom(String nom){
         // Pre: nom és el jugador de algun rol del joc
         // Post: Esborra la carta dins el array de cartes que té el rol amb aquest nom
 
@@ -664,7 +668,7 @@ public class Partida {
             
             // Afegir cartes copiades
             _Jugadors.get(indexJugador1).afegirCarta(aux2);
-            _Jugadors.get(indexJugador1).afegirCarta(aux1);
+            _Jugadors.get(indexJugador2).afegirCarta(aux1);
         }
         
         public void fiPartidaTrampos(int nouLimit){
