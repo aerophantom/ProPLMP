@@ -51,7 +51,7 @@ public class Lladre extends Rol {
             p.afegirMonedesJugador(p.getIndexCorregit(indexCorregit-1),-1);
             p.afegirMonedesJugador(p.getIndexCorregit(indexCorregit+1),-1);
         }
-        p.afegirMonedesJugador(p.getIndexCorregit(indexCorregit),2);                 // Suma dues monedes al lladre
+        p.afegirMonedesJugador(p.getIndexJugadorExecutador(),2);                 // Suma dues monedes al lladre
     }
     
 } // END OF CLASS LLADRE
