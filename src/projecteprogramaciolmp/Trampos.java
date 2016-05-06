@@ -25,6 +25,6 @@ public class Trampos extends Rol {
     public void accioDeRol(Partida p){
     // Pre: p setejat
     // Post: EL fi de partida p es força a 10 i es verifica si la partida ha acabat
-        p.fiPartidaTrampos(10);
+        p.forzarPossibleFinal(10);
     }
 }

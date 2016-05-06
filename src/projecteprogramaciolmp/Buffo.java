@@ -38,7 +38,7 @@ public class Buffo extends Rol {
         //TRACTAMENT DADES
         System.out.print("Vols fer un intercanvi fals (compte, que no vegin els "
                 + "teus contricants si dius si o no)?");
-        if(!p.preguntarJugador(p.obtIndexJugadorExecutador())){                 // Si l'executador vol fer realment l'intercanvi
+        if(!p.preguntarJugador(p.getIndexJugadorExecutador())){                 // Si l'executador vol fer realment l'intercanvi
             p.intercanviarCartes(aux.get(0),carta1,aux.get(1),carta2);          // Es procedeix a fer l'intercanvi
         }
         System.out.print("S'ha fet l'intercanvi de cartes (o no, MUAJAJA) entre "

@@ -35,23 +35,23 @@ public class Lladre extends Rol {
     // dels jugadors de la seva esquerra i dreta
     // NOTA: No esta del testejat del tot i segurament no funciona.
     
-        //int posicioActual= p.obtIndexJugadorExecutador();//lladre
+        //int posicioActual= p.getIndexJugadorExecutador();//lladre
         int nJugadors= p.getNumJugadors();
         int indexCorregit= p.getIndexExecutadorOrdre();
         
         if(indexCorregit==0){                                                       // Si es troba en la posicio 0 del vector d'ordre dels jugadors
-            p.afegirMonedesJugador(p.obtIndexCorregit(1),-1);                       // Extreu del seguent 
-            p.afegirMonedesJugador(p.obtIndexCorregit(nJugadors-1),-1);             // i de l'últim
+            p.afegirMonedesJugador(p.getIndexCorregit(1),-1);                       // Extreu del seguent 
+            p.afegirMonedesJugador(p.getIndexCorregit(nJugadors-1),-1);             // i de l'últim
         }
         else if(indexCorregit==nJugadors-1){                                       // Cas es troba al final
-            p.afegirMonedesJugador(p.obtIndexCorregit(0),-1);                       // Extreu del primer
-            p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit-1),-1);         // i de l'anterior
+            p.afegirMonedesJugador(p.getIndexCorregit(0),-1);                       // Extreu del primer
+            p.afegirMonedesJugador(p.getIndexCorregit(indexCorregit-1),-1);         // i de l'anterior
         }
         else{                                                                       // Altrament extreu de l'anterior i del seguent
-            p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit-1),-1);
-            p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit+1),-1);
+            p.afegirMonedesJugador(p.getIndexCorregit(indexCorregit-1),-1);
+            p.afegirMonedesJugador(p.getIndexCorregit(indexCorregit+1),-1);
         }
-        p.afegirMonedesJugador(p.obtIndexCorregit(indexCorregit),2);                 // Suma dues monedes al lladre
+        p.afegirMonedesJugador(p.getIndexCorregit(indexCorregit),2);                 // Suma dues monedes al lladre
     }
     
 } // END OF CLASS LLADRE

@@ -82,7 +82,7 @@ public class Accio {
     }
     
     public void consultaCarta(Partida p){
-        p.escollirCartaVictima(p.obtIndexJugadorExecutador());
+        p.escollirCartaVictima(p.getIndexJugadorExecutador());
         //per acabar crec
     }
     

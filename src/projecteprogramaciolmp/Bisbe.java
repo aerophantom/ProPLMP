@@ -58,6 +58,6 @@ public class Bisbe extends Rol {
         else{
             p.afegirMonedesJugador(aux.get(0), -2);                             // Es resten les 2 monedes al jugador victima seleccionat per partida
         }
-        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), 2);               // S'afegeixen dos monedes al executador
+        p.afegirMonedesJugador(p.getIndexJugadorExecutador(), 2);               // S'afegeixen dos monedes al executador
     }
 }

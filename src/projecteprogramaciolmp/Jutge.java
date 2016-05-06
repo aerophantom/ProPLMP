@@ -24,8 +24,8 @@ public class Jutge extends Rol{
     public void accioDeRol(Partida p){
     // Pre: p setejat
     // Post: L'executador ha tret les monedes del palau de justicia per afegir-les a la seva quantitat
-        Moneda aux= p.buidaPalauJusticia();
-        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), aux.retornaQuantitat());
+        Moneda aux= p.buidarPalauJusticia();
+        p.afegirMonedesJugador(p.getIndexJugadorExecutador(), aux.retornaQuantitat());
     }
     
 } // END OF CLASS JUTGE
