@@ -156,22 +156,24 @@ public abstract class Jugador {
     public void escollirCarta() {
     // Pre: --
     // Post: Mostra les cartes del jugador i escolleix-ne una per guardar-la com a _cartaActual (carta que es jugarà en cas que ho necessiti en el seu torn)
-
-        System.out.println("Escull una carta");
-        for (int i=0;i<_cartesJugador.size();i++) {
-            System.out.println("Carta " + i);
+        if (_cartesJugador.size() > 1){
+            System.out.println("Escull una carta");
+            for (int i=0;i<_cartesJugador.size();i++) {
+                System.out.println("Carta " + i);
+            }
+            Scanner teclat= new Scanner(System.in);
+            int carta = teclat.nextInt();                                                                 // Entra un enter referent al número de carta
+            while (carta<0 || carta>_cartesJugador.size()-1){
+                  System.out.println();
+                  System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
+                  for (int i=0;i<_cartesJugador.size();i++) {
+                      System.out.println("Carta " + i);
+                  }
+                  carta = teclat.nextInt();
+            }
+            _cartaActual = carta;
         }
-        Scanner teclat= new Scanner(System.in);
-        int carta = teclat.nextInt();                                                                 // Entra un enter referent al número de carta
-        while (carta<0 || carta>_cartesJugador.size()-1){
-              System.out.println();
-              System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
-              for (int i=0;i<_cartesJugador.size();i++) {
-                  System.out.println("Carta " + i);
-              }
-              carta = teclat.nextInt();
-        }
-        _cartaActual = carta;
+        else _cartaActual = 0;
     }
     
     

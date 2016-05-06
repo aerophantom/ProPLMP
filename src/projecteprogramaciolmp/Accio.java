@@ -72,9 +72,11 @@ public class Accio {
         Scanner teclat= new Scanner(System.in);
         System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");                                       // Formula pregunta de YES or NOT
         String decisio = teclat.nextLine();
+        System.out.println();
         while (!decisio.equals("Y") && !decisio.equals("N")){                                               // Si no s'ha entrar Y o N torna a demanar
             System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");
             decisio = teclat.nextLine();
+            System.out.println();
         }
         return decisio.equals("Y");
     }

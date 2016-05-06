@@ -480,7 +480,7 @@ public class Partida {
         }  
         
         int i = 1;
-        while (i < _mazo.size() && _mazo.size() > _Jugadors.size()){                                         // Comença des de 1 aixi no es descarta el jutge, recorrer tota les cartes
+        while ((i < _mazo.size()-1) && _mazo.size() > _Jugadors.size()+1){               // Comença des de 1 aixi no es descarta el jutge, recorrer tota les cartes
             int aux=0;
 
             _mazo.get(i).ensenya();                                                      // Ensenya la carta que s'ha de decidir si borrar'la
@@ -499,10 +499,10 @@ public class Partida {
                 _rolsDisp.remove(i);                                                     // Borra la carta dels rols disponibles
                 if(camperol)                                                             // Si s'ha decidit borrar el camperol
                     eliminaCartaNom("Camperol");                                         // Borra l'altre camperol
-                i++;
+                //i++;
             } 
             System.out.println("");
-            i++;
+            if (!decisio) i++;
         }
     }
 
@@ -571,7 +571,7 @@ public class Partida {
             repartirCartes();
 
             System.out.println("");
-            System.out.println("Aquest es el resultat: ");
+            System.out.println("Aquest es el resultat després de repartir cartes: ");
             System.out.println("");
             mostrarCartesPerJugadors();
             System.out.println("");
@@ -592,6 +592,8 @@ public class Partida {
                     Rol juga = escollirRol();
                     System.out.println("");
                     interrupcions(juga);
+                    // JUGA = CAMPEROL
+                    // 
                     _Jugadors.get(_indexExecutador).nouRol(juga);
                     _Jugadors.get(_indexExecutador).accioDeRol(this);
                     incrementaOrdre();
