@@ -14,21 +14,17 @@ public class Trampos extends Rol {
     // Mètodes CONSTRUCTORS
     // ============================================================
     
-    public Trampos() {/**
-     * PRE:--
-     * POST: L'identificatiu de Rol ara es "Trampos".
-     */
-        
+    public Trampos() {
+    // Pre: --
+    // Post: L'identificador del rol ara és TRAMPOS        
         _nomRol="Trampos";
     }
     
     //S'HA DE PODER CAMBIAR EL VALOR LIMIT DE TRAMPOS A SETTINGS
     @Override
-    public void accioDeRol(Partida p){/**
-     * PRE: <p> setejat
-     * POST: El fi de partida <p> es força a 10 i es verifica si la partida ha
-     * acabat.
-     */
-        p.fiPartidaTrampos(10);
+    public void accioDeRol(Partida p){
+    // Pre: p setejat
+    // Post: EL fi de partida p es força a 10 i es verifica si la partida ha acabat
+        p.forzarPossibleFinal(10);
     }
 }

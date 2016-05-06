@@ -10,26 +10,22 @@ package projecteprogramaciolmp;
 
 
 public class Jutge extends Rol{
+
+    // CONSTRUCTORS
     
-     // ============================================================
-    // Mètodes CONSTRUCTORS
-    // ============================================================
-    
-    public Jutge() {/**
-     * PRE:--
-     * POST: L'identificador del Rol ara es "Jutge".
-     */
+    public Jutge() {
+    // Pre: --
+    // Post: L'identificador del rol ara es Jutge
         _nomRol="Jutge";
     }
     
+    // MODIFICADORS
     @Override
-    public void accioDeRol(Partida p){/**
-     * PRE: <p> setejat.
-     * POST: L'executador ha tret les monedes del palau de justicia per afegir-les
-     * al seu compte corrent.
-     */
-        Moneda aux= p.buidaPalauJusticia();
-        p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), aux.retornaQuantitat());
+    public void accioDeRol(Partida p){
+    // Pre: p setejat
+    // Post: L'executador ha tret les monedes del palau de justicia per afegir-les a la seva quantitat
+        Moneda aux= p.buidarPalauJusticia();
+        p.afegirMonedesJugador(p.getIndexJugadorExecutador(), aux.retornaQuantitat());
     }
     
-}
+} // END OF CLASS JUTGE

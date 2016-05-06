@@ -12,42 +12,49 @@ import java.util.ArrayList;
 
 public class Espia extends Rol{
     
-     // ============================================================
-    // Mètodes CONSTRUCTORS
-    // ============================================================
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             CONSTRUCTORS                                                          //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
     
-    public Espia() {/**
-     * PRE:--
-     * POST: Seteja el identificador del rol com a "Espia"
-     */
-        
+    public Espia() {
+    // Pre: --
+    // Post: Seteja el identificador del rol com a Espia        
         _nomRol="Espia";
     }
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             MÈTODES MODIFICADORS                                                  //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+    
     @Override
-    public void accioDeRol(Partida p){/**
-     * PRE: <p> setejat
-     * POST: Selecciona un jugador i una carta d'aquest (o del _mazo) i la veu.
-     * El mateix amb una de les seves cartes.
-     * Despres pot decidir si intercanviar-la o no (intercanvi en fals).
-     * 
+    public void accioDeRol(Partida p){
+    // Pre: p setejat
+    // Post: Selecciona un jugador i una carta d'aquest (o del mazo) i la veu
+    // El mateix amb una de les seves cartes
+    // Després pot decidir si intercanviar-la o no (intercanvi fals, no realitzat)
+    /*
      * NOTA: De moment NO esta implementat la opcio del _mazo.
-     */
+    */
         //RECOLLIDA DADES
-        ArrayList<Integer> aux= p.escollirJugadors(1);                                  //Guardo al array el index del jugador seleccionat pel jugador executador
+        ArrayList<Integer> aux= p.escollirJugadors(1);                                  // Guardo al array el index del jugador seleccionat pel jugador executador
              
-        int nCartaExecutador= p.escollirCarta(p.obtIndexJugadorExecutador());           //Guardo en una variable local l'index de la carta que ha escollit veure l'espia
-        int nCartaVictima= p.escollirCarta(aux.get(0));
+        int nCartaExecutador= p.escollirCartaVictima(p.getIndexJugadorExecutador());           // Guardo en una variable local l'index de la carta que ha escollit veure l'espia
+        int nCartaVictima= p.escollirCartaVictima(aux.get(0));
         
         //TRACTAMENT DADES
-        p.descobrirCarta(aux.get(0), nCartaVictima);                                    //Es veu per pantalla el rol de la carta del executador seleccionada pel executador
-        p.descobrirCarta(p.obtIndexJugadorExecutador(),nCartaExecutador);               //Es veu per pantalla el rol de la carta de la victima seleccionada pel executador
+        p.descobrirCarta(aux.get(0), nCartaVictima);                                    // Es veu per pantalla el rol de la carta del executador seleccionada pel executador
+        p.descobrirCarta(p.getIndexJugadorExecutador(),nCartaExecutador);               // Es veu per pantalla el rol de la carta de la victima seleccionada pel executador
         System.out.print("Una vegada vista la carta del jugador, vols fer"
                 + " intercanvi? (si dius no es fara intercanvi fals)");
-        if(p.preguntarJugador(p.obtIndexJugadorExecutador())){                          //Pregunto si vol fer l'intercanvi
+        if(p.preguntarJugador(p.getIndexJugadorExecutador())){                          // Pregunto si vol fer l'intercanvi
             //fer intercanvi
-            p.intercanviarCartes(p.obtIndexJugadorExecutador(), nCartaExecutador,       //Es procedeix a fer l'intercanvi de cartes entre jugadors
+            p.intercanviarCartes(p.getIndexJugadorExecutador(), nCartaExecutador,       // Es procedeix a fer l'intercanvi de cartes entre jugadors
                     aux.get(0), nCartaVictima);
         }
-        System.out.println("Intercanvi fet (o no) MUAJAJA");
+        System.out.println("Intercanvi fet (o no) MUAJAJA");                            // XD
     }
 }

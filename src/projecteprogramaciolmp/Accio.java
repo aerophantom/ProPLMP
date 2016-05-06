@@ -10,82 +10,105 @@ import java.util.*;
  * @author aerop
  */
 public class Accio {
-///////////////////////////////ATRIBUTS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    Rol _accioRol;
     
-///////////////////////////////CONSTRUCTORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    public Accio(){
+    // ATRIBUTS
+    // ----------------
+    Rol _accioRol;
+    // ----------------
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             CONSTRUCTORS                                                          //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+    
+    public Accio()
+    {
+        
     }
-    public Accio(Rol r){/**
-     * PRE:--
-     * POST: Accio ara te com a rol <r>
-     */
+    
+    public Accio(Rol r){
+    // Pre: --
+    // Post: Acció ara té com a rol r
         _accioRol= r;
     }
-///////////////////////////////CONSULTORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    public Rol getRol(){/**
-     * PRE:--
-     * POST: Retorna el rol de l'accio
-     */
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             MÈTODES CONSULTORS                                                    //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+
+    public Rol getRol(){
+    // Pre: --
+    // Post: Retorna el rol de l'acció
         return _accioRol;
     }
     
     public void consultaCarta(Jugador j) {
-        
+    // Pre: Jugador j correspon a un jugador de la partida
+    // Post: Mostra el rol d'alguna carta del jugador
         System.out.println("Cartes a consultar: "); 
-        for (int i=0;i<j.nCartes();i++){
+        for (int i=0;i<j.nCartes();i++){                                                                    // Mostra les cartes disponibles
             System.out.println("Carta "+i);   
         }
         System.out.println("Quina carta vols consular?"); 
         Scanner teclat= new Scanner(System.in);
-        int carta = teclat.nextInt();
-        while (carta<0 || carta>j.nCartes()-1){
+        int carta = teclat.nextInt();                                                                        // Recull un numero de carta de les disponibles
+        while (carta<0 || carta>j.nCartes()-1){                                                             // Si el número no es vàlid
                  System.out.println();
-                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");
+                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");       
                  carta = teclat.nextInt();
             }
         String rol=j.getCarta(carta).getRolCarta().getRol();
-        System.out.println("La carta "+carta+ " té el rol de "+rol);
+        System.out.println("La carta "+carta+ " té el rol de "+rol);                                        // Mostra el rol de la carta escollida
         
         
     }
     
-    public boolean decidir() {/**
-     * PRE: --
-     * POST: Es retorna cert o fals en funcio de la decisió escrita per consola
-     */
+    public boolean decidir() {
+    // Pre: --
+    // Post: Retorna TREU o FALSE en funció de la decisió del jugador
         Scanner teclat= new Scanner(System.in);
-        System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");
+        System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");                                       // Formula pregunta de YES or NOT
         String decisio = teclat.nextLine();
-        while (!decisio.equals("Y") && !decisio.equals("N")){
+        System.out.println();
+        while (!decisio.equals("Y") && !decisio.equals("N")){                                               // Si no s'ha entrar Y o N torna a demanar
             System.out.println("Escriu 'Y' per dir SI o 'N' per dir NO");
             decisio = teclat.nextLine();
+            System.out.println();
         }
         return decisio.equals("Y");
-        //return signal;
     }
+    
     public void consultaCarta(Partida p){
-        p.escollirCarta(p.obtIndexJugadorExecutador());
+        p.escollirCartaVictima(p.getIndexJugadorExecutador());
         //per acabar crec
     }
-///////////////////////////////MODIFICADORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    public void nouRol(Rol r){/**
-     * PRE: <r> instanciat.
-     * POST: Accio ara té un nou rol.
-     */
+    
+////// ================================================================================================================= //////
+//////                                                                                                                   //////
+//////                                             MÈTODES MODIFICADORS                                                  //////
+//////                                                                                                                   //////
+////// ================================================================================================================= //////
+
+    public void nouRol(Rol r){
+    // Pre: r instanciat
+    // Post: Acció ara té un nou rol
         _accioRol= r;
     }
     
     public void intercanviarCartes(Partida p){
+    // Pre: p correspon a la partida actual
+    // Post: 
         System.out.println("Selecciona una carta del mazo");
         p.mostraCartesMazo();
-        //per acabar
     }
         
-    public void accioDeRol(Partida p){/**
-     * PRE: <p> setejat
-     * POST: Executa l'accio de rol que te actualment Accio.
-     */
+    public void accioDeRol(Partida p){
+    // Pre: p setejat
+    // Post: Executa l'acció de rol que té actualment acció
         _accioRol.accioDeRol(p);
     }
-}
+    
+} // END OF CLASS ACCIO
