@@ -182,7 +182,7 @@ public class Partida {
     public int getIndexExecutadorOrdre(){
     // Pre: --
     // Post: Retorna el num de la posició del _jugador determinat per l'index executador
-        return _Jugadors.indexOf(_indexExecutador);
+        return _ordre.indexOf(_indexExecutador);
     }
         
     public int getIndexCorregit(int indexOrdre){
