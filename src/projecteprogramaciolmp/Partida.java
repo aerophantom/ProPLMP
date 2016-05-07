@@ -39,7 +39,7 @@ public class Partida {
            _indexOrdre = 0;                             // Index per moure's pel vector que determina l'ordre dels jugadors
            _indexExecutador = 0;                        // Index per saber dins el vector de jugadors quins jugador està jugant
            _monedesPerGuanyar = monedesPerGuanyar;
-           PartidaSettings(numJug,monedesPerJugador);
+           partidaSettings(numJug,monedesPerJugador);
        }
        
      
@@ -318,7 +318,7 @@ public class Partida {
        
        
        
-    public void PartidaSettings(int nJugadors,int monedesPerJugador) {
+    public void partidaSettings(int nJugadors,int monedesPerJugador) {
     // Pre: nJugadors = 2 or 3 or 4
     // Post: Ajusta les opcions de la partida. Estableix ordre i guarda les cartes com toca
 
@@ -492,7 +492,7 @@ public class Partida {
         System.out.println("");
         boolean acabar = false;
         while (!partidaAcabada()){
-            actualitzaIndexJugador();
+            actualitzaIndexJugador();//AQUESTA FUNCIO CREC QUE ES PODRIA FUSIONAR AMB incrementarOrdre()
             // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,                    
             System.out.println("");
             System.out.println("És el torn del jugador "+_indexExecutador);
