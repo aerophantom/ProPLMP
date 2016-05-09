@@ -475,12 +475,15 @@ public class Partida {
             _indexOrdre = 0;
         }
     }
-
+    private void actualitzaTorn(){
+        incrementaOrdre();
+        actualitzaIndexJugador();
+    }
     public void dinamicaDelJoc(){
     // Pre: --
     // Post: Estableix la dinamica del joc fins que la partida s'acabi
 
-        _indexOrdre= 0;
+        _indexOrdre= -1;//fico -1 pq a actualitzaTorn el ficara a 0 el primer torn
         boolean partidaAcabada= false;
         descartarCartes();
         repartirCartes();
@@ -492,7 +495,7 @@ public class Partida {
         System.out.println("");
         boolean acabar = false;
         while (!partidaAcabada()){
-            actualitzaIndexJugador();//AQUESTA FUNCIO CREC QUE ES PODRIA FUSIONAR AMB incrementarOrdre()
+            actualitzaTorn();//AQUESTA FUNCIO CREC QUE ES PODRIA FUSIONAR AMB incrementarOrdre()
             // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,                    
             System.out.println("");
             System.out.println("És el torn del jugador "+_indexExecutador[0]);
@@ -515,7 +518,6 @@ public class Partida {
                     _Jugadors.get(_indexExecutador[0]).nouRol(juga);
                     _Jugadors.get(_indexExecutador[0]).accioDeRol(this);
                 }
-                incrementaOrdre();
             }
             else if (accio.equals("2")){
                 System.out.println("Amb qui vols intercanviar, amb el mall (Y) o algun jugador (N)?");
@@ -544,11 +546,9 @@ public class Partida {
                     _Jugadors.get(_indexExecutador[0]).escollirCarta();
                     intercanviarCartes(_indexExecutador[0], _Jugadors.get(_indexExecutador[0]).getIndCartaActual(), aux.get(0), cartaEsc);
                 }
-                incrementaOrdre();
             }
             else {
                 _Jugadors.get(_indexExecutador[0]).consultarCarta();
-                incrementaOrdre();
             }
             mostraEstadistiques();
         }         
@@ -606,6 +606,7 @@ public class Partida {
 
         _indexExecutador[0] = _ordre.get(_indexOrdre);
     }
+    
     public void setejaIndexExecutadorAuxiliar(){
         _indexExecutador[0]= -1;
     }
