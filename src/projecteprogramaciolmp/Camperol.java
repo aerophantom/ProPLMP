@@ -26,5 +26,13 @@ public class Camperol extends Rol {
     // Pre:
     // Post:
         //p.afegirMonedesJugador(p.obtIndexJugadorExecutador(), );
+        if(p.getIndexJugadorExecutador(1)==-1){
+            p.afegirMonedesJugador(p.getIndexJugadorExecutador(0), 1);
+        }
+        else{
+            p.afegirMonedesJugador(p.getIndexJugadorExecutador(0), 2);
+            p.afegirMonedesJugador(p.getIndexJugadorExecutador(1), 2);
+            p.setejaIndexExecutadorAuxiliar();
+        }
     }
 }

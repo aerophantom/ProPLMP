@@ -18,7 +18,7 @@ public class Partida {
     private ArrayList<Integer> _ordre;       // Array amb l'ordre de tirades. L'indexOrdre determina la posició en el vector del jugador.
     
     private int _indexOrdre;                 // Index de l'array de _ordre que indica el jugador actual. --> numero Torn
-    private int _indexExecutador;            // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
+    private int [] _indexExecutador;            // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;          // Monedes necessàries per a que un jugador guanyi la partida
     private int _nCartesPerJugador;         // Num de cartes que toca repartir a cada jugador
     
@@ -37,7 +37,7 @@ public class Partida {
            _monedesJusticia= new Moneda();              // Monedes del Palau de Justicia
            _monedesBanc= new Moneda(Integer.MAX_VALUE); // Al banc mai se li acaben les monedes.
            _indexOrdre = 0;                             // Index per moure's pel vector que determina l'ordre dels jugadors
-           _indexExecutador = 0;                        // Index per saber dins el vector de jugadors quins jugador està jugant
+           _indexExecutador  = new int [2];                        // Index per saber dins el vector de jugadors quins jugador està jugant
            _monedesPerGuanyar = monedesPerGuanyar;
            partidaSettings(numJug,monedesPerJugador);
        }
@@ -159,11 +159,11 @@ public class Partida {
         return retorn;                                                                 // Retorna l'índex de la carta del vector de cartes disponibles del jugador en qüestió
     }
            
-    public int getIndexJugadorExecutador(){
+    public int getIndexJugadorExecutador(int index){
     // Pre: --
     // Post:  Retorna el index del jugador que li toca el seu torn dins el vector de jugadors
 
-        return _indexExecutador;
+        return _indexExecutador[index];
     }
     
     public int getMonedesJugador(int index){
@@ -182,7 +182,7 @@ public class Partida {
     public int getIndexExecutadorOrdre(){
     // Pre: --
     // Post: Retorna el num de la posició del _jugador determinat per l'index executador
-        return _ordre.indexOf(_indexExecutador);
+        return _ordre.indexOf(_indexExecutador[0]);
     }
         
     public int getIndexCorregit(int indexOrdre){
@@ -321,7 +321,7 @@ public class Partida {
     public void partidaSettings(int nJugadors,int monedesPerJugador) {
     // Pre: nJugadors = 2 or 3 or 4
     // Post: Ajusta les opcions de la partida. Estableix ordre i guarda les cartes com toca
-
+        _indexExecutador[1]= -1;
         _Jugadors= new ArrayList<> (nJugadors);                                      // Array de nJugadors
         for (int i=0; i< nJugadors; i++){                                           // Fes fins a nJugadors...
             JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));     // Crea un jugador
@@ -495,11 +495,11 @@ public class Partida {
             actualitzaIndexJugador();//AQUESTA FUNCIO CREC QUE ES PODRIA FUSIONAR AMB incrementarOrdre()
             // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,                    
             System.out.println("");
-            System.out.println("És el torn del jugador "+_indexExecutador);
+            System.out.println("És el torn del jugador "+_indexExecutador[0]);
             String accio = triarAccio();
             if (accio.equals("1")){
                 // Escollir carta
-                _Jugadors.get(_indexExecutador).escollirCarta();                           // En aquesta accio es guarda l'index de carta actual.
+                _Jugadors.get(_indexExecutador[0]).escollirCarta();                           // En aquesta accio es guarda l'index de carta actual.
                 System.out.println("Escull un rol dels disponibles");
                 for (int q=0; q<_rolsDisp.size(); q++){
                      _rolsDisp.get(q).ensenya();
@@ -508,17 +508,18 @@ public class Partida {
                 System.out.println("");
                 boolean totsmenteixen = false;
                 totsmenteixen = interrupcions(juga);
+                
                 if (!totsmenteixen){
                     System.out.println();
-                    System.out.println("El jugador que executa l'acció: Jugador " + _indexExecutador);
-                    _Jugadors.get(_indexExecutador).nouRol(juga);
-                    _Jugadors.get(_indexExecutador).accioDeRol(this);
+                    System.out.println("El jugador que executa l'acció: Jugador " + _indexExecutador[0]);
+                    _Jugadors.get(_indexExecutador[0]).nouRol(juga);
+                    _Jugadors.get(_indexExecutador[0]).accioDeRol(this);
                 }
                 incrementaOrdre();
             }
             else if (accio.equals("2")){
                 System.out.println("Amb qui vols intercanviar, amb el mall (Y) o algun jugador (N)?");
-                if (_Jugadors.get(_indexExecutador).decidir()){
+                if (_Jugadors.get(_indexExecutador[0]).decidir()){
                     System.out.println("");
                     System.out.println("Escull una carta del mazo de cartes de la taula");
                     for (int i=0; i<_mazo.size(); i++){
@@ -529,9 +530,9 @@ public class Partida {
                     System.out.print("Elecció carta mazo: ");
                     int posC = teclat.nextInt();
 
-                    _Jugadors.get(_indexExecutador).escollirCarta();
-                    Carta jugador = _Jugadors.get(_indexExecutador).getCartaActual();
-                    _Jugadors.get(_indexExecutador).borraCarta();
+                    _Jugadors.get(_indexExecutador[0]).escollirCarta();
+                    Carta jugador = _Jugadors.get(_indexExecutador[0]).getCartaActual();
+                    _Jugadors.get(_indexExecutador[0]).borraCarta();
                     intercanviaMazo(jugador, posC);
 
                     // Pels debuggers
@@ -540,13 +541,13 @@ public class Partida {
                 else {
                     ArrayList<Integer> aux = escollirJugadors(1);
                     int cartaEsc = escollirCartaVictima(aux.get(0));
-                    _Jugadors.get(_indexExecutador).escollirCarta();
-                    intercanviarCartes(_indexExecutador, _Jugadors.get(_indexExecutador).getIndCartaActual(), aux.get(0), cartaEsc);
+                    _Jugadors.get(_indexExecutador[0]).escollirCarta();
+                    intercanviarCartes(_indexExecutador[0], _Jugadors.get(_indexExecutador[0]).getIndCartaActual(), aux.get(0), cartaEsc);
                 }
                 incrementaOrdre();
             }
             else {
-                _Jugadors.get(_indexExecutador).consultarCarta();
+                _Jugadors.get(_indexExecutador[0]).consultarCarta();
                 incrementaOrdre();
             }
             mostraEstadistiques();
@@ -559,13 +560,14 @@ public class Partida {
         boolean totsmenteixen = true;
         Interrupcio intr = new Interrupcio();
         intr.preguntarInterrupcio(this);                                        // li passem la partida actual com a parametre
-
+        int comptadorInocents= 0;
         if (intr.numInterrupcions()!=1) {
             while (intr.hiHaInterrupcions()) {
                 int index=intr.getIndex();                                      // retornem un index i alhora l'esborrem del vector d'interrupcions.
                 if (_Jugadors.get(index).getCartaActual().getRolCarta().equals(rol)) { // falta implementar la part d'escollir la carta que vol mostrar.
-                    _indexExecutador=index;
+                    _indexExecutador[comptadorInocents]=index;
                     totsmenteixen=false;
+                    comptadorInocents++;
                 }
                 else  {
                     pagarMulta(index);
@@ -602,7 +604,10 @@ public class Partida {
     // Pre: --
     // Post: Actualitza el valor de indexExecutar segons el ordre del jugador que toqui
 
-        _indexExecutador = _ordre.get(_indexOrdre);
+        _indexExecutador[0] = _ordre.get(_indexOrdre);
+    }
+    public void setejaIndexExecutadorAuxiliar(){
+        _indexExecutador[0]= -1;
     }
     
     public void setRolJugador(Rol r, int i){
@@ -654,13 +659,13 @@ public class Partida {
         Carta intercanvia = _mazo.get(posMazo);                     // Obté la carta indicada per posMazo del mazo de cartes disponibles
         _mazo.remove(posMazo);                                      // Borra-la del mazo
         _mazo.add(jugador);                                         // Afageix la nova carta
-        _Jugadors.get(_indexExecutador).afegirCarta(intercanvia);   // Afageix la nova carta del mazo al set de cartes del jugador que li toca el turn
+        _Jugadors.get(_indexExecutador[0]).afegirCarta(intercanvia);   // Afageix la nova carta del mazo al set de cartes del jugador que li toca el turn
     }
     
     public void forzarPossibleFinal(int nouLimit){
     // Pre: noulimit < _monedesPerGuanyar && noulimit > 0
     // Post: _fiPartida = true si el Jugador trampos ha superat el limit que imposa el seu rol
-        _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador).retornaMonedes().retornaQuantitat();             // Es pot fer amb Moneda per polirlo millor
+        _fiPartida = nouLimit<=_Jugadors.get(_indexExecutador[0]).retornaMonedes().retornaQuantitat();             // Es pot fer amb Moneda per polirlo millor
     }
 
     public boolean potExecutarRol(int indexJugador){

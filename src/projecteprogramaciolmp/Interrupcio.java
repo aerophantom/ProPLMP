@@ -70,7 +70,7 @@ public class Interrupcio {
     // que i jugador protesti,es guardarà el seu index al vectorInterrupcio automaticament es guarda (sense preguntar) el jugador que té el torn
         boolean volInterrompre=false;
         for (int i=0;i<p.getNumJugadors();i++) {        // Recorrer tots els jugadors
-            if (i!=p.getIndexJugadorExecutador()){      // Mentres el jugador no sigui el executador de l'accio de rol
+            if (i!=p.getIndexJugadorExecutador(0)){      // Mentres el jugador no sigui el executador de l'accio de rol
                System.out.println("Jugador " + i);
                System.out.println("Vols interrompre?");
                volInterrompre=p.preguntarJugador(i);    // Recull la resposta

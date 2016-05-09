@@ -50,7 +50,7 @@ public class Inquisidor extends Rol {
             System.out.println("Mentideeeeer, hauras de sofrir i pagar 4 "
                     + "monedes al cabron del inquisidor!");
             p.afegirMonedesJugador(aux.get(0), -4);                             // Resto 4 monedes al jugador victima
-            p.afegirMonedesJugador(p.getIndexJugadorExecutador(), 4);           // Afegeixo 4 monedes al jugador executador
+            p.afegirMonedesJugador(p.getIndexJugadorExecutador(0), 4);           // Afegeixo 4 monedes al jugador executador
         }
         else{
             System.out.println("Ufffff, has dit la veritat, aquest cop t'has"   

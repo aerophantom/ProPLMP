@@ -42,17 +42,17 @@ public class Espia extends Rol{
         //RECOLLIDA DADES
         ArrayList<Integer> aux= p.escollirJugadors(1);                                  // Guardo al array el index del jugador seleccionat pel jugador executador
              
-        int nCartaExecutador= p.escollirCartaVictima(p.getIndexJugadorExecutador());           // Guardo en una variable local l'index de la carta que ha escollit veure l'espia
+        int nCartaExecutador= p.escollirCartaVictima(p.getIndexJugadorExecutador(0));           // Guardo en una variable local l'index de la carta que ha escollit veure l'espia
         int nCartaVictima= p.escollirCartaVictima(aux.get(0));
         
         //TRACTAMENT DADES
         p.descobrirCarta(aux.get(0), nCartaVictima);                                    // Es veu per pantalla el rol de la carta del executador seleccionada pel executador
-        p.descobrirCarta(p.getIndexJugadorExecutador(),nCartaExecutador);               // Es veu per pantalla el rol de la carta de la victima seleccionada pel executador
+        p.descobrirCarta(p.getIndexJugadorExecutador(0),nCartaExecutador);               // Es veu per pantalla el rol de la carta de la victima seleccionada pel executador
         System.out.print("Una vegada vista la carta del jugador, vols fer"
                 + " intercanvi? (si dius no es fara intercanvi fals)");
-        if(p.preguntarJugador(p.getIndexJugadorExecutador())){                          // Pregunto si vol fer l'intercanvi
+        if(p.preguntarJugador(p.getIndexJugadorExecutador(0))){                          // Pregunto si vol fer l'intercanvi
             //fer intercanvi
-            p.intercanviarCartes(p.getIndexJugadorExecutador(), nCartaExecutador,       // Es procedeix a fer l'intercanvi de cartes entre jugadors
+            p.intercanviarCartes(p.getIndexJugadorExecutador(0), nCartaExecutador,       // Es procedeix a fer l'intercanvi de cartes entre jugadors
                     aux.get(0), nCartaVictima);
         }
         System.out.println("Intercanvi fet (o no) MUAJAJA");                            // XD

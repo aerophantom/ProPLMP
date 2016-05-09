@@ -25,7 +25,7 @@ public class Reina extends Rol {
     // Pre: p setejat
     // Post: Resta 2 monedes al banc Nacional i s'afegeix a la seva quantitat existent de monedes
         p.treureMonedesBanc(2);
-        p.afegirMonedesJugador(p.getIndexJugadorExecutador(), 2);
+        p.afegirMonedesJugador(p.getIndexJugadorExecutador(0), 2);
     }
     
 } // END OF CLASS REINA

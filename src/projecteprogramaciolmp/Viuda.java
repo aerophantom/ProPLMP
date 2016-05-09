@@ -24,12 +24,12 @@ public class Viuda extends Rol {
     // Pre: p setejat
     // Post: L'executador obté una certa quantitat de mondes del Banc Nacional el qual la suma amb les monedes actuals no passarà de 10
         //NOTA: SHA DE PODER CAMBIAR EL LIMIT PER OBTENIR (DE 10 A 8 O A 14, JOKESE)
-        int monedesExecutador= p.getMonedesJugador(p.getIndexJugadorExecutador());
+        int monedesExecutador= p.getMonedesJugador(p.getIndexJugadorExecutador(0));
         if(monedesExecutador>=10){
             System.out.print("No reps cap moneda ja que en tens el limit");
         }
         else{
-            p.afegirMonedesJugador(p.getIndexJugadorExecutador(), 10-monedesExecutador);
+            p.afegirMonedesJugador(p.getIndexJugadorExecutador(0), 10-monedesExecutador);
             p.treureMonedesBanc(10-monedesExecutador);
         }
     }

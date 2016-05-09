@@ -48,20 +48,25 @@ public class Accio {
     public void consultaCarta(Jugador j) {
     // Pre: Jugador j correspon a un jugador de la partida
     // Post: Mostra el rol d'alguna carta del jugador
-        System.out.println("Cartes a consultar: "); 
-        for (int i=0;i<j.nCartes();i++){                                                                    // Mostra les cartes disponibles
-            System.out.println("Carta "+i);   
-        }
-        System.out.println("Quina carta vols consular?"); 
-        Scanner teclat= new Scanner(System.in);
-        int carta = teclat.nextInt();                                                                        // Recull un numero de carta de les disponibles
-        while (carta<0 || carta>j.nCartes()-1){                                                             // Si el número no es vàlid
-                 System.out.println();
-                 System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");       
-                 carta = teclat.nextInt();
+        if(j.nCartes()!=1){
+            System.out.println("Cartes a consultar: "); 
+            for (int i=0;i<j.nCartes();i++){                                                                    // Mostra les cartes disponibles
+                System.out.println("Carta "+i);   
             }
-        String rol=j.getCarta(carta).getRolCarta().getRol();
-        System.out.println("La carta "+carta+ " té el rol de "+rol);                                        // Mostra el rol de la carta escollida
+
+            System.out.println("Quina carta vols consular?"); 
+            Scanner teclat= new Scanner(System.in);
+            int carta = teclat.nextInt();                                                                        // Recull un numero de carta de les disponibles
+            while (carta<0 || carta>j.nCartes()-1){                                                             // Si el número no es vàlid
+                     System.out.println();
+                     System.out.println("Has entrat un número de carta invàlida. Torna a escollir siusplau");       
+                     carta = teclat.nextInt();
+                }
+            String rol=j.getCarta(carta).getRolCarta().getRol();
+            System.out.println("La carta "+carta+ " té el rol de "+rol);
+        }
+        else
+            System.out.println("La carta "+ 0 + " té el rol de "+j.getCarta(0).getRolCarta().getRol());// Mostra el rol de la carta escollida
         
         
     }
@@ -82,7 +87,7 @@ public class Accio {
     }
     
     public void consultaCarta(Partida p){
-        p.escollirCartaVictima(p.getIndexJugadorExecutador());
+        p.escollirCartaVictima(p.getIndexJugadorExecutador(0));
         //per acabar crec
     }
     

@@ -39,7 +39,7 @@ public class Rei extends Rol{
     // Pre: p setejat
     // Post: Es resten 3 monedes del Banc Nacional i s'afegeix la mateixa quantitat al compte corrent del jugador executador
         p.treureMonedesBanc(3);
-        p.afegirMonedesJugador(p.getIndexJugadorExecutador(), 3);
+        p.afegirMonedesJugador(p.getIndexJugadorExecutador(0), 3);
         
     }
 }
