@@ -479,6 +479,7 @@ public class Partida {
         incrementaOrdre();
         actualitzaIndexJugador();
     }
+    
     public void dinamicaDelJoc(){
     // Pre: --
     // Post: Estableix la dinamica del joc fins que la partida s'acabi
