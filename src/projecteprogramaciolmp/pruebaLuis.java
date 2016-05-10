@@ -20,7 +20,6 @@ public class pruebaLuis extends javax.swing.JFrame {
      */
     public pruebaLuis() {
         initComponents();
-        consulta.setVisible(false);
         main.setVisible(false);
     }
 
@@ -46,7 +45,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         tornJug = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         opcions = new javax.swing.JPanel();
-        consultar = new javax.swing.JButton();
+        consultarCarta = new javax.swing.JButton();
         intercanvi = new javax.swing.JButton();
         accioRol = new javax.swing.JButton();
         principal = new javax.swing.JPanel();
@@ -56,7 +55,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         accionsLog = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel8 = new javax.swing.JPanel();
+        cartes = new javax.swing.JPanel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -162,10 +161,12 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        consultar.setText("Consultar carta");
-        consultar.addActionListener(new java.awt.event.ActionListener() {
+        opcions.setBackground(new java.awt.Color(255, 255, 51));
+
+        consultarCarta.setText("Consultar carta");
+        consultarCarta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarActionPerformed(evt);
+                consultarCartaActionPerformed(evt);
             }
         });
 
@@ -178,7 +179,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         opcionsLayout.setHorizontalGroup(
             opcionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(opcionsLayout.createSequentialGroup()
-                .addComponent(consultar)
+                .addComponent(consultarCarta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(intercanvi)
                 .addGap(357, 357, 357)
@@ -189,7 +190,7 @@ public class pruebaLuis extends javax.swing.JFrame {
             .addGroup(opcionsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(opcionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(consultar)
+                    .addComponent(consultarCarta)
                     .addComponent(intercanvi)
                     .addComponent(accioRol))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -245,16 +246,16 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel8.setBackground(new java.awt.Color(153, 255, 51));
+        cartes.setBackground(new java.awt.Color(153, 255, 51));
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cartesLayout = new javax.swing.GroupLayout(cartes);
+        cartes.setLayout(cartesLayout);
+        cartesLayout.setHorizontalGroup(
+            cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 589, Short.MAX_VALUE)
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        cartesLayout.setVerticalGroup(
+            cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -266,7 +267,7 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(accionsLog, javax.swing.GroupLayout.PREFERRED_SIZE, 217, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -278,7 +279,7 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(stats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(accionsLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cartes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -330,17 +331,16 @@ public class pruebaLuis extends javax.swing.JFrame {
 
     private void mainBotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBotoActionPerformed
         intro.setVisible(false);
-        consulta.setVisible(false);
         main.setVisible(true);
        
     }//GEN-LAST:event_mainBotoActionPerformed
 
-    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
+    private void consultarCartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCartaActionPerformed
         // TODO add your handling code here:
-        consulta.setVisible(true);
-        tornJug.setVisible(true);
+        
+        intro.setVisible(true);
         main.setVisible(false);
-    }//GEN-LAST:event_consultarActionPerformed
+    }//GEN-LAST:event_consultarCartaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,20 +359,20 @@ public class pruebaLuis extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interficie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pruebaLuis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interficie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pruebaLuis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interficie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pruebaLuis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interficie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pruebaLuis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interficie().setVisible(true);
+                new pruebaLuis().setVisible(true);
                 //consulta.setVisible(false);
                 
             }
@@ -382,13 +382,13 @@ public class pruebaLuis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accioRol;
     private javax.swing.JPanel accionsLog;
-    private javax.swing.JButton consultar;
+    private javax.swing.JPanel cartes;
+    private javax.swing.JButton consultarCarta;
     private javax.swing.JButton intercanvi;
     private javax.swing.JPanel intro;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;

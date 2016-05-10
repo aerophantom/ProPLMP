@@ -231,12 +231,17 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="opcions">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="consultar" min="-2" max="-2" attributes="0"/>
+                      <Component id="consultarCarta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="intercanvi" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
@@ -249,7 +254,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="consultarCarta" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="intercanvi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="accioRol" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -259,12 +264,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="consultar">
+            <Component class="javax.swing.JButton" name="consultarCarta">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar carta"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarCartaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="intercanvi">
@@ -293,7 +298,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="accionsLog" pref="217" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                      <Component id="cartes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="stats" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -307,7 +312,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="stats" max="32767" attributes="0"/>
                           <Component id="accionsLog" max="32767" attributes="0"/>
-                          <Component id="jPanel8" max="32767" attributes="0"/>
+                          <Component id="cartes" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -407,7 +412,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel8">
+            <Container class="javax.swing.JPanel" name="cartes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="ff" red="99" type="rgb"/>
