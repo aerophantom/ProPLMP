@@ -43,8 +43,8 @@ public class pruebaLuis extends javax.swing.JFrame {
         monedesJug2 = new javax.swing.JTextField();
         mainBoto = new javax.swing.JButton();
         main = new javax.swing.JPanel();
-        tornJug = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        superior = new javax.swing.JPanel();
+        tornJugador = new javax.swing.JLabel();
         opcions = new javax.swing.JPanel();
         consultarCarta = new javax.swing.JButton();
         intercanvi = new javax.swing.JButton();
@@ -140,24 +140,24 @@ public class pruebaLuis extends javax.swing.JFrame {
 
         main.setBackground(new java.awt.Color(0, 0, 0));
 
-        tornJug.setBackground(new java.awt.Color(255, 153, 255));
+        superior.setBackground(new java.awt.Color(255, 153, 255));
 
-        jLabel4.setText("Jugador N");
+        tornJugador.setText("Jugador N");
 
-        javax.swing.GroupLayout tornJugLayout = new javax.swing.GroupLayout(tornJug);
-        tornJug.setLayout(tornJugLayout);
-        tornJugLayout.setHorizontalGroup(
-            tornJugLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tornJugLayout.createSequentialGroup()
+        javax.swing.GroupLayout superiorLayout = new javax.swing.GroupLayout(superior);
+        superior.setLayout(superiorLayout);
+        superiorLayout.setHorizontalGroup(
+            superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tornJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(491, 491, 491))
         );
-        tornJugLayout.setVerticalGroup(
-            tornJugLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tornJugLayout.createSequentialGroup()
+        superiorLayout.setVerticalGroup(
+            superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(superiorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(tornJugador, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -274,14 +274,14 @@ public class pruebaLuis extends javax.swing.JFrame {
         main.setLayout(mainLayout);
         mainLayout.setHorizontalGroup(
             mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tornJug, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(opcions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainLayout.setVerticalGroup(
             mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainLayout.createSequentialGroup()
-                .addComponent(tornJug, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -331,6 +331,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         
         //INICIALITZA PARTIDA
         p= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador);
+        tornJugador.setText("Jugador "+p.getIndexCorregit(0));
     }//GEN-LAST:event_mainBotoActionPerformed
 
     private void consultarCartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCartaActionPerformed
@@ -344,7 +345,8 @@ public class pruebaLuis extends javax.swing.JFrame {
 
     private void accioRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accioRolActionPerformed
         // TODO add your handling code here:
-        principal.setVisible(false);
+        //principal.setVisible(false);
+        
     }//GEN-LAST:event_accioRolActionPerformed
 
     /**
@@ -394,7 +396,6 @@ public class pruebaLuis extends javax.swing.JFrame {
     private javax.swing.JPanel intro;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea log;
@@ -408,6 +409,7 @@ public class pruebaLuis extends javax.swing.JFrame {
     private javax.swing.JPanel opcions;
     private javax.swing.JPanel principal;
     private javax.swing.JTextArea stats;
-    private javax.swing.JPanel tornJug;
+    private javax.swing.JPanel superior;
+    private javax.swing.JLabel tornJugador;
     // End of variables declaration//GEN-END:variables
 }

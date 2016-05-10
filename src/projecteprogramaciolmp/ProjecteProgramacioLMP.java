@@ -20,6 +20,7 @@ public class ProjecteProgramacioLMP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Interficie aux= new Interficie();
         System.out.println("Quants jugadors jugaràn?");
         Scanner teclat = new Scanner (System.in);
         int numJug = teclat.nextInt();
@@ -30,9 +31,12 @@ public class ProjecteProgramacioLMP {
         System.out.println("Quantes monedes per jugador?");
         int numMJ= teclat.nextInt();
         
-        /*Partida nova = new Partida(numJug,numMG,numMJ);
+        Partida nova = new Partida(numJug,numMG,numMJ);
         
-        nova.dinamicaDelJoc();*/
+       
+        nova.dinamicaDelJoc();
+        
+        
     }
     
 }
