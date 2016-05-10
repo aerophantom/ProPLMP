@@ -355,7 +355,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         //pel canal de sortida els elements seleccionats.
         System.out.println(Arrays.toString(seleccionatsDescartar.toArray()));
         
-        p.mostraEstadistiques();
+        p.iniciPartidaGUI();
     }//GEN-LAST:event_mainBotoActionPerformed
 
     private void consultarCartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCartaActionPerformed
@@ -363,7 +363,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         
         /*intro.setVisible(true);
         main.setVisible(false);*/
-        
+        //p.mostrarCartaJugadorActual(p.getIndexCorregit(0), 0);
         
     }//GEN-LAST:event_consultarCartaActionPerformed
 
