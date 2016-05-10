@@ -7,6 +7,7 @@ package projecteprogramaciolmp;
 
 import TextAreaOutputStream.TextAreaOutputStream;
 import java.util.List;
+import java.util.Arrays;
 import java.io.PrintStream;
 /**
  *
@@ -350,6 +351,11 @@ public class pruebaLuis extends javax.swing.JFrame {
         //INICIALITZA PARTIDA
         p= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador);
         tornJugador.setText("Jugador "+p.getIndexCorregit(0));
+        
+        //pel canal de sortida els elements seleccionats.
+        System.out.println(Arrays.toString(seleccionatsDescartar.toArray()));
+        
+        p.mostraEstadistiques();
     }//GEN-LAST:event_mainBotoActionPerformed
 
     private void consultarCartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCartaActionPerformed

@@ -82,7 +82,9 @@ public class Partida {
             _mazo.get(i).ensenya();                                                     // Ensenya el rol de la actual
         }
     }
-    
+    public void mostrarCartaJugadorActual(int indexJugador, int indexCarta){
+        _Jugadors.get(indexJugador).ensenyarCarta(indexJugador);
+    }
     public void mostrarInfoJugador(int i){
     // Pre: i>=0
     // Post: Mostra per pantalla la informació relacionada amb el jugador que te el i torn
