@@ -67,7 +67,7 @@
                               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                               <Component id="numJugadors" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="numMonedes" pref="864" max="32767" attributes="0"/>
+                                  <Component id="numMonedes" pref="889" max="32767" attributes="0"/>
                                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -117,11 +117,12 @@
         <Component class="javax.swing.JComboBox" name="numJugadors">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="5">
+                <StringItem index="0" value="2"/>
+                <StringItem index="1" value="3"/>
+                <StringItem index="2" value="4"/>
+                <StringItem index="3" value="5"/>
+                <StringItem index="4" value="6"/>
               </StringArray>
             </Property>
           </Properties>
@@ -281,6 +282,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Accio De Rol"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accioRolActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -296,11 +300,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="accionsLog" pref="217" max="32767" attributes="0"/>
+                      <Component id="accionsLog" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cartes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="stats" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -309,8 +311,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="stats" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="accionsLog" max="32767" attributes="0"/>
                           <Component id="cartes" max="32767" attributes="0"/>
                       </Group>
@@ -320,52 +321,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="stats">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="ff" red="99" type="rgb"/>
-                </Property>
-              </Properties>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="242" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="527" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea2">
-                      <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="ESTADISTIQUES DEL JUGADORS"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JPanel" name="accionsLog">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -376,10 +331,13 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="264" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" alignment="0" min="-2" pref="264" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="198" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -387,8 +345,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="368" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="198" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -401,11 +361,27 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                    <Component class="javax.swing.JTextArea" name="log">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
                         <Property name="text" type="java.lang.String" value="LOG DE LA PARTIDA"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="stats">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="ESTADISTIQUES DEL JUGADORS"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -422,7 +398,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="589" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="857" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
