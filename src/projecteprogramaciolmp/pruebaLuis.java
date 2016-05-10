@@ -5,7 +5,10 @@
  */
 package projecteprogramaciolmp;
 
-
+import TextAreaOutputStream.TextAreaOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.Writer;
 /**
  *
@@ -320,7 +323,13 @@ public class pruebaLuis extends javax.swing.JFrame {
         int nombreDeMonedesPerGuanyar= Integer.parseInt(numMonedes2.getText());
         int nombreDeMonedesPerJugador= Integer.parseInt(monedesJug2.getText());
         
+        //REDIRIGEIX LA SORTIDA A JTEXT
+        PrintStream out = new PrintStream(new TextAreaOutputStream(log));
+        System.setOut(out);
+        System.setErr(out);
         log.setText(Integer.toString(nombreDeJugadors));
+        
+        //INICIALITZA PARTIDA
         p= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador);
     }//GEN-LAST:event_mainBotoActionPerformed
 
