@@ -6,10 +6,8 @@
 package projecteprogramaciolmp;
 
 import TextAreaOutputStream.TextAreaOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.util.List;
 import java.io.PrintStream;
-import java.io.Writer;
 /**
  *
  * @author aula
@@ -42,6 +40,8 @@ public class pruebaLuis extends javax.swing.JFrame {
         monedesJug = new javax.swing.JLabel();
         monedesJug2 = new javax.swing.JTextField();
         mainBoto = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        llista = new javax.swing.JList<>();
         main = new javax.swing.JPanel();
         superior = new javax.swing.JPanel();
         tornJugador = new javax.swing.JLabel();
@@ -92,6 +92,13 @@ public class pruebaLuis extends javax.swing.JFrame {
             }
         });
 
+        llista.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Rei", "Reina", "Bisbe", "Jutge", "Camperols", "Inquisidor", "Viuda", "Espia", "Lladre", "Trampos" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(llista);
+
         javax.swing.GroupLayout introLayout = new javax.swing.GroupLayout(intro);
         intro.setLayout(introLayout);
         introLayout.setHorizontalGroup(
@@ -99,25 +106,27 @@ public class pruebaLuis extends javax.swing.JFrame {
             .addGroup(introLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(introLayout.createSequentialGroup()
-                        .addGroup(introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(numJugadors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(introLayout.createSequentialGroup()
-                                .addComponent(numMonedes, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
-                                .addGap(11, 11, 11)))
-                        .addGap(257, 257, 257))
-                    .addGroup(introLayout.createSequentialGroup()
-                        .addComponent(numMonedes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(introLayout.createSequentialGroup()
-                        .addGroup(introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(monedesJug)
-                            .addComponent(monedesJug2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, introLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(mainBoto))))
+                        .addComponent(mainBoto))
+                    .addGroup(introLayout.createSequentialGroup()
+                        .addGroup(introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(introLayout.createSequentialGroup()
+                                .addGroup(introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(numJugadors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(introLayout.createSequentialGroup()
+                                        .addComponent(numMonedes, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
+                                        .addGap(11, 11, 11)))
+                                .addGap(124, 124, 124))
+                            .addGroup(introLayout.createSequentialGroup()
+                                .addGroup(introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(monedesJug)
+                                    .addComponent(monedesJug2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numMonedes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         introLayout.setVerticalGroup(
             introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,15 +135,20 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(numJugadors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(numMonedes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numMonedes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(monedesJug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(monedesJug2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
+                .addGroup(introLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(introLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(numMonedes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numMonedes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(monedesJug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(monedesJug2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(introLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
                 .addComponent(mainBoto))
         );
 
@@ -329,6 +343,10 @@ public class pruebaLuis extends javax.swing.JFrame {
         System.setErr(out);
         log.setText(Integer.toString(nombreDeJugadors));
         
+        //guardo els rols seleccionats.
+        List<String> seleccionatsDescartar= llista.getSelectedValuesList();
+        
+        
         //INICIALITZA PARTIDA
         p= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador);
         tornJugador.setText("Jugador "+p.getIndexCorregit(0));
@@ -398,6 +416,8 @@ public class pruebaLuis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<String> llista;
     private javax.swing.JTextArea log;
     private javax.swing.JPanel main;
     private javax.swing.JButton mainBoto;
