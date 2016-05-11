@@ -204,6 +204,10 @@ public class Partida {
         return _mall.size();
     }
     
+    public Carta getCartaJugador(int indexJugador, int indexCarta){
+        return _Jugadors.get(indexJugador).getCarta(indexCarta);
+    }
+    
     public boolean preguntarJugadorActual(){
     // Pre: --
     // Post: Formula una pregunta de Si o No al jugador que li toca el torn i retorna TRUE si s'ha escollit SI altrament FALSE
@@ -499,7 +503,7 @@ public class Partida {
             _indexOrdre = 0;
         }
     }
-    private void actualitzaTorn(){
+    public void actualitzaTorn(){
         incrementaOrdre();
         actualitzaIndexJugador();
     }
