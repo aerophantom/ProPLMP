@@ -66,9 +66,9 @@ public class pruebaLuis extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         stats = new javax.swing.JTextArea();
         cartes = new javax.swing.JPanel();
-        carta0 = new javax.swing.JPanel();
-        carta1 = new javax.swing.JPanel();
-        carta2 = new javax.swing.JPanel();
+        carta0 = new javax.swing.JLabel();
+        carta1 = new javax.swing.JLabel();
+        carta2 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -316,7 +316,7 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addGroup(accionsLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         accionsLogLayout.setVerticalGroup(
             accionsLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,67 +330,34 @@ public class pruebaLuis extends javax.swing.JFrame {
 
         cartes.setBackground(new java.awt.Color(51, 51, 51));
 
-        carta0.setBackground(new java.awt.Color(204, 0, 51));
+        carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/reversResized.jpg"))); // NOI18N
 
-        javax.swing.GroupLayout carta0Layout = new javax.swing.GroupLayout(carta0);
-        carta0.setLayout(carta0Layout);
-        carta0Layout.setHorizontalGroup(
-            carta0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
-        carta0Layout.setVerticalGroup(
-            carta0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        carta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/reversResized.jpg"))); // NOI18N
 
-        carta1.setBackground(new java.awt.Color(204, 0, 51));
-
-        javax.swing.GroupLayout carta1Layout = new javax.swing.GroupLayout(carta1);
-        carta1.setLayout(carta1Layout);
-        carta1Layout.setHorizontalGroup(
-            carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
-        );
-        carta1Layout.setVerticalGroup(
-            carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        carta2.setBackground(new java.awt.Color(204, 0, 51));
-
-        javax.swing.GroupLayout carta2Layout = new javax.swing.GroupLayout(carta2);
-        carta2.setLayout(carta2Layout);
-        carta2Layout.setHorizontalGroup(
-            carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
-        );
-        carta2Layout.setVerticalGroup(
-            carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        carta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/reversResized.jpg"))); // NOI18N
 
         javax.swing.GroupLayout cartesLayout = new javax.swing.GroupLayout(cartes);
         cartes.setLayout(cartesLayout);
         cartesLayout.setHorizontalGroup(
             cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cartesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(carta0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(carta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(carta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(82, 82, 82)
+                .addComponent(carta0)
+                .addGap(50, 50, 50)
+                .addComponent(carta1)
+                .addGap(45, 45, 45)
+                .addComponent(carta2)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         cartesLayout.setVerticalGroup(
             cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(cartesLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
                 .addGroup(cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(carta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(carta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(carta0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(carta2)
+                    .addComponent(carta1)
+                    .addComponent(carta0))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout principalLayout = new javax.swing.GroupLayout(principal);
@@ -595,9 +562,9 @@ public static boolean isInteger(String s, int radix) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accioRol;
     private javax.swing.JPanel accionsLog;
-    private javax.swing.JPanel carta0;
-    private javax.swing.JPanel carta1;
-    private javax.swing.JPanel carta2;
+    private javax.swing.JLabel carta0;
+    private javax.swing.JLabel carta1;
+    private javax.swing.JLabel carta2;
     private javax.swing.JPanel cartes;
     private javax.swing.JButton consultarCarta;
     private javax.swing.JPanel descartar;
