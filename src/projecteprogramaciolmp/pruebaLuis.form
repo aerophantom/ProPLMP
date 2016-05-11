@@ -10,6 +10,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Mascarade"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -235,8 +236,8 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JList(info)"/>
-                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="info = new DefaultListModel();"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JList(_llistaDinamica)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="_llistaDinamica = new DefaultListModel();"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="*/&#xa;&#xa;&#xa;&#xa;llista.setSelectionModel(new MySelectionModel(llista,1));"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/*"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -269,9 +270,9 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="superior" max="32767" attributes="0"/>
               <Component id="opcions" alignment="0" max="32767" attributes="0"/>
               <Component id="principal" alignment="0" max="32767" attributes="0"/>
+              <Component id="superior" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -290,33 +291,35 @@
         <Container class="javax.swing.JPanel" name="superior">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="ff" type="rgb"/>
+              <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
           </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="532" max="-2" attributes="0"/>
+                      <Component id="tornJugador" min="-2" pref="124" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="tornJugador" min="-2" pref="74" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="491" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tornJugador" pref="25" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="tornJugador" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="tornJugador">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe Print" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Jugador N"/>
               </Properties>
             </Component>
@@ -325,7 +328,7 @@
         <Container class="javax.swing.JPanel" name="opcions">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="ff" red="ff" type="rgb"/>
+              <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
           </Properties>
 
@@ -333,11 +336,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                       <Component id="consultarCarta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="intercanvi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
                       <Component id="accioRol" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -382,7 +387,7 @@
         <Container class="javax.swing.JPanel" name="principal">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+              <Color blue="33" green="33" red="ff" type="rgb"/>
             </Property>
           </Properties>
 
@@ -415,7 +420,7 @@
             <Container class="javax.swing.JPanel" name="accionsLog">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="ff" red="cc" type="rgb"/>
+                  <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -436,7 +441,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="286" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="382" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="198" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -509,7 +514,7 @@
                               <Component id="carta1" min="-2" max="-2" attributes="0"/>
                               <Component id="carta0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                          <EmptySpace pref="200" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -518,21 +523,21 @@
                 <Component class="javax.swing.JLabel" name="carta0">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/reversResized.jpg"/>
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="carta1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/reversResized.jpg"/>
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="carta2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/reversResized.jpg"/>
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
                     </Property>
                   </Properties>
                 </Component>
