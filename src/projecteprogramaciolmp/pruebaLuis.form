@@ -70,7 +70,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="mainBoto" min="-2" max="-2" attributes="0"/>
+                          <Component id="descartarBoto" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -111,7 +111,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="monedesJug2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="405" max="32767" attributes="0"/>
-                  <Component id="mainBoto" min="-2" max="-2" attributes="0"/>
+                  <Component id="descartarBoto" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -146,7 +146,7 @@
         <Component class="javax.swing.JTextField" name="numMonedes2">
           <Properties>
             <Property name="text" type="java.lang.String" value="numero"/>
-            <Property name="toolTipText" type="java.lang.String" value="" postCode="numMonedes2.getDocument().addDocumentListener(new DocumentListener() {&#xa;  public void changedUpdate(DocumentEvent e) {&#xa;    //warn();&#xa;  }&#xa;  public void removeUpdate(DocumentEvent e) {&#xa;    //warn();&#xa;  }&#xa;  public void insertUpdate(DocumentEvent e) {&#xa;    warn();&#xa;  }&#xa;&#xa;  public void warn() {&#xa;     if (!isInteger(numMonedes2.getText()) || Integer.parseInt(numMonedes2.getText())&lt;=0){&#xa;       JOptionPane.showMessageDialog(null,&#xa;          &quot;Error: Please enter number bigger than 0&quot;, &quot;Error Massage&quot;,&#xa;          JOptionPane.ERROR_MESSAGE);&#xa;          mainBoto.setEnabled(false);&#xa;    }&#xa;    else{&#xa;        mainBoto.setEnabled(true);&#xa;    } &#xa;&#xa;  }&#xa;});"/>
+            <Property name="toolTipText" type="java.lang.String" value="" postCode="numMonedes2.getDocument().addDocumentListener(new DocumentListener() {&#xa;  public void changedUpdate(DocumentEvent e) {&#xa;    //warn();&#xa;  }&#xa;  public void removeUpdate(DocumentEvent e) {&#xa;    //warn();&#xa;  }&#xa;  public void insertUpdate(DocumentEvent e) {&#xa;    warn();&#xa;  }&#xa;&#xa;  public void warn() {&#xa;     if (!isInteger(numMonedes2.getText()) || Integer.parseInt(numMonedes2.getText())&lt;=0){&#xa;       JOptionPane.showMessageDialog(null,&#xa;          &quot;Error: Please enter number bigger than 0&quot;, &quot;Error Massage&quot;,&#xa;          JOptionPane.ERROR_MESSAGE);&#xa;          descartarBoto.setEnabled(false);&#xa;    }&#xa;    else{&#xa;        descartarBoto.setEnabled(true);&#xa;    } &#xa;&#xa;  }&#xa;});"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor de Texto"/>
             </Property>
@@ -165,12 +165,12 @@
             <Property name="text" type="java.lang.String" value="jTextField2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="mainBoto">
+        <Component class="javax.swing.JButton" name="descartarBoto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Next"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainBotoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descartarBotoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -180,7 +180,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1167" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="539" max="-2" attributes="0"/>
+                  <Component id="mainBoto" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="555" max="32767" attributes="0"/>
+              </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="522" max="-2" attributes="0"/>
@@ -192,7 +196,11 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="491" max="32767" attributes="0"/>
+                  <Component id="mainBoto" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+              </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
@@ -234,6 +242,14 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="mainBoto">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jButton1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainBotoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="main">

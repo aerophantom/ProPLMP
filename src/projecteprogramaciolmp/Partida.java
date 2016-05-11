@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-
+import java.util.List;
 public class Partida {
     // Atributs
     // --------------------
@@ -13,7 +13,7 @@ public class Partida {
     private Moneda _monedesBanc;              // Monedes del banc nacional
     
     private ArrayList<Jugador> _Jugadors;    // Array dels jugadors que estan en la partida
-    private ArrayList<Carta>  _mazo;         // Cartes disponibles en la partida (NO ESTÀN DESCARTADES I TAMPOC LES TENEN ELS JUGADORS)
+    private ArrayList<Carta>  _mall;         // Cartes disponibles en la partida (NO ESTÀN DESCARTADES I TAMPOC LES TENEN ELS JUGADORS)
     private ArrayList<Carta> _rolsDisp;      // Rols disponibles per jugadr (NO ESTÀN DESCARTADES I PODEN TENIR-HO ELS JUGADORS)
     private ArrayList<Integer> _ordre;       // Array amb l'ordre de tirades. L'indexOrdre determina la posició en el vector del jugador.
     
@@ -78,12 +78,12 @@ public class Partida {
     // Pre: --
     // Post: Mostra les cartes del mazo amb els seus rols
     
-        for(int i= 0; i<_mazo.size(); i++){                                            // Recorrer tot el mazo
-            _mazo.get(i).ensenya();                                                     // Ensenya el rol de la actual
+        for(int i= 0; i<_mall.size(); i++){                                            // Recorrer tot el mazo
+            _mall.get(i).ensenya();                                                     // Ensenya el rol de la actual
         }
     }
-    public void mostrarCartaJugadorActual(int indexJugador, int indexCarta){
-        _Jugadors.get(indexJugador).ensenyarCarta(indexJugador);
+    public void mostrarCartaJugadorActual(int indexCarta){
+        _Jugadors.get(_indexExecutador[0]).ensenyarCarta(indexCarta);
     }
     public void mostrarInfoJugador(int i){
     // Pre: i>=0
@@ -118,7 +118,7 @@ public class Partida {
     }
     
     public int buscaCarta(String nom, int opcio){
-    // Pre: nom correspon a un nom de algun rol de cartes dels rols que no s'han descartat (opcio = 1), mostra els rols del _mazo (opcio 2)
+    // Pre: nom correspon a un nom de algun rol de cartes dels rols que no s'han descartat (opcio = 1), mostra els rols del _mall (opcio 2)
     // Post: Retorna la pos on es troba la carta en l'array dels rols disponibles no descartats o en el mazo
 
         boolean trobada = false;                                            // Boolean per retornar 
@@ -130,8 +130,8 @@ public class Partida {
             }
         }
         else {
-            while (!trobada && pos < _mazo.size()){                          // Mentres no s'hagi trobat la carta i no s'hagi recorregut tot l'array de cartes disponibles
-                if (_mazo.get(pos).getNom().equals(nom)) trobada=true;       // Si l'has trobada, retornaràs TRUE
+            while (!trobada && pos < _mall.size()){                          // Mentres no s'hagi trobat la carta i no s'hagi recorregut tot l'array de cartes disponibles
+                if (_mall.get(pos).getNom().equals(nom)) trobada=true;       // Si l'has trobada, retornaràs TRUE
                 else pos++;                                                      // Altrament incrementa l'índex de posicio
             }    
         }
@@ -347,22 +347,25 @@ public class Partida {
     // Post: Reparteix les cartes als diferents jugadors de la partida        
 
         System.out.println("Cartes disponibles en el mazo de la taula: ");
-        for (int i=0; i<_mazo.size(); i++){                                // Ensenya les cartes disponibles des de un principi
-            _mazo.get(i).ensenya();
+        for (int i=0; i<_mall.size(); i++){                                // Ensenya les cartes disponibles des de un principi
+            _mall.get(i).ensenya();
         }
 
         for(int i= 0; i<_Jugadors.size(); i++){                                         // Per a cada jugador
             int nCartes= _Jugadors.get(i).nCartes();                                    // Agafa el número de cartes del jugador i
             while(nCartes<_nCartesPerJugador){                                         // Mentres no s'hagin repartit totes les cartes al jugador corresponent i
-                int carta= ThreadLocalRandom.current().nextInt(0,_mazo.size());         // Agafa un valor random (0 - Tamany del MAZO)
-                _Jugadors.get(i).afegirCarta(_mazo.get(carta));                         // Afageix la carta al jugador i
-                _mazo.remove(carta);                                                    // Treu-la del mazo de cartes disponibles
+                int carta= ThreadLocalRandom.current().nextInt(0,_mall.size());         // Agafa un valor random (0 - Tamany del MAZO)
+                _Jugadors.get(i).afegirCarta(_mall.get(carta));                         // Afageix la carta al jugador i
+                _mall.remove(carta);                                                    // Treu-la del mazo de cartes disponibles
                 nCartes++;                                                              // Numero de cartes repartides al jugador i =+ 1
             }
         }
     }
-
-    private void descartarCartes () {
+    public void descartarCartes(List<String> e){
+    // Pre:--
+    // Post: S'eliminen les cartes del <_mall> que tenen com a rol els elements continguts a <e>.
+    }
+    private void descartarCartesConsola () {
     // Pre: El bisbe no pot ser descartat.
     // Post: Descarta cartes de la pila sempre i quan n'hi quedi una al mazo de cartes 
 
@@ -383,9 +386,9 @@ public class Partida {
         
         int i = 1;
         int limit = 1+(_Jugadors.size() * _nCartesPerJugador);
-        while ((i < _mazo.size()-1) && (_mazo.size() > limit)){               // Comença des de 1 aixi no es descarta el jutge, recorrer tota les cartes
+        while ((i < _mall.size()-1) && (_mall.size() > limit)){               // Comença des de 1 aixi no es descarta el jutge, recorrer tota les cartes
             int aux=0;
-            _mazo.get(i).ensenya();                                                      // Ensenya la carta que s'ha de decidir si borrar'la
+            _mall.get(i).ensenya();                                                      // Ensenya la carta que s'ha de decidir si borrar'la
             System.out.println("Decideix el jugador " + _ordre.get(aux));                // Pregunta al jugador aux
             boolean decisio=_Jugadors.get(_ordre.get(aux)).decidir();                   // Formula pregunta de SI (TRUE) o NO (FALSE)
             aux++;
@@ -396,8 +399,8 @@ public class Partida {
             }
             if (decisio)                                                                // Si tothom ha decidit descartar-la, descartem la carta
             {
-                boolean camperol = _mazo.get(i).getNom().equals("Camperol");            // Si la carta que es vol borrar es Camperol, camperol = true
-                _mazo.remove(i);                                                         // Borra la carta del mazo de cartes no descartades i que no te cap jugador
+                boolean camperol = _mall.get(i).getNom().equals("Camperol");            // Si la carta que es vol borrar es Camperol, camperol = true
+                _mall.remove(i);                                                         // Borra la carta del mazo de cartes no descartades i que no te cap jugador
                 _rolsDisp.remove(i);                                                     // Borra la carta dels rols disponibles
                 if(camperol)                                                             // Si s'ha decidit borrar el camperol
                     eliminaCartaNom("Camperol");                                         // Borra l'altre camperol
@@ -412,7 +415,7 @@ public class Partida {
     // Pre: --
     // Post: Guarda en el mazo de cartes totes les cartes amb cada un dels rols
 
-        _mazo = new ArrayList<>(Arrays.asList(            // Rols disponibles no descartats ni que pertanyen als jugadors
+        _mall = new ArrayList<>(Arrays.asList(            // Rols disponibles no descartats ni que pertanyen als jugadors
                 new Carta(new Jutge()),
                 new Carta(new Reina()),
                 new Carta(new Rei()),
@@ -487,8 +490,8 @@ public class Partida {
     // Post: Estableix la dinamica del joc fins que la partida s'acabi
 
         _indexOrdre= -1;//fico -1 pq a actualitzaTorn el ficara a 0 el primer torn
-        boolean partidaAcabada= false;
-        descartarCartes();
+        //boolean partidaAcabada= false;
+        descartarCartesConsola();
         repartirCartes();
 
         System.out.println("");
@@ -496,7 +499,7 @@ public class Partida {
         System.out.println("");
         mostrarCartesPerJugadors();
         System.out.println("");
-        boolean acabar = false;
+        //boolean acabar = false;
         while (!partidaAcabada()){
             actualitzaTorn();//AQUESTA FUNCIO CREC QUE ES PODRIA FUSIONAR AMB incrementarOrdre()
             // Rei, Reina, Bisbe, Bruixa, Widow, Lladre, Trampos, Buffo, Camperol, Espia, Inquisidor,                    
@@ -527,7 +530,7 @@ public class Partida {
                 if (_Jugadors.get(_indexExecutador[0]).decidir()){
                     System.out.println("");
                     System.out.println("Escull una carta del mazo de cartes de la taula");
-                    for (int i=0; i<_mazo.size(); i++){
+                    for (int i=0; i<_mall.size(); i++){
                         System.out.println("Carta "+i);
                     }
                     System.out.println("");
@@ -595,11 +598,11 @@ public class Partida {
 
         int pos=0;
         boolean trobat=false;
-        while (pos < _mazo.size() &&  !trobat){                     // Mentres la posició no superi el tamany de l'array i no trobis la carta
-            if (_mazo.get(pos).getNom().equals(nom)) trobat=true;   // Si ho trobes
+        while (pos < _mall.size() &&  !trobat){                     // Mentres la posició no superi el tamany de l'array i no trobis la carta
+            if (_mall.get(pos).getNom().equals(nom)) trobat=true;   // Si ho trobes
             else pos++;                                             // Altrament incrementa pos
         }
-        _mazo.remove(pos);
+        _mall.remove(pos);
         _rolsDisp.remove(pos);
     }
        
@@ -660,9 +663,9 @@ public class Partida {
     // Pre: jugador correspon a una carta extreta del jugador que li pertoca el torn i posMazo la posició de la carta que el jugador vol intercanviar
     // Post: S'han intercanviat la carta jugador per la carta que indica posMazo del mazo de cartes
 
-        Carta intercanvia = _mazo.get(posMazo);                     // Obté la carta indicada per posMazo del mazo de cartes disponibles
-        _mazo.remove(posMazo);                                      // Borra-la del mazo
-        _mazo.add(jugador);                                         // Afageix la nova carta
+        Carta intercanvia = _mall.get(posMazo);                     // Obté la carta indicada per posMazo del mazo de cartes disponibles
+        _mall.remove(posMazo);                                      // Borra-la del mazo
+        _mall.add(jugador);                                         // Afageix la nova carta
         _Jugadors.get(_indexExecutador[0]).afegirCarta(intercanvia);   // Afageix la nova carta del mazo al set de cartes del jugador que li toca el turn
     }
     
@@ -696,5 +699,18 @@ public class Partida {
         _monedesJusticia.actualitzarMonedes(new Moneda());                              // Renova la quantitat de monedes del palau de justicia per 0 (el constructor ho inicialitza a 0)
         return aux;                                                                     // Retorna la quantitat de monedes
     }
-         
+    public void iniciPartidaGUI(){
+        _indexOrdre= -1;//fico -1 pq a actualitzaTorn el ficara a 0 el primer torn
+        
+        repartirCartes();
+
+        System.out.println("");
+        System.out.println("Aquest es el resultat després de repartir cartes: ");
+        System.out.println("");
+        mostrarCartesPerJugadors();
+        System.out.println("");
+        
+        mostraEstadistiques();
+        actualitzaTorn();
+    }     
 } // END OF CLASS PARTIDA
