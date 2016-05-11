@@ -51,7 +51,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         info = new DefaultListModel();
         llista = new JList(info);
         mainBoto = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        missatgeDescartar = new javax.swing.JLabel();
         main = new javax.swing.JPanel();
         superior = new javax.swing.JPanel();
         tornJugador = new javax.swing.JLabel();
@@ -66,6 +66,9 @@ public class pruebaLuis extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         stats = new javax.swing.JTextArea();
         cartes = new javax.swing.JPanel();
+        carta0 = new javax.swing.JPanel();
+        carta1 = new javax.swing.JPanel();
+        carta2 = new javax.swing.JPanel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -123,7 +126,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         monedesJug2.setColumns(3);
         monedesJug2.setText("3");
 
-        descartarBoto.setText("Next");
+        descartarBoto.setText("Continua");
         descartarBoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descartarBotoActionPerformed(evt);
@@ -185,14 +188,14 @@ public class pruebaLuis extends javax.swing.JFrame {
         llista.setSelectionModel(new MySelectionModel(llista,1));
         jScrollPane3.setViewportView(llista);
 
-        mainBoto.setText("jButton1");
+        mainBoto.setText("Continua");
         mainBoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBotoActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Seleccioneu entre tots els jugadors quines cartes voleu descartar (per fer varies seleccions: CTRL + CLICK)");
+        missatgeDescartar.setText("Seleccioneu entre tots els jugadors quines cartes voleu descartar (per fer varies seleccions: CTRL + CLICK)");
 
         javax.swing.GroupLayout descartarLayout = new javax.swing.GroupLayout(descartar);
         descartar.setLayout(descartarLayout);
@@ -204,7 +207,7 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, descartarLayout.createSequentialGroup()
                 .addContainerGap(329, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(missatgeDescartar)
                 .addGap(323, 323, 323))
             .addGroup(descartarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(descartarLayout.createSequentialGroup()
@@ -216,7 +219,7 @@ public class pruebaLuis extends javax.swing.JFrame {
             descartarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, descartarLayout.createSequentialGroup()
                 .addGap(214, 214, 214)
-                .addComponent(jLabel2)
+                .addComponent(missatgeDescartar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
                 .addComponent(mainBoto)
                 .addGap(207, 207, 207))
@@ -313,29 +316,81 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addGroup(accionsLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         accionsLogLayout.setVerticalGroup(
             accionsLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(accionsLogLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
-        cartes.setBackground(new java.awt.Color(153, 255, 51));
+        cartes.setBackground(new java.awt.Color(51, 51, 51));
+
+        carta0.setBackground(new java.awt.Color(204, 0, 51));
+
+        javax.swing.GroupLayout carta0Layout = new javax.swing.GroupLayout(carta0);
+        carta0.setLayout(carta0Layout);
+        carta0Layout.setHorizontalGroup(
+            carta0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 274, Short.MAX_VALUE)
+        );
+        carta0Layout.setVerticalGroup(
+            carta0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        carta1.setBackground(new java.awt.Color(204, 0, 51));
+
+        javax.swing.GroupLayout carta1Layout = new javax.swing.GroupLayout(carta1);
+        carta1.setLayout(carta1Layout);
+        carta1Layout.setHorizontalGroup(
+            carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 276, Short.MAX_VALUE)
+        );
+        carta1Layout.setVerticalGroup(
+            carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        carta2.setBackground(new java.awt.Color(204, 0, 51));
+
+        javax.swing.GroupLayout carta2Layout = new javax.swing.GroupLayout(carta2);
+        carta2.setLayout(carta2Layout);
+        carta2Layout.setHorizontalGroup(
+            carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 275, Short.MAX_VALUE)
+        );
+        carta2Layout.setVerticalGroup(
+            carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout cartesLayout = new javax.swing.GroupLayout(cartes);
         cartes.setLayout(cartesLayout);
         cartesLayout.setHorizontalGroup(
             cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 857, Short.MAX_VALUE)
+            .addGroup(cartesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(carta0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(carta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(carta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         cartesLayout.setVerticalGroup(
             cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cartesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(carta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(carta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(carta0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout principalLayout = new javax.swing.GroupLayout(principal);
@@ -418,7 +473,10 @@ public class pruebaLuis extends javax.swing.JFrame {
         int nombreDeMonedesPerGuanyar= Integer.parseInt(numMonedes2.getText());
         int nombreDeMonedesPerJugador= Integer.parseInt(monedesJug2.getText());
         
-        
+        //REDIRIGEIX LA SORTIDA A JTEXT
+        PrintStream out = new PrintStream(new TextAreaOutputStream(log));
+        System.setOut(out);
+        System.setErr(out);
         log.setText(Integer.toString(nombreDeJugadors));
         
         //CREA PARTIDA
@@ -451,12 +509,12 @@ public class pruebaLuis extends javax.swing.JFrame {
         //pel canal de sortida els elements seleccionats.
         //System.out.println(Arrays.toString(seleccionatsDescartar.toArray()));
         
-        //p.iniciPartidaGUI();
+        //
     }//GEN-LAST:event_descartarBotoActionPerformed
 
     private void consultarCartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCartaActionPerformed
         // TODO add your handling code here:
-        
+        cartes.setVisible(true);
         p.mostrarCartaJugadorActual(0);//de moment fico la primera o unica carta
     }//GEN-LAST:event_consultarCartaActionPerformed
 
@@ -471,13 +529,11 @@ public class pruebaLuis extends javax.swing.JFrame {
         List<String> seleccionatsDescartar= llista.getSelectedValuesList();
         p.descartarCartes(seleccionatsDescartar);
         
-        //REDIRIGEIX LA SORTIDA A JTEXT
-        PrintStream out = new PrintStream(new TextAreaOutputStream(log));
-        System.setOut(out);
-        System.setErr(out);
+        p.iniciPartidaGUI();
         
         descartar.setVisible(false);
         main.setVisible(true);
+        cartes.setVisible(false);
         //DESCARTAR CARTES AQUI
     }//GEN-LAST:event_mainBotoActionPerformed
 
@@ -539,6 +595,9 @@ public static boolean isInteger(String s, int radix) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accioRol;
     private javax.swing.JPanel accionsLog;
+    private javax.swing.JPanel carta0;
+    private javax.swing.JPanel carta1;
+    private javax.swing.JPanel carta2;
     private javax.swing.JPanel cartes;
     private javax.swing.JButton consultarCarta;
     private javax.swing.JPanel descartar;
@@ -547,7 +606,6 @@ public static boolean isInteger(String s, int radix) {
     private javax.swing.JPanel intro;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -555,6 +613,7 @@ public static boolean isInteger(String s, int radix) {
     private javax.swing.JTextArea log;
     private javax.swing.JPanel main;
     private javax.swing.JButton mainBoto;
+    private javax.swing.JLabel missatgeDescartar;
     private javax.swing.JLabel monedesJug;
     private javax.swing.JTextField monedesJug2;
     private javax.swing.JComboBox numJugadors;
