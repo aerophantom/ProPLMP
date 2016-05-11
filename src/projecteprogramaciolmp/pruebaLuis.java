@@ -5,7 +5,8 @@
  */
 package projecteprogramaciolmp;
 
-import TextAreaOutputStream.TextAreaOutputStream;
+import Auxiliars.MySelectionModel;
+import Auxiliars.TextAreaOutputStream;
 import java.util.List;
 import java.util.Arrays;
 import java.io.PrintStream;
@@ -170,10 +171,11 @@ public class pruebaLuis extends javax.swing.JFrame {
         );
 
         llista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Rei", "Reina", "Bisbe", "Jutge", "Camperols", "Inquisidor", "Viuda", "Espia", "Lladre", "Trampos" };
+            String[] strings = { "Rei", "Reina", "Bisbe", "Jutge", "Camperol", "Inquisidor", "Viuda", "Espia", "Lladre", "Trampos" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        llista.setSelectionModel(new MySelectionModel(llista,3));
         jScrollPane3.setViewportView(llista);
 
         mainBoto.setText("jButton1");

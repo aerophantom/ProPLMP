@@ -364,6 +364,9 @@ public class Partida {
     public void descartarCartes(List<String> e){
     // Pre:--
     // Post: S'eliminen les cartes del <_mall> que tenen com a rol els elements continguts a <e>.
+        for(int i= 0; i<e.size(); i++){
+            eliminaCartaNom(e.get(i));
+        }
     }
     private void descartarCartesConsola () {
     // Pre: El bisbe no pot ser descartat.

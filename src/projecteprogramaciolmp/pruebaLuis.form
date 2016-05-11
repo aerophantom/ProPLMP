@@ -227,7 +227,7 @@
                     <StringItem index="1" value="Reina"/>
                     <StringItem index="2" value="Bisbe"/>
                     <StringItem index="3" value="Jutge"/>
-                    <StringItem index="4" value="Camperols"/>
+                    <StringItem index="4" value="Camperol"/>
                     <StringItem index="5" value="Inquisidor"/>
                     <StringItem index="6" value="Viuda"/>
                     <StringItem index="7" value="Espia"/>
@@ -237,6 +237,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="llista.setSelectionModel(new MySelectionModel(llista,3));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>

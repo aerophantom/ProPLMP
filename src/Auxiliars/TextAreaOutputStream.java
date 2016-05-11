@@ -1,4 +1,4 @@
-package TextAreaOutputStream;
+package Auxiliars;
 
 /*
 *
