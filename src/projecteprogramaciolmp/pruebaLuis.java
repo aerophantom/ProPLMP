@@ -585,6 +585,8 @@ public class pruebaLuis extends javax.swing.JFrame {
         carta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
         opcions.setVisible(true);
         //AUMENTAR EL TURNO
+        _joc.actualitzaTorn();
+        tornJugador.setText("Jugador "+_joc.getIndexJugadorExecutador(0));
     }//GEN-LAST:event_botoContinuaConsultaActionPerformed
 
     /**
