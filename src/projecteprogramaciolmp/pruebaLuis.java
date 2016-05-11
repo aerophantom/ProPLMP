@@ -70,14 +70,14 @@ public class pruebaLuis extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         stats = new javax.swing.JTextArea();
         cartesTaula = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        cartaT0 = new javax.swing.JLabel();
+        cartaT1 = new javax.swing.JLabel();
+        cartaT2 = new javax.swing.JLabel();
+        cartaT3 = new javax.swing.JLabel();
+        cartaT4 = new javax.swing.JLabel();
+        cartaT5 = new javax.swing.JLabel();
+        cartaT6 = new javax.swing.JLabel();
+        cartaT7 = new javax.swing.JLabel();
         cartesJugador = new javax.swing.JPanel();
         carta0 = new javax.swing.JLabel();
         carta1 = new javax.swing.JLabel();
@@ -188,7 +188,7 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addComponent(monedesJug)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(monedesJug2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 484, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 495, Short.MAX_VALUE)
                 .addComponent(descartarBoto))
         );
 
@@ -236,7 +236,7 @@ public class pruebaLuis extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, descartarLayout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addComponent(missatgeDescartar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 323, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
                 .addComponent(mainBoto)
                 .addGap(278, 278, 278))
             .addGroup(descartarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,6 +278,11 @@ public class pruebaLuis extends javax.swing.JFrame {
         });
 
         intercanvi.setText("Intercanviar amb mall");
+        intercanvi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                intercanviActionPerformed(evt);
+            }
+        });
 
         accioRol.setText("Accio De Rol");
         accioRol.addActionListener(new java.awt.event.ActionListener() {
@@ -347,225 +352,282 @@ public class pruebaLuis extends javax.swing.JFrame {
 
         cartesTaula.setBackground(new java.awt.Color(0, 0, 102));
 
-        jLabel2.setText("jLabel2");
-
-        jLabel3.setText("jLabel2");
-
-        jLabel4.setText("jLabel2");
-
-        jLabel5.setText("jLabel2");
-
-        jLabel6.setText("jLabel2");
-
-        jLabel7.setText("jLabel2");
-
-        jLabel8.setText("jLabel2");
-
-        jLabel9.setText("jLabel2");
-
-        javax.swing.GroupLayout cartesTaulaLayout = new javax.swing.GroupLayout(cartesTaula);
-        cartesTaula.setLayout(cartesTaulaLayout);
-        cartesTaulaLayout.setHorizontalGroup(
-            cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cartesTaulaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cartesTaulaLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cartesTaulaLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(245, Short.MAX_VALUE))
-            .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesTaulaLayout.createSequentialGroup()
-                    .addContainerGap(674, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(235, 235, 235)))
-        );
-        cartesTaulaLayout.setVerticalGroup(
-            cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cartesTaulaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(cartesTaulaLayout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(345, Short.MAX_VALUE)))
-        );
-
-        cartesJugador.setBackground(new java.awt.Color(51, 51, 51));
-
-        carta0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        carta0.addMouseListener(new MouseAdapter()
+        cartaT0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        cartaT0.addMouseListener(new MouseAdapter()
             {
                 public void mouseClicked(MouseEvent e)
                 {
-                    Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 0);
-                    carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));
-                    botoContinuaConsulta.setVisible(true);
-                    carta1.setVisible(false);
-                    carta2.setVisible(false);
+                    System.out.println("clicat");
                 }
             });
-            carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
+            cartaT0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-            carta1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            carta1.addMouseListener(new MouseAdapter()
+            cartaT1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            cartaT1.addMouseListener(new MouseAdapter()
                 {
                     public void mouseClicked(MouseEvent e)
                     {
-                        Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 1);
-                        carta1.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));
-                        botoContinuaConsulta.setVisible(true);
-                        carta0.setVisible(false);
-                        carta2.setVisible(false);
+                        System.out.println("clicat");
                     }
                 });
-                carta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
+                cartaT1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-                carta2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                carta2.addMouseListener(new MouseAdapter()
+                cartaT2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                cartaT2.addMouseListener(new MouseAdapter()
                     {
                         public void mouseClicked(MouseEvent e)
                         {
-                            Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 2);
-                            carta2.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));
-                            botoContinuaConsulta.setVisible(true);
-                            carta1.setVisible(false);
-                            carta0.setVisible(false);
+                            System.out.println("clicat");
                         }
                     });
-                    carta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
+                    cartaT2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-                    botoContinuaConsulta.setText("Continua");
-                    botoContinuaConsulta.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                            botoContinuaConsultaActionPerformed(evt);
-                        }
-                    });
+                    cartaT3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    cartaT3.addMouseListener(new MouseAdapter()
+                        {
+                            public void mouseClicked(MouseEvent e)
+                            {
+                                System.out.println("clicat");
+                            }
+                        });
+                        cartaT3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-                    javax.swing.GroupLayout cartesJugadorLayout = new javax.swing.GroupLayout(cartesJugador);
-                    cartesJugador.setLayout(cartesJugadorLayout);
-                    cartesJugadorLayout.setHorizontalGroup(
-                        cartesJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(cartesJugadorLayout.createSequentialGroup()
-                            .addGap(82, 82, 82)
-                            .addComponent(carta0)
-                            .addGap(108, 108, 108)
-                            .addComponent(carta1)
-                            .addGap(45, 45, 45)
-                            .addComponent(carta2)
-                            .addContainerGap(112, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesJugadorLayout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botoContinuaConsulta)
-                            .addGap(406, 406, 406))
-                    );
-                    cartesJugadorLayout.setVerticalGroup(
-                        cartesJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(cartesJugadorLayout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addGroup(cartesJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(carta2)
-                                .addComponent(carta1)
-                                .addComponent(carta0))
-                            .addGap(57, 57, 57)
-                            .addComponent(botoContinuaConsulta)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    );
+                        cartaT4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        cartaT4.addMouseListener(new MouseAdapter()
+                            {
+                                public void mouseClicked(MouseEvent e)
+                                {
+                                    System.out.println("clicat");
+                                }
+                            });
+                            cartaT4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-                    javax.swing.GroupLayout principalLayout = new javax.swing.GroupLayout(principal);
-                    principal.setLayout(principalLayout);
-                    principalLayout.setHorizontalGroup(
-                        principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, principalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(accionsLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cartesJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap())
-                        .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(principalLayout.createSequentialGroup()
-                                .addGap(301, 301, 301)
-                                .addComponent(cartesTaula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap()))
-                    );
-                    principalLayout.setVerticalGroup(
-                        principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, principalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(accionsLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cartesJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addContainerGap())
-                        .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(principalLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(cartesTaula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap()))
-                    );
+                            cartaT5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                            cartaT5.addMouseListener(new MouseAdapter()
+                                {
+                                    public void mouseClicked(MouseEvent e)
+                                    {
+                                        System.out.println("clicat");
+                                    }
+                                });
+                                cartaT5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-                    javax.swing.GroupLayout mainLayout = new javax.swing.GroupLayout(main);
-                    main.setLayout(mainLayout);
-                    mainLayout.setHorizontalGroup(
-                        mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(opcions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(superior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    );
-                    mainLayout.setVerticalGroup(
-                        mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(mainLayout.createSequentialGroup()
-                            .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(opcions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    );
+                                cartaT6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                cartaT6.addMouseListener(new MouseAdapter()
+                                    {
+                                        public void mouseClicked(MouseEvent e)
+                                        {
+                                            System.out.println("clicat");
+                                        }
+                                    });
+                                    cartaT6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-                    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                    getContentPane().setLayout(layout);
-                    layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(intro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descartar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    );
-                    layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(intro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addContainerGap())
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    );
+                                    cartaT7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    cartaT7.addMouseListener(new MouseAdapter()
+                                        {
+                                            public void mouseClicked(MouseEvent e)
+                                            {
+                                                System.out.println("clicat");
+                                            }
+                                        });
+                                        cartaT7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
-                    pack();
-                }// </editor-fold>//GEN-END:initComponents
+                                        javax.swing.GroupLayout cartesTaulaLayout = new javax.swing.GroupLayout(cartesTaula);
+                                        cartesTaula.setLayout(cartesTaulaLayout);
+                                        cartesTaulaLayout.setHorizontalGroup(
+                                            cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(cartesTaulaLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(cartesTaulaLayout.createSequentialGroup()
+                                                        .addComponent(cartaT4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cartaT5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cartaT6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cartaT7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(cartesTaulaLayout.createSequentialGroup()
+                                                        .addComponent(cartaT0, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cartaT1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cartaT2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cartaT3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addContainerGap(245, Short.MAX_VALUE))
+                                        );
+                                        cartesTaulaLayout.setVerticalGroup(
+                                            cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesTaulaLayout.createSequentialGroup()
+                                                .addContainerGap(16, Short.MAX_VALUE)
+                                                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cartaT1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cartaT0, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cartaT2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cartaT3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(cartaT5, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cartaT4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cartaT6, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cartaT7, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addContainerGap())
+                                        );
+
+                                        cartesJugador.setBackground(new java.awt.Color(51, 51, 51));
+
+                                        carta0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                        carta0.addMouseListener(new MouseAdapter()
+                                            {
+                                                public void mouseClicked(MouseEvent e)
+                                                {
+                                                    Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 0);
+                                                    carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));
+                                                    botoContinuaConsulta.setVisible(true);
+                                                    carta1.setVisible(false);
+                                                    carta2.setVisible(false);
+                                                }
+                                            });
+                                            carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
+
+                                            carta1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            carta1.addMouseListener(new MouseAdapter()
+                                                {
+                                                    public void mouseClicked(MouseEvent e)
+                                                    {
+                                                        Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 1);
+                                                        carta1.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));
+                                                        botoContinuaConsulta.setVisible(true);
+                                                        carta0.setVisible(false);
+                                                        carta2.setVisible(false);
+                                                    }
+                                                });
+                                                carta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
+
+                                                carta2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                                carta2.addMouseListener(new MouseAdapter()
+                                                    {
+                                                        public void mouseClicked(MouseEvent e)
+                                                        {
+                                                            Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 2);
+                                                            carta2.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));
+                                                            botoContinuaConsulta.setVisible(true);
+                                                            carta1.setVisible(false);
+                                                            carta0.setVisible(false);
+                                                        }
+                                                    });
+                                                    carta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
+
+                                                    botoContinuaConsulta.setText("Continua");
+                                                    botoContinuaConsulta.addActionListener(new java.awt.event.ActionListener() {
+                                                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                                            botoContinuaConsultaActionPerformed(evt);
+                                                        }
+                                                    });
+
+                                                    javax.swing.GroupLayout cartesJugadorLayout = new javax.swing.GroupLayout(cartesJugador);
+                                                    cartesJugador.setLayout(cartesJugadorLayout);
+                                                    cartesJugadorLayout.setHorizontalGroup(
+                                                        cartesJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(cartesJugadorLayout.createSequentialGroup()
+                                                            .addGap(82, 82, 82)
+                                                            .addComponent(carta0)
+                                                            .addGap(78, 78, 78)
+                                                            .addComponent(carta1)
+                                                            .addGap(75, 75, 75)
+                                                            .addComponent(carta2)
+                                                            .addContainerGap(112, Short.MAX_VALUE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesJugadorLayout.createSequentialGroup()
+                                                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(botoContinuaConsulta)
+                                                            .addGap(406, 406, 406))
+                                                    );
+                                                    cartesJugadorLayout.setVerticalGroup(
+                                                        cartesJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(cartesJugadorLayout.createSequentialGroup()
+                                                            .addGap(89, 89, 89)
+                                                            .addGroup(cartesJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addComponent(carta2)
+                                                                .addComponent(carta1)
+                                                                .addComponent(carta0))
+                                                            .addGap(57, 57, 57)
+                                                            .addComponent(botoContinuaConsulta)
+                                                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                    );
+
+                                                    javax.swing.GroupLayout principalLayout = new javax.swing.GroupLayout(principal);
+                                                    principal.setLayout(principalLayout);
+                                                    principalLayout.setHorizontalGroup(
+                                                        principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, principalLayout.createSequentialGroup()
+                                                            .addContainerGap()
+                                                            .addComponent(accionsLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(cartesJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addContainerGap())
+                                                        .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(principalLayout.createSequentialGroup()
+                                                                .addGap(301, 301, 301)
+                                                                .addComponent(cartesTaula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addContainerGap()))
+                                                    );
+                                                    principalLayout.setVerticalGroup(
+                                                        principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, principalLayout.createSequentialGroup()
+                                                            .addContainerGap()
+                                                            .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(accionsLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(cartesJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                            .addContainerGap())
+                                                        .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(principalLayout.createSequentialGroup()
+                                                                .addContainerGap()
+                                                                .addComponent(cartesTaula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addContainerGap()))
+                                                    );
+
+                                                    javax.swing.GroupLayout mainLayout = new javax.swing.GroupLayout(main);
+                                                    main.setLayout(mainLayout);
+                                                    mainLayout.setHorizontalGroup(
+                                                        mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(opcions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(superior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    );
+                                                    mainLayout.setVerticalGroup(
+                                                        mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(mainLayout.createSequentialGroup()
+                                                            .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(opcions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    );
+
+                                                    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                                                    getContentPane().setLayout(layout);
+                                                    layout.setHorizontalGroup(
+                                                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(intro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(descartar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                    );
+                                                    layout.setVerticalGroup(
+                                                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addComponent(intro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addContainerGap())
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(descartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                    );
+
+                                                    pack();
+                                                }// </editor-fold>//GEN-END:initComponents
 
     private void numJugadorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numJugadorsActionPerformed
         // TODO add your handling code here:
@@ -626,6 +688,7 @@ public class pruebaLuis extends javax.swing.JFrame {
     private void consultarCartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCartaActionPerformed
         // TODO add your handling code here:
         cartesJugador.setVisible(true);
+        cartesTaula.setVisible(false);
         botoContinuaConsulta.setVisible(false);
         if(_joc.getNumJugadors()>3){//MOSTRO NOMES UNA CARTA
             carta0.setVisible(true);
@@ -663,6 +726,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         descartar.setVisible(false);
         main.setVisible(true);
         cartesJugador.setVisible(false);
+        cartesTaula.setVisible(false);
         //DESCARTAR CARTES AQUI
     }//GEN-LAST:event_mainBotoActionPerformed
 
@@ -676,6 +740,11 @@ public class pruebaLuis extends javax.swing.JFrame {
         _joc.actualitzaTorn();
         tornJugador.setText("Jugador "+_joc.getIndexJugadorExecutador(0));
     }//GEN-LAST:event_botoContinuaConsultaActionPerformed
+
+    private void intercanviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intercanviActionPerformed
+        cartesJugador.setVisible(false);
+        cartesTaula.setVisible(true);
+    }//GEN-LAST:event_intercanviActionPerformed
 
     /**
      * @param args the command line arguments
@@ -781,6 +850,14 @@ public class pruebaLuis extends javax.swing.JFrame {
     private javax.swing.JLabel carta0;
     private javax.swing.JLabel carta1;
     private javax.swing.JLabel carta2;
+    private javax.swing.JLabel cartaT0;
+    private javax.swing.JLabel cartaT1;
+    private javax.swing.JLabel cartaT2;
+    private javax.swing.JLabel cartaT3;
+    private javax.swing.JLabel cartaT4;
+    private javax.swing.JLabel cartaT5;
+    private javax.swing.JLabel cartaT6;
+    private javax.swing.JLabel cartaT7;
     private javax.swing.JPanel cartesJugador;
     private javax.swing.JPanel cartesTaula;
     private javax.swing.JButton consultarCarta;
@@ -790,14 +867,6 @@ public class pruebaLuis extends javax.swing.JFrame {
     private javax.swing.JPanel intro;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

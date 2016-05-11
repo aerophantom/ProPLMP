@@ -111,7 +111,7 @@
                   <Component id="monedesJug" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="monedesJug2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="484" max="32767" attributes="0"/>
+                  <EmptySpace pref="495" max="32767" attributes="0"/>
                   <Component id="descartarBoto" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -210,7 +210,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                   <Component id="missatgeDescartar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="323" max="32767" attributes="0"/>
+                  <EmptySpace pref="334" max="32767" attributes="0"/>
                   <Component id="mainBoto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
               </Group>
@@ -376,6 +376,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Intercanviar amb mall"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="intercanviActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="accioRol">
               <Properties>
@@ -514,102 +517,131 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel4" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="cartaT4" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="cartaT5" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="cartaT6" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="cartaT7" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel3" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="cartaT0" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="cartaT1" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="cartaT2" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="cartaT3" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="245" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="674" max="32767" attributes="0"/>
-                              <Component id="jLabel9" min="-2" pref="200" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="3" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="3" min="-2" pref="333" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel3" alignment="3" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="3" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="3" min="-2" pref="333" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cartaT1" min="-2" pref="333" max="-2" attributes="0"/>
+                              <Component id="cartaT0" min="-2" pref="333" max="-2" attributes="0"/>
+                              <Component id="cartaT2" min="-2" pref="333" max="-2" attributes="0"/>
+                              <Component id="cartaT3" min="-2" pref="333" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="jLabel9" min="-2" pref="333" max="-2" attributes="0"/>
-                              <EmptySpace pref="345" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="cartaT5" min="-2" pref="333" max="-2" attributes="0"/>
+                              <Component id="cartaT4" min="-2" pref="333" max="-2" attributes="0"/>
+                              <Component id="cartaT6" min="-2" pref="333" max="-2" attributes="0"/>
+                              <Component id="cartaT7" min="-2" pref="333" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="cartaT0">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT0.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="cartaT1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT1.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="cartaT2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT2.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="cartaT3">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT3.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="cartaT4">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT4.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="cartaT5">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT5.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="cartaT6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT6.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="cartaT7">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/resources/P_revers.jpg"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT7.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -626,9 +658,9 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                           <Component id="carta0" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           <Component id="carta1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           <Component id="carta2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="112" max="32767" attributes="0"/>
                       </Group>
