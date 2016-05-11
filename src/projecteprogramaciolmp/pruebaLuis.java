@@ -84,7 +84,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         numMonedes2.setToolTipText("");
         numMonedes2.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
-                warn();
+                //warn();
             }
             public void removeUpdate(DocumentEvent e) {
                 //warn();
@@ -94,10 +94,14 @@ public class pruebaLuis extends javax.swing.JFrame {
             }
 
             public void warn() {
-                if (!isInteger(numMonedes2.getText())){
+                if (!isInteger(numMonedes2.getText()) || Integer.parseInt(numMonedes2.getText())<=0){
                     JOptionPane.showMessageDialog(null,
                         "Error: Please enter number bigger than 0", "Error Massage",
                         JOptionPane.ERROR_MESSAGE);
+                    mainBoto.setEnabled(false);
+                }
+                else{
+                    mainBoto.setEnabled(true);
                 }
 
             }
