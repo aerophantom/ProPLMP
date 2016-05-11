@@ -494,7 +494,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                           <Component id="carta0" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -502,6 +502,11 @@
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="carta2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="112" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="botoContinuaConsulta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="406" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -514,7 +519,9 @@
                               <Component id="carta1" min="-2" max="-2" attributes="0"/>
                               <Component id="carta0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="200" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="botoContinuaConsulta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -527,7 +534,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="carta0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;carta0.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {  &#xa;       // you can open a new frame here as&#xa;       // i have assumed you have declared &quot;frame&quot; as instance variable&#xa;       System.out.println(&quot;clicat&quot;);&#xa;       Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 0);&#xa;       carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));&#xa;    }  &#xa;});"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="carta0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;carta0.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 0);&#xa;       carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));&#xa;        botoContinuaConsulta.setVisible(true);&#xa;        carta1.setVisible(false);&#xa;        carta2.setVisible(false);&#xa;    }  &#xa;});"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="carta1">
@@ -536,6 +543,9 @@
                       <Image iconType="3" name="/resources/P_revers.jpg"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="carta1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;        carta1.addMouseListener(new MouseAdapter()&#xa;            {&#xa;                public void mouseClicked(MouseEvent e)&#xa;                {&#xa;                    Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 1);&#xa;                    carta1.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));&#xa;                    botoContinuaConsulta.setVisible(true);&#xa;                    carta0.setVisible(false);&#xa;                    carta2.setVisible(false);&#xa;                }&#xa;            });"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="carta2">
                   <Properties>
@@ -543,6 +553,17 @@
                       <Image iconType="3" name="/resources/P_revers.jpg"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="carta2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;        carta2.addMouseListener(new MouseAdapter()&#xa;            {&#xa;                public void mouseClicked(MouseEvent e)&#xa;                {&#xa;                    Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 2);&#xa;                    carta2.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));&#xa;                    botoContinuaConsulta.setVisible(true);&#xa;                    carta1.setVisible(false);&#xa;                    carta0.setVisible(false);&#xa;                }&#xa;            });"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="botoContinuaConsulta">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Continua"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botoContinuaConsultaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
