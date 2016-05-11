@@ -84,7 +84,8 @@ public class pruebaLuis extends javax.swing.JFrame {
 
         numMonedes.setText("Monedes per guanyar:");
 
-        numMonedes2.setText("numero");
+        numMonedes2.setColumns(3);
+        numMonedes2.setText("13");
         numMonedes2.setToolTipText("");
         numMonedes2.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
@@ -119,7 +120,8 @@ public class pruebaLuis extends javax.swing.JFrame {
 
         monedesJug.setText("Monedes per jugador: ");
 
-        monedesJug2.setText("jTextField2");
+        monedesJug2.setColumns(3);
+        monedesJug2.setText("3");
 
         descartarBoto.setText("Next");
         descartarBoto.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +181,8 @@ public class pruebaLuis extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         */
-        llista.setSelectionModel(new MySelectionModel(llista,3));
+
+        llista.setSelectionModel(new MySelectionModel(llista,1));
         jScrollPane3.setViewportView(llista);
 
         mainBoto.setText("jButton1");
@@ -415,10 +418,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         int nombreDeMonedesPerGuanyar= Integer.parseInt(numMonedes2.getText());
         int nombreDeMonedesPerJugador= Integer.parseInt(monedesJug2.getText());
         
-        //REDIRIGEIX LA SORTIDA A JTEXT
-        PrintStream out = new PrintStream(new TextAreaOutputStream(log));
-        System.setOut(out);
-        System.setErr(out);
+        
         log.setText(Integer.toString(nombreDeJugadors));
         
         //CREA PARTIDA
@@ -431,11 +431,22 @@ public class pruebaLuis extends javax.swing.JFrame {
         for(int i=0; i<cartesSenseDescartar.length;i++){
             info.addElement(cartesSenseDescartar[i]);
         }
+        //CONFIGURO LES SELECCIONS DE LA LLISTA
+        int minim= p.getNumJugadors();
+        int limit= p.getMallSize();
+        if(minim<4){
+            limit= limit-7;
+        }
+        else{
+            limit= limit - minim - 1;
+        }
+        
+        llista.setSelectionModel(new MySelectionModel(llista,limit));
         
         //ENTRO A LA VENTANA DE DESCARTAR
         intro.setVisible(false);
         descartar.setVisible(true);
-        //List<String> seleccionatsDescartar= llista.getSelectedValuesList();<-------------------------------------
+        
         
         //pel canal de sortida els elements seleccionats.
         //System.out.println(Arrays.toString(seleccionatsDescartar.toArray()));
@@ -456,10 +467,14 @@ public class pruebaLuis extends javax.swing.JFrame {
     }//GEN-LAST:event_accioRolActionPerformed
 
     private void mainBotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBotoActionPerformed
-        // TODO add your handling code here:
+        //OBTINC ELS ROLS SELECCIONATS PER SER DESCARTATS
+        List<String> seleccionatsDescartar= llista.getSelectedValuesList();
+        p.descartarCartes(seleccionatsDescartar);
         
-        
-        
+        //REDIRIGEIX LA SORTIDA A JTEXT
+        PrintStream out = new PrintStream(new TextAreaOutputStream(log));
+        System.setOut(out);
+        System.setErr(out);
         
         descartar.setVisible(false);
         main.setVisible(true);

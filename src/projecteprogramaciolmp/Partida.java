@@ -199,7 +199,11 @@ public class Partida {
 
         return _indexOrdre;         // Retorna el índex per moure's pel vector d'ordre de jugadors
     }
-       
+    
+    public int getMallSize(){
+        return _mall.size();
+    }
+    
     public boolean preguntarJugadorActual(){
     // Pre: --
     // Post: Formula una pregunta de Si o No al jugador que li toca el torn i retorna TRUE si s'ha escollit SI altrament FALSE
