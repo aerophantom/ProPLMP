@@ -526,6 +526,9 @@
                       <Image iconType="3" name="/resources/P_revers.jpg"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="carta0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;carta0.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {  &#xa;       // you can open a new frame here as&#xa;       // i have assumed you have declared &quot;frame&quot; as instance variable&#xa;       System.out.println(&quot;clicat&quot;);&#xa;       Carta aux= _joc.getCartaJugador(_joc.getIndexJugadorExecutador(0), 0);&#xa;       carta0.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));&#xa;    }  &#xa;});"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="carta1">
                   <Properties>
