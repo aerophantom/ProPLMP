@@ -361,17 +361,7 @@ public class Partida {
             }
         }
     }
-    public void descartarCartes(List<String> e){
-    // Pre:--
-    // Post: S'eliminen les cartes del <_mall> que tenen com a rol els elements continguts a <e>.
-        for(int i= 0; i<e.size(); i++){
-            eliminaCartaNom(e.get(i));
-        }
-    }
-    private void descartarCartesConsola () {
-    // Pre: El bisbe no pot ser descartat.
-    // Post: Descarta cartes de la pila sempre i quan n'hi quedi una al mazo de cartes 
-
+    public void descartarCartesAUTO(){
         if (_Jugadors.size()<3) {                             // Si el numJugador és menor a 3
             eliminaCartaNom("Lladre");                        // Esborrem el Lladre
         }
@@ -385,7 +375,20 @@ public class Partida {
             eliminaCartaNom("Camperol");
             // Busca el inquisidor i borra'l
             eliminaCartaNom("Inquisidor");    
-        }  
+        }
+    }
+    public void descartarCartes(List<String> e){
+    // Pre:--
+    // Post: S'eliminen les cartes del <_mall> que tenen com a rol els elements continguts a <e>.
+        for(int i= 0; i<e.size(); i++){
+            eliminaCartaNom(e.get(i));
+        }
+    }
+    private void descartarCartesConsola () {
+    // Pre: El bisbe no pot ser descartat.
+    // Post: Descarta cartes de la pila sempre i quan n'hi quedi una al mazo de cartes 
+
+          descartarCartesAUTO();
         
         int i = 1;
         int limit = 1+(_Jugadors.size() * _nCartesPerJugador);
@@ -448,7 +451,16 @@ public class Partida {
                 new Carta(new Espia()),
                 new Carta(new Lladre()) ));
     }
-    
+    public String[] getCartesNoDescartadesGUI(){
+    // Pre:--
+    // Post: Retorna l'indetificatiu de cada carta que hi sigui
+    // al <_mall> en forma de String[]
+        String [] retArray= new String[_mall.size()];
+        for(int i= 0; i < _mall.size(); i++){
+            retArray[i]=_mall.get(i).getNom();
+        }
+        return retArray;
+    } 
     private void EstablirOrdre() {
     // Pre: --
     // Post: Estableix un ordre entre els jugadors de la partida

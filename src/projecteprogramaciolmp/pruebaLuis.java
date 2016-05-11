@@ -48,8 +48,10 @@ public class pruebaLuis extends javax.swing.JFrame {
         descartarBoto = new javax.swing.JButton();
         descartar = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        llista = new javax.swing.JList<>();
+        info = new DefaultListModel();
+        llista = new JList(info);
         mainBoto = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         main = new javax.swing.JPanel();
         superior = new javax.swing.JPanel();
         tornJugador = new javax.swing.JLabel();
@@ -170,11 +172,13 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addComponent(descartarBoto))
         );
 
+        /*
         llista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Rei", "Reina", "Bisbe", "Jutge", "Camperol", "Inquisidor", "Viuda", "Espia", "Lladre", "Trampos" };
+            String[] strings = { "Rei", "Reina", "Bisbe", "Viuda", "Buffo", "Bruixa", "Inquisidor", "Camperol", "Trampos", "Espia", "Lladre" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        */
         llista.setSelectionModel(new MySelectionModel(llista,3));
         jScrollPane3.setViewportView(llista);
 
@@ -185,6 +189,8 @@ public class pruebaLuis extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Seleccioneu entre tots els jugadors quines cartes voleu descartar (per fer varies seleccions: CTRL + CLICK)");
+
         javax.swing.GroupLayout descartarLayout = new javax.swing.GroupLayout(descartar);
         descartar.setLayout(descartarLayout);
         descartarLayout.setHorizontalGroup(
@@ -192,7 +198,11 @@ public class pruebaLuis extends javax.swing.JFrame {
             .addGroup(descartarLayout.createSequentialGroup()
                 .addGap(539, 539, 539)
                 .addComponent(mainBoto)
-                .addContainerGap(555, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, descartarLayout.createSequentialGroup()
+                .addContainerGap(329, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(323, 323, 323))
             .addGroup(descartarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(descartarLayout.createSequentialGroup()
                     .addGap(522, 522, 522)
@@ -202,7 +212,9 @@ public class pruebaLuis extends javax.swing.JFrame {
         descartarLayout.setVerticalGroup(
             descartarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, descartarLayout.createSequentialGroup()
-                .addContainerGap(491, Short.MAX_VALUE)
+                .addGap(214, 214, 214)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
                 .addComponent(mainBoto)
                 .addGap(207, 207, 207))
             .addGroup(descartarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,8 +407,10 @@ public class pruebaLuis extends javax.swing.JFrame {
     }//GEN-LAST:event_numMonedes2ActionPerformed
 
     private void descartarBotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descartarBotoActionPerformed
-        intro.setVisible(false);
-        descartar.setVisible(true);
+        
+        
+        
+        
         int nombreDeJugadors= numJugadors.getSelectedIndex() + 2;
         int nombreDeMonedesPerGuanyar= Integer.parseInt(numMonedes2.getText());
         int nombreDeMonedesPerJugador= Integer.parseInt(monedesJug2.getText());
@@ -407,18 +421,26 @@ public class pruebaLuis extends javax.swing.JFrame {
         System.setErr(out);
         log.setText(Integer.toString(nombreDeJugadors));
         
-        //guardo els rols seleccionats.
-        //List<String> seleccionatsDescartar= llista.getSelectedValuesList();
-        
-        
-        //INICIALITZA PARTIDA
-        //p= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador);
+        //CREA PARTIDA
+        p= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador);
         tornJugador.setText("Jugador "+p.getIndexCorregit(0));
+        p.descartarCartesAUTO();
+        
+        //AGREGO A LA LLISTA GUI ELS ROLS QUE NO S'HAN DESCARTAT AUTOMATICAMENT
+        String [] cartesSenseDescartar= p.getCartesNoDescartadesGUI();
+        for(int i=0; i<cartesSenseDescartar.length;i++){
+            info.addElement(cartesSenseDescartar[i]);
+        }
+        
+        //ENTRO A LA VENTANA DE DESCARTAR
+        intro.setVisible(false);
+        descartar.setVisible(true);
+        //List<String> seleccionatsDescartar= llista.getSelectedValuesList();<-------------------------------------
         
         //pel canal de sortida els elements seleccionats.
         //System.out.println(Arrays.toString(seleccionatsDescartar.toArray()));
         
-        p.iniciPartidaGUI();
+        //p.iniciPartidaGUI();
     }//GEN-LAST:event_descartarBotoActionPerformed
 
     private void consultarCartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCartaActionPerformed
@@ -435,6 +457,10 @@ public class pruebaLuis extends javax.swing.JFrame {
 
     private void mainBotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBotoActionPerformed
         // TODO add your handling code here:
+        
+        
+        
+        
         descartar.setVisible(false);
         main.setVisible(true);
         //DESCARTAR CARTES AQUI
@@ -493,6 +519,7 @@ public static boolean isInteger(String s, int radix) {
         });
         
     }
+    private DefaultListModel info;
     private Partida p;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accioRol;
@@ -505,6 +532,7 @@ public static boolean isInteger(String s, int radix) {
     private javax.swing.JPanel intro;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
