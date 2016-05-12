@@ -676,7 +676,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         log.setText(Integer.toString(nombreDeJugadors));
         
         //CREA PARTIDA
-        _joc= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador);
+        _joc= new Partida(nombreDeJugadors,nombreDeMonedesPerGuanyar,nombreDeMonedesPerJugador,0);
         tornJugador.setText("Jugador "+_joc.getIndexCorregit(0));
         _joc.descartarCartesAUTO();
         

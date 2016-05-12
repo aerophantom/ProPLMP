@@ -3,6 +3,7 @@ package projecteprogramaciolmp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Partida {
     private int [] _indexExecutador;            // Index de l'array _Jugadors que indica el jugador que executarà l'acció de rol.
     private int _monedesPerGuanyar;          // Monedes necessàries per a que un jugador guanyi la partida
     private int _nCartesPerJugador;         // Num de cartes que toca repartir a cada jugador
+    private int _jugIA;
     
     private boolean _fiPartida;            // Si _fiPartida = TRUE la partida ha complert les condicions per acabar, altrament FALSE
     // --------------------
@@ -33,13 +35,14 @@ public class Partida {
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
     
-       public Partida(int numJug, int monedesPerGuanyar, int monedesPerJugador) {
+       public Partida(int numJug, int monedesPerGuanyar, int monedesPerJugador, int IA, int dificultat) {
            _monedesJusticia= new Moneda();              // Monedes del Palau de Justicia
            _monedesBanc= new Moneda(Integer.MAX_VALUE); // Al banc mai se li acaben les monedes.
            _indexOrdre = 0;                             // Index per moure's pel vector que determina l'ordre dels jugadors
            _indexExecutador  = new int [2];                        // Index per saber dins el vector de jugadors quins jugador està jugant
            _monedesPerGuanyar = monedesPerGuanyar;
-           partidaSettings(numJug,monedesPerJugador);
+           _jugIA = IA;
+           partidaSettings(numJug,monedesPerJugador,dificultat);
        }
        
      
@@ -263,7 +266,7 @@ public class Partida {
         }
         return opcio;
     }
-       
+   
     public Rol escollirRol(){
     // Pre: --
     // Post: Retorna el rol determinat per un string entrat.
@@ -279,6 +282,7 @@ public class Partida {
         Rol juga = _rolsDisp.get(buscaCarta(rol,1)).getRolCarta();
         return juga;
     }
+   
         
     public ArrayList<Integer> buscarJugadorMesRic () {
     // Pre: --
@@ -332,15 +336,21 @@ public class Partida {
        
        
        
-    public void partidaSettings(int nJugadors,int monedesPerJugador) {
+    public void partidaSettings(int nJugadors,int monedesPerJugador, int dificultat) {
     // Pre: nJugadors = 2 or 3 or 4
     // Post: Ajusta les opcions de la partida. Estableix ordre i guarda les cartes com toca
         _indexExecutador[1]= -1;
-        _Jugadors= new ArrayList<> (nJugadors);                                      // Array de nJugadors
+        _Jugadors= new ArrayList<> (nJugadors);  // Array de nJugadors
+        
         for (int i=0; i< nJugadors; i++){                                           // Fes fins a nJugadors...
             JugadorPersona p=new JugadorPersona(new Moneda(monedesPerJugador));     // Crea un jugador
             _Jugadors.add(p);                                                       // Afageix-lo al array
         }
+        for (int i=0; i<_jugIA; i++){
+            JugadorIA p = new JugadorIA(new Moneda(monedesPerJugador), dificultat);
+            _Jugadors.add(p);
+        }
+        
         _nCartesPerJugador=1;
 
         if (_Jugadors.size()<4) {                                           // Si el numero de jugador és menor a 4
@@ -400,7 +410,7 @@ public class Partida {
     // Pre: El bisbe no pot ser descartat.
     // Post: Descarta cartes de la pila sempre i quan n'hi quedi una al mazo de cartes 
 
-          descartarCartesAUTO();
+        descartarCartesAUTO();
         
         int i = 1;
         int limit = 1+(_Jugadors.size() * _nCartesPerJugador);
@@ -512,6 +522,14 @@ public class Partida {
         actualitzaIndexJugador();
     }
     
+    public void memoriesIA(){
+        LinkedList<Jugador> j = new LinkedList(Arrays.asList(_Jugadors));
+        LinkedList<Carta> c = new LinkedList(Arrays.asList(_rolsDisp));
+        for (int i=(_Jugadors.size()-_jugIA)-1; i<(_Jugadors.size() - _jugIA); i++){
+            _Jugadors.get(i).memoriaJugadors(j,c);
+        }
+    }
+    
     public void dinamicaDelJoc(){
     // Pre: --
     // Post: Estableix la dinamica del joc fins que la partida s'acabi
@@ -520,7 +538,7 @@ public class Partida {
         //boolean partidaAcabada= false;
         descartarCartesConsola();
         repartirCartes();
-
+        memoriesIA();
         System.out.println("");
         System.out.println("Aquest es el resultat després de repartir cartes: ");
         System.out.println("");
@@ -540,7 +558,7 @@ public class Partida {
                 for (int q=0; q<_rolsDisp.size(); q++){
                      _rolsDisp.get(q).ensenya();
                 }
-                Rol juga = escollirRol();
+                Rol juga = _Jugadors.get(_indexExecutador[0]).escollirRol(_rolsDisp);
                 System.out.println("");
                 boolean totsmenteixen = false;
                 totsmenteixen = interrupcions(juga);
@@ -554,7 +572,7 @@ public class Partida {
             }
             else if (accio.equals("2")){
                 System.out.println("Amb qui vols intercanviar, amb el mall (Y) o algun jugador (N)?");
-                if (_Jugadors.get(_indexExecutador[0]).decidir()){
+                if (_Jugadors.get(_indexExecutador[0]).decidir()){  // Fer per la IA
                     System.out.println("");
                     System.out.println("Escull una carta del mazo de cartes de la taula");
                     for (int i=0; i<_mall.size(); i++){

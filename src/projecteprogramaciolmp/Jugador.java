@@ -6,6 +6,7 @@
 ////////////////////////////////
 package projecteprogramaciolmp;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 public abstract class Jugador {
     
@@ -50,7 +51,16 @@ public abstract class Jugador {
 //////                                              MÈTODES CONSULTORS                                                   //////
 //////                                                                                                                   //////
 ////// ================================================================================================================= //////
-     
+
+    public Rol escollirRol(ArrayList<Carta> cartes){
+        Rol r = new Bisbe();
+        return r;
+    }
+    
+    public void memoriaJugadors(LinkedList<Jugador> j, LinkedList<Carta> c) {
+        
+    }
+    
     public Rol getRolActual(){
     // Pre: --
     // Post: Retorna el rol actual del jugador
@@ -188,5 +198,5 @@ public abstract class Jugador {
     // Post: El rol actual ara es r
         _accion.nouRol(r);
     }
-    
+
 } // END OF CLASS JUGADOR
