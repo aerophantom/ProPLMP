@@ -63,6 +63,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         consultarCarta = new javax.swing.JButton();
         intercanvi = new javax.swing.JButton();
         accioRol = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         principal = new javax.swing.JPanel();
         accionsLog = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -78,6 +79,7 @@ public class pruebaLuis extends javax.swing.JFrame {
         cartaT5 = new javax.swing.JLabel();
         cartaT6 = new javax.swing.JLabel();
         cartaT7 = new javax.swing.JLabel();
+        intercanviMall = new javax.swing.JLabel();
         cartesJugador = new javax.swing.JPanel();
         carta0 = new javax.swing.JLabel();
         carta1 = new javax.swing.JLabel();
@@ -277,7 +279,7 @@ public class pruebaLuis extends javax.swing.JFrame {
             }
         });
 
-        intercanvi.setText("Intercanviar amb mall");
+        intercanvi.setText("Intercanviar carta amb mall");
         intercanvi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 intercanviActionPerformed(evt);
@@ -291,6 +293,8 @@ public class pruebaLuis extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Intercanviar carta amb jugador");
+
         javax.swing.GroupLayout opcionsLayout = new javax.swing.GroupLayout(opcions);
         opcions.setLayout(opcionsLayout);
         opcionsLayout.setHorizontalGroup(
@@ -298,9 +302,11 @@ public class pruebaLuis extends javax.swing.JFrame {
             .addGroup(opcionsLayout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(consultarCarta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(229, 229, 229)
                 .addComponent(intercanvi)
-                .addGap(337, 337, 337)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(214, 214, 214)
                 .addComponent(accioRol)
                 .addGap(72, 72, 72))
         );
@@ -311,7 +317,8 @@ public class pruebaLuis extends javax.swing.JFrame {
                 .addGroup(opcionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(consultarCarta)
                     .addComponent(intercanvi)
-                    .addComponent(accioRol))
+                    .addComponent(accioRol)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -358,6 +365,10 @@ public class pruebaLuis extends javax.swing.JFrame {
                 public void mouseClicked(MouseEvent e)
                 {
                     System.out.println("clicat");
+                    Carta aux= _joc.getCartaMall(0);
+                    cartaT0.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));
+                    _cartaEscollida= 0;
+
                 }
             });
             cartaT0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
@@ -432,6 +443,9 @@ public class pruebaLuis extends javax.swing.JFrame {
                                         });
                                         cartaT7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/P_revers.jpg"))); // NOI18N
 
+                                        intercanviMall.setForeground(new java.awt.Color(255, 255, 255));
+                                        intercanviMall.setText("SELECCIONA UNA CARTA. NO VEURAS EL ROL");
+
                                         javax.swing.GroupLayout cartesTaulaLayout = new javax.swing.GroupLayout(cartesTaula);
                                         cartesTaula.setLayout(cartesTaulaLayout);
                                         cartesTaulaLayout.setHorizontalGroup(
@@ -442,37 +456,46 @@ public class pruebaLuis extends javax.swing.JFrame {
                                                     .addGroup(cartesTaulaLayout.createSequentialGroup()
                                                         .addComponent(cartaT4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(18, 18, 18)
-                                                        .addComponent(cartaT5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(cartaT5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(cartesTaulaLayout.createSequentialGroup()
+                                                        .addComponent(cartaT0, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(18, 18, 18)
+                                                        .addComponent(cartaT1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(intercanviMall)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(cartesTaulaLayout.createSequentialGroup()
                                                         .addComponent(cartaT6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(18, 18, 18)
                                                         .addComponent(cartaT7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(cartesTaulaLayout.createSequentialGroup()
-                                                        .addComponent(cartaT0, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(cartaT1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
                                                         .addComponent(cartaT2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(18, 18, 18)
                                                         .addComponent(cartaT3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addContainerGap(245, Short.MAX_VALUE))
+                                                .addGap(66, 78, Short.MAX_VALUE))
                                         );
                                         cartesTaulaLayout.setVerticalGroup(
                                             cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesTaulaLayout.createSequentialGroup()
+                                            .addGroup(cartesTaulaLayout.createSequentialGroup()
                                                 .addContainerGap(16, Short.MAX_VALUE)
                                                 .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cartaT1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cartaT0, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cartaT2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cartaT3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(cartaT5, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cartaT4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cartaT6, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cartaT7, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addContainerGap())
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesTaulaLayout.createSequentialGroup()
+                                                        .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(cartaT1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(cartaT0, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(cartaT2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(cartaT3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(cartesTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addComponent(cartaT5, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(cartaT4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(cartaT6, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(cartaT7, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addContainerGap())
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartesTaulaLayout.createSequentialGroup()
+                                                        .addComponent(intercanviMall, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(300, 300, 300))))
                                         );
 
                                         cartesJugador.setBackground(new java.awt.Color(51, 51, 51));
@@ -744,6 +767,7 @@ public class pruebaLuis extends javax.swing.JFrame {
     private void intercanviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intercanviActionPerformed
         cartesJugador.setVisible(false);
         cartesTaula.setVisible(true);
+        opcions.setVisible(false);
     }//GEN-LAST:event_intercanviActionPerformed
 
     /**
@@ -843,6 +867,10 @@ public class pruebaLuis extends javax.swing.JFrame {
     
     //PARTIDA
     private Partida _joc;
+    
+    //VARIABLES PARTIDA
+    int _cartaEscollida; //de moment feta servir al intercanvi amb mall
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accioRol;
     private javax.swing.JPanel accionsLog;
@@ -864,7 +892,9 @@ public class pruebaLuis extends javax.swing.JFrame {
     private javax.swing.JPanel descartar;
     private javax.swing.JButton descartarBoto;
     private javax.swing.JButton intercanvi;
+    private javax.swing.JLabel intercanviMall;
     private javax.swing.JPanel intro;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

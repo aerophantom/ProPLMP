@@ -208,6 +208,10 @@ public class Partida {
         return _Jugadors.get(indexJugador).getCarta(indexCarta);
     }
     
+    public Carta getCartaMall(int indexCarta){
+        return _mall.get(indexCarta);
+    }
+    
     public boolean preguntarJugadorActual(){
     // Pre: --
     // Post: Formula una pregunta de Si o No al jugador que li toca el torn i retorna TRUE si s'ha escollit SI altrament FALSE

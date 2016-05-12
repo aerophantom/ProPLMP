@@ -341,9 +341,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                       <Component id="consultarCarta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
                       <Component id="intercanvi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
                       <Component id="accioRol" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
@@ -357,6 +359,7 @@
                           <Component id="consultarCarta" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="intercanvi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="accioRol" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -374,7 +377,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="intercanvi">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Intercanviar amb mall"/>
+                <Property name="text" type="java.lang.String" value="Intercanviar carta amb mall"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="intercanviActionPerformed"/>
@@ -387,6 +390,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accioRolActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Intercanviar carta amb jugador"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -517,47 +525,62 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="cartaT4" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Component id="cartaT5" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cartaT6" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cartaT7" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="cartaT0" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="cartaT1" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="intercanviMall" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cartaT6" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cartaT7" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="cartaT2" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="cartaT3" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="245" max="32767" attributes="0"/>
+                          <EmptySpace min="66" pref="78" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace pref="16" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cartaT1" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="cartaT0" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="cartaT2" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="cartaT3" min="-2" pref="333" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cartaT1" min="-2" pref="333" max="-2" attributes="0"/>
+                                      <Component id="cartaT0" min="-2" pref="333" max="-2" attributes="0"/>
+                                      <Component id="cartaT2" min="-2" pref="333" max="-2" attributes="0"/>
+                                      <Component id="cartaT3" min="-2" pref="333" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="cartaT5" min="-2" pref="333" max="-2" attributes="0"/>
+                                      <Component id="cartaT4" min="-2" pref="333" max="-2" attributes="0"/>
+                                      <Component id="cartaT6" min="-2" pref="333" max="-2" attributes="0"/>
+                                      <Component id="cartaT7" min="-2" pref="333" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="intercanviMall" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="cartaT5" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="cartaT4" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="cartaT6" min="-2" pref="333" max="-2" attributes="0"/>
-                              <Component id="cartaT7" min="-2" pref="333" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -570,7 +593,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT0.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT0.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;       Carta aux= _joc.getCartaMall(0);&#xa;       cartaT0.setIcon(new javax.swing.ImageIcon(getClass().getResource(buscarSourceAmbIDCarta(aux.getNom()))));&#xa;       _cartaEscollida= 0;&#xa;       &#xa;    }  &#xa;});"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="cartaT1">
@@ -642,6 +665,14 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cartaT7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));&#xa;cartaT7.addMouseListener(new MouseAdapter()  &#xa;{  &#xa;    public void mouseClicked(MouseEvent e)  &#xa;    {&#xa;       System.out.println(&quot;clicat&quot;);&#xa;    }  &#xa;});"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="intercanviMall">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="SELECCIONA UNA CARTA. NO VEURAS EL ROL"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
